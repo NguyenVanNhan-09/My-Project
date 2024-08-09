@@ -9,9 +9,6 @@ lerna-debug.log*
 
 /node_modules
 /.pnp
-/src/contexts
-/src/interfaces
-/src/services
 dist
 dist-ssr
 *.local

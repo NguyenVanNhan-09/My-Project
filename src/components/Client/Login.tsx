@@ -1,16 +1,36 @@
-import React from 'react'
+import { useForm } from 'react-hook-form'
 import Register from './Register'
-
+import { TUsers } from '../../interfaces/Users'
+import { joiResolver } from '@hookform/resolvers/joi'
+import Joi from 'joi'
+import { useContext } from 'react'
+import { userCT } from '../../contexts/UsersContext'
+const schema = Joi.object({
+    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
+    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).min(6)
+})
 const Login = () => {
+    const { handleLogin } = useContext(userCT)
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm<TUsers>({ resolver: joiResolver(schema) })
+    const onSubmit = (user: TUsers) => {
+        handleLogin(user)
+    }
     return (
         <>
-            <span id='my_modal_2' className='modal'>
+            <dialog id='my_modal_2' className='modal'>
                 <div className='modal-box font-[sans-serif] bg-white max-w-4xl flex items-center mx-auto md:h-screen p-4'>
                     <form method='dialog'>
                         <button className='btn btn-sm btn-circle btn-ghost text-black absolute right-2 top-2'>✕</button>
                     </form>
                     <div className='grid lg:grid-cols-4 md:grid-cols-3 items-center'>
-                        <form className='lg:col-span-3 md:col-span-2 max-w-lg w-full p-6 mx-auto'>
+                        <form
+                            onSubmit={handleSubmit(onSubmit)}
+                            className='lg:col-span-3 md:col-span-2 max-w-lg w-full p-6 mx-auto'
+                        >
                             <div className='mb-12'>
                                 <h3 className='text-gray-800 text-4xl font-extrabold'>Sign In</h3>
                                 <p className='text-gray-800 text-sm mt-6 leading-relaxed'>
@@ -27,6 +47,7 @@ const Login = () => {
                                     type='email'
                                     placeholder='Enter email'
                                     className='px-4 py-3.5 bg-white w-full text-black text-sm border-2 border-gray-200 focus:border-blue-600 rounded-md outline-none'
+                                    {...register('email')}
                                 />
                                 <svg
                                     xmlns='http://www.w3.org/2000/svg'
@@ -55,7 +76,7 @@ const Login = () => {
                                     </g>
                                 </svg>
                             </div>
-
+                            {errors?.email && <span className='text-red-500'>{errors.email.message}</span>}
                             <div className='relative flex items-center mt-8'>
                                 <label className='text-gray-800 text-[13px] bg-white absolute px-2 top-[-9px] left-[18px] font-semibold'>
                                     Password
@@ -64,6 +85,7 @@ const Login = () => {
                                     type='Password'
                                     placeholder='Enter password'
                                     className='px-4 py-3.5 bg-white text-black w-full text-sm border-2 border-gray-200 focus:border-blue-600 rounded-md outline-none'
+                                    {...register('password')}
                                 />
                                 <svg
                                     xmlns='http://www.w3.org/2000/svg'
@@ -78,6 +100,7 @@ const Login = () => {
                                     ></path>
                                 </svg>
                             </div>
+                            {errors?.password && <span className='text-red-500'>{errors.password.message}</span>}
 
                             <div className='flex flex-wrap items-center justify-between gap-4 mt-4'>
                                 <div className='flex items-center'>
@@ -103,7 +126,7 @@ const Login = () => {
 
                             <div className='mt-12'>
                                 <button
-                                    type='button'
+                                    type='submit'
                                     className='w-full shadow-xl py-2.5 px-4 text-sm tracking-wider font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none'
                                 >
                                     Sign in
@@ -132,11 +155,9 @@ const Login = () => {
                                 >
                                     Register
                                 </button>
-                                {/* bị lỗi form trong form */}
-                                <Register />
                             </div>
                         </form>
-
+                        <Register />
                         <div className='max-md:order-1 flex flex-col justify-center space-y-16 max-md:mt-16 min-h-full bg-gradient-to-r from-gray-900 to-gray-700 lg:px-8 px-4 py-4'>
                             <div>
                                 <h4 className='text-white text-lg font-semibold'>Secure Authentication</h4>
@@ -162,7 +183,7 @@ const Login = () => {
                 <form method='dialog' className='modal-backdrop'>
                     <button>close</button>
                 </form>
-            </span>
+            </dialog>
         </>
     )
 }

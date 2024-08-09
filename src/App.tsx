@@ -1,16 +1,16 @@
 import { Navigate, useRoutes } from 'react-router-dom'
 import './App.css'
-import BlogItem from './pages/CLient/BlogItem'
-import Blogs from './pages/CLient/Blogs'
-import Category from './pages/CLient/Category'
-import Detail from './pages/CLient/Detail'
-import Home from './pages/CLient/Home'
+import BlogItem from './pages/Client/BlogItem'
+import Blogs from './pages/Client/Blogs'
+import Category from './pages/Client/Category'
+import Detail from './pages/Client/Detail'
+import Home from './pages/Client/Home'
 import Client from './layouts/Client'
 import Admin from './layouts/Admin'
-import Search from './pages/CLient/Search'
-import AccountSettings from './pages/CLient/AccountSetting'
-import AboutUs from './pages/CLient/AboutUs'
-import NotFound from './pages/CLient/NotFound'
+import Search from './pages/Client/Search'
+import AccountSettings from './pages/Client/AccountSetting'
+import AboutUs from './pages/Client/AboutUs'
+import NotFound from './pages/Client/NotFound'
 import Dashboard from './pages/Admin/Dashboard'
 import ProductsList from './pages/Admin/Products/ProductsList'
 import Overview from './pages/Admin/Overview '
@@ -25,7 +25,7 @@ function App() {
                 { path: 'home', element: <Home /> },
                 { path: 'search', element: <Search /> },
                 { path: 'detail/:id', element: <Detail /> },
-                { path: 'category', element: <Category /> },
+                { path: 'category/:id', element: <Category /> },
                 { path: 'blogs', element: <Blogs /> },
                 { path: 'blog/:id', element: <BlogItem /> },
                 { path: 'account-setting', element: <AccountSettings /> },

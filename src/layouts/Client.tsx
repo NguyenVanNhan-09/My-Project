@@ -11,7 +11,7 @@ const Client = () => {
         location.pathname.includes('/search') ||
         location.pathname.includes('/category') ||
         location.pathname.includes('/about-us') ||
-        location.pathname.includes('/test') ||
+        location.pathname.includes('/account-setting') ||
         location.pathname.includes('/blog')
     return (
         <>

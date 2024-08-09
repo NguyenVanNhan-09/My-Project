@@ -1,7 +1,24 @@
+import { useContext } from 'react'
 import Login from './Login'
-import Register from './Register'
+import { categoriesCT } from '../../contexts/CategoriesContext'
+import { TCategories } from '../../interfaces/Categories'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
+    const { categories } = useContext(categoriesCT)
+    var checkRole = false
+    const isUser = localStorage.getItem('user')
+    const userName = isUser ? JSON.parse(localStorage.getItem('user')!).name : undefined
+    const userRole = isUser ? JSON.parse(localStorage.getItem('user')!).role : undefined
+    if (userRole === 2) {
+        checkRole = true
+    }
+    const logout = () => {
+        localStorage.removeItem('user')
+        if (!localStorage.getItem('user')) {
+            alert('Logout successfully!!!')
+        }
+    }
     return (
         <>
             <div className=' shadow bg-white'>
@@ -61,20 +78,56 @@ const Header = () => {
 
                             <div className='ml-auto max-lg:mt-4'>
                                 <ul className='flex items-center'>
-                                    <li className='max-sm:hidden flex text-[15px] max-lg:py-2 px-3 font-medium text-white cursor-pointer'>
-                                        <button
-                                            className=''
-                                            onClick={() => {
-                                                ;(
-                                                    document.getElementById('my_modal_2') as HTMLDialogElement
-                                                )?.showModal()
-                                            }}
-                                        >
-                                            <span className='ti-user w-[20px] h-[20px] mr-2 mt-1 text-white'></span>
-                                            Sign in
-                                        </button>
-                                        <Login />
-                                    </li>
+                                    {isUser ? (
+                                        <>
+                                            <li className='max-sm:hidden flex text-[15px] max-lg:py-2 px-3 font-medium text-white cursor-pointer'>
+                                                <div className='dropdown dropdown-end'>
+                                                    <div className='flex' tabIndex={0}>
+                                                        <span className='ti-user w-[20px] h-[20px] mr-2 mt-1 text-white'></span>
+                                                        <div>{userName}</div>
+                                                    </div>
+                                                    <ul
+                                                        tabIndex={0}
+                                                        className='dropdown-content menu bg-[#cbd4e1] rounded-box z-[1] w-52 mt-3 p-2 shadow'
+                                                    >
+                                                        <li className='hover:text-[#eae589]'>
+                                                            <Link to={'/account-setting'}>My Account</Link>
+                                                        </li>
+                                                        {checkRole ? (
+                                                            <>
+                                                                <li className='hover:text-[#eae589]'>
+                                                                    <Link to={'/admin'}>Admin</Link>
+                                                                </li>
+                                                            </>
+                                                        ) : null}
+
+                                                        <li className='hover:text-[#eae589]'>
+                                                            <Link onClick={() => logout()} to={''}>
+                                                                Logout
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <li className='max-sm:hidden flex text-[15px] max-lg:py-2 px-3 font-medium text-white cursor-pointer'>
+                                                <button
+                                                    className=''
+                                                    onClick={() => {
+                                                        ;(
+                                                            document.getElementById('my_modal_2') as HTMLDialogElement
+                                                        )?.showModal()
+                                                    }}
+                                                >
+                                                    <span className='ti-user w-[20px] h-[20px] mr-2 mt-1 text-white'></span>
+                                                    Sign in
+                                                </button>
+                                                <Login />
+                                            </li>
+                                        </>
+                                    )}
 
                                     <li className='max-sm:hidden flex text-[15px] max-lg:py-2 px-3 font-medium text-white cursor-pointer'>
                                         <a href='admin/dashboad'>
@@ -107,54 +160,57 @@ const Header = () => {
 
                             <div className='flex items-center py-4 pl-[90px]'>
                                 <li className='max-lg:border-b max-lg:py-4 px-4 flex items-center'>
-                                    <a
-                                        href='/'
+                                    <Link
+                                        to={'/'}
                                         className='hover:text-yellow-300 text-[#3A3A3A] text-[15px] font-medium block min-w-16 text-sm'
                                     >
                                         Home
-                                    </a>
+                                    </Link>
                                     <span className='ti-angle-down text-sm ml-2'></span>
                                 </li>
                                 <li className='relative max-lg:border-b max-lg:py-4 px-4 flex items-center Nav'>
-                                    <a
-                                        href='/category'
+                                    <Link
+                                        to={'/category'}
                                         className='hover:text-yellow-300 text-[#3A3A3A] text-[15px] font-medium block min-w-16 text-sm'
                                     >
-                                        Catalog
-                                    </a>
+                                        category
+                                    </Link>
                                     <span className='ti-angle-down text-sm ml-2'></span>
                                     <ul className='Sub_nav absolute min-w-36 top-9 right-5 bg-slate-300'>
-                                        <a href='client/product-category/{{item.id}}'>
-                                            <li className='cursor-pointer hover:text-yellow-500 py-2 px-5 w-full'>
-                                                name
+                                        {categories.map((category: TCategories) => (
+                                            <li
+                                                key={category.id}
+                                                className='cursor-pointer hover:text-yellow-500 py-2 px-5 w-full'
+                                            >
+                                                <Link to={`/category/${category.id}`}>{category.name}</Link>
                                             </li>
-                                        </a>
+                                        ))}
                                     </ul>
                                 </li>
                                 <li className='max-lg:border-b max-lg:py-4 px-4 flex items-center'>
-                                    <a
-                                        href='/blogs'
+                                    <Link
+                                        to={'/blogs'}
                                         className='hover:text-yellow-300 text-[#3A3A3A] text-[15px] font-medium block min-w-16 text-sm'
                                     >
                                         Blogs
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className='max-lg:border-b max-lg:py-4 px-4 flex items-center'>
-                                    <a
-                                        href='#'
+                                    <Link
+                                        to={'/page'}
                                         className='hover:text-yellow-300 text-[#3A3A3A] text-[15px] font-medium block min-w-16 text-sm'
                                     >
                                         Pages
-                                    </a>
+                                    </Link>
                                     <span className='ti-angle-down text-sm ml-2'></span>
                                 </li>
                                 <li className='max-lg:border-b max-lg:py-4 px-4 flex items-center'>
-                                    <a
-                                        href='/about-us'
+                                    <Link
+                                        to={'/about-us'}
                                         className='hover:text-yellow-300 text-[#3A3A3A] text-[15px] font-medium block min-w-16 text-sm'
                                     >
                                         About us
-                                    </a>
+                                    </Link>
                                 </li>
                             </div>
                         </div>

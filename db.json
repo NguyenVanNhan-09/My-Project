@@ -8,9 +8,13 @@
             "category": "1",
             "price": 160,
             "description": "descriptions shoes",
-            "is_in_inventory": true,
-            "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-665455a5-45de-40fb-945f-c1852b82400d/react-infinity-run-flyknit-mens-running-shoe-zX42Nc.jpg",
-            "images": ["image-1", "image-2", "image-3"]
+            "is_in_inventory": false,
+            "thumbnail": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyi-ly699qt7mogyea",
+            "images": [
+                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdy8-ly699rtk43av14",
+                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdx0-ly699rzxurg4be",
+                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxo-ly699sa7fpxif0"
+            ]
         },
         {
             "id": 2,
@@ -21,8 +25,12 @@
             "price": 130,
             "description": "descriptions shoes",
             "is_in_inventory": true,
-            "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-5cc7de3b-2afc-49c2-a1e4-0508997d09e6/react-miler-mens-running-shoe-DgF6nr.jpg",
-            "images": ["image-1", "image-2", "image-3"]
+            "thumbnail": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdww-ly697y3md67e0b",
+            "images": [
+                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyl-ly697y9g4mpz31",
+                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxg-ly697yqncnjg38",
+                "image-3"
+            ]
         },
         {
             "id": 3,
@@ -34,7 +42,11 @@
             "description": "descriptions shoes",
             "is_in_inventory": true,
             "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-33b0a0a5-c171-46cc-ad20-04a768703e47/air-zoom-pegasus-37-womens-running-shoe-Jl0bDf.jpg",
-            "images": ["image-1", "image-2", "image-3"]
+            "images": [
+                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxq-ly3dfvquccmr84",
+                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyo-ly3dfw3bvhf724",
+                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxc-ly3dfvwy3f4g0a"
+            ]
         },
         {
             "id": 4,
@@ -46,19 +58,27 @@
             "description": "descriptions shoes",
             "is_in_inventory": true,
             "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/99a7d3cb-e40c-4474-91c2-0f2e6d231fd2/joyride-run-flyknit-womens-running-shoe-HcfnJd.jpg",
-            "images": ["image-1", "image-2", "image-3"]
+            "images": [
+                "https://down-vn.img.susercontent.com/file/sg-11134201-7rbk6-lnv03nc9bwkw59",
+                "https://down-vn.img.susercontent.com/file/sg-11134201-7rbkr-lnv03moeatfw1b",
+                "image-3"
+            ]
         },
         {
             "id": 5,
-            "name": "Nike Mercurial Vapor 13 Elite FG",
+            "name": "Mercurial vapor vii 13 elite 2",
             "brand": "NIKE",
             "gender": "WOMEN",
             "category": "1",
             "price": 250,
             "description": "descriptions shoes",
             "is_in_inventory": true,
-            "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/9dda6202-e2ff-4711-9a09-0fcb7d90c164/mercurial-vapor-13-elite-fg-firm-ground-soccer-cleat-14MsF2.jpg",
-            "images": ["image-1", "image-2", "image-3"]
+            "thumbnail": "https://down-vn.img.susercontent.com/file/a69378973c7c28f2af45c359e4cfe2c0",
+            "images": [
+                "https://down-vn.img.susercontent.com/file/1cbcade764ea22bc9f2227e82b12a3fc",
+                "https://down-vn.img.susercontent.com/file/16bc330909b9e15943d2291366b00233",
+                "https://down-vn.img.susercontent.com/file/34332ade724a1aa50f378666dc7ed90d"
+            ]
         },
         {
             "id": 6,
@@ -120,7 +140,6 @@
             "thumbnail": "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/178b2a46-3ee4-492b-882e-f71efdd53a36/air-force-1-big-kids-shoe-2zqp8D.jpg",
             "images": ["image-1", "image-2", "image-3"]
         },
-
         {
             "id": 1240,
             "name": "Áo Thun Balenciaga",
@@ -148,12 +167,12 @@
     ],
     "categories": [
         {
-            "id": "c1",
+            "id": "1",
             "name": "shoes",
             "thumbnail": "cat_thumbnail1.jpg"
         },
         {
-            "id": "c2",
+            "id": "2",
             "name": "clothers",
             "thumbnail": "cat_thumbnail2.jpg"
         }
@@ -188,6 +207,69 @@
             "email": "user2@example.com",
             "password": "hashed_password2",
             "role": 2
+        },
+        {
+            "email": "admin@gmail.com",
+            "password": "$2a$10$.O327icVf.RBd8SY3lmIkOKnSAuL43OUDOBerA87ZSnJbMBz9l/gq",
+            "name": "admin",
+            "role": 1,
+            "id": "IPDrhjN"
+        },
+        {
+            "email": "user@gmail.com",
+            "password": "$2a$10$3vcmp/jrbcm0D3sMKDm2hu56pwmygOFNCIaRH6dFqOvFbColuxgKe",
+            "name": "user",
+            "role": 1,
+            "id": "GhYGQ_h"
+        },
+        {
+            "email": "nhan@gmail.com",
+            "password": "$2a$10$6wjrQqybtpr8oOa/WC.NL.6/JQSn05eYe1GfnVqZ48CMGoqfove9K",
+            "name": "nhan",
+            "role": 1,
+            "id": "Fwxb_pD"
+        },
+        {
+            "email": "thuy@gmail.com",
+            "password": "$2a$10$D5mg/lkZHaPEgSywu33/N.qtLQXBt09QnJuLA2Bo3T5np6ETW1AxK",
+            "name": "thuy",
+            "role": 1,
+            "id": "eU2ZxTx"
+        },
+        {
+            "email": "phuong@gmail.com",
+            "password": "$2a$10$43KJghNS7.nzprL3FDZwaO.ljeG2p5q4GWTyuJ/ekE3oG6DCmKrR2",
+            "name": "phuong",
+            "role": 1,
+            "id": "gpVK2my"
+        },
+        {
+            "email": "nghia@gmail.com",
+            "password": "$2a$10$Qzr7fdHI1J9zXFWOGOVMcuLqmMwjWeW2AP9LR9AiUAmnge.xlSY9y",
+            "name": "nghia",
+            "role": 1,
+            "id": "mx9GSDr"
+        },
+        {
+            "email": "nhinh@gmail.com",
+            "password": "$2a$10$AZgwoEO0EYdGHd4aXSavEubPcyqtp6ut8cD2.gZ.zoJGDFuIx.Hh.",
+            "name": "user",
+            "role": 2,
+            "id": "O0yFsAw"
+        },
+        {
+            "email": "nhinh1@gmail.com",
+            "password": "$2a$10$Rs.zTSzLpLh4BJuyDsmf.u74SuuM/VIoWm4DSGDdZu/YVrRF.lHu.",
+            "name": "user",
+            "role": 1,
+            "id": "OvZcy1o"
+        },
+        {
+            "email": "dung@gmail.com",
+            "password": "$2a$10$ivlcWcpqv/FzFJRbrbpPbu1ehRMj2GMGuNrV17G/6XfoOUpFbL.ae",
+            "name": "dung",
+            "role": 1,
+            "id": "L5VK7i9"
         }
     ],
     "cart": [

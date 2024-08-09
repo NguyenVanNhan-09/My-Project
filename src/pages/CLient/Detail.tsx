@@ -1,4 +1,19 @@
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { GET_BY_ID_Product } from '../../services/Products'
+import { TProduct } from '../../interfaces/Products'
+
 const Detail = () => {
+    const { id } = useParams()
+    const [product, setProduct] = useState<TProduct | null>(null)
+    useEffect(() => {
+        const fetchProductById = async () => {
+            const data = await GET_BY_ID_Product(id as number | string)
+            setProduct(data)
+        }
+        fetchProductById()
+    }, [id])
+    // console.log()
     return (
         <>
             <div className='font-sans p-8 tracking-wide max-lg:max-w-2xl mx-auto ml-[110px] mr-[110px]'>
@@ -6,7 +21,7 @@ const Detail = () => {
                     <div className='space-y-4 text-center lg:sticky top-8'>
                         <div className='bg-gray-100 p-4 flex items-center sm:h-[380px] rounded'>
                             <img
-                                src='images'
+                                src={product?.thumbnail}
                                 alt='productDetail'
                                 className='w-full max-h-full object-contain object-top'
                             />
@@ -15,7 +30,7 @@ const Detail = () => {
                         <div className='grid grid-cols-2 gap-4'>
                             <div className='bg-gray-100 p-4 flex items-center rounded sm:h-[182px]'>
                                 <img
-                                    src='images'
+                                    src={product?.images[0]}
                                     alt='productDetail'
                                     className='w-full max-h-full object-contain object-top'
                                 />
@@ -23,7 +38,7 @@ const Detail = () => {
 
                             <div className='bg-gray-100 p-4 flex items-center rounded sm:h-[182px]'>
                                 <img
-                                    src='images'
+                                    src={product?.images[1]}
                                     alt='productDetail'
                                     className='w-full max-h-full object-contain object-top'
                                 />
@@ -33,11 +48,11 @@ const Detail = () => {
 
                     <div className='max-w-xl'>
                         <div>
-                            <h2 className='text-2xl font-extrabold text-gray-800'>title</h2>
+                            <h2 className='text-2xl font-extrabold text-gray-800'>{product?.name}</h2>
                         </div>
 
                         <div className='mt-4'>
-                            <h3 className='text-gray-800 text-3xl font-bold'>price</h3>
+                            <h3 className='text-gray-800 text-3xl font-bold'>$ {product?.price}</h3>
                         </div>
 
                         <div className='flex space-x-1 mt-4'>
@@ -92,17 +107,26 @@ const Detail = () => {
 
                         <div className='flex space-x-1 mt-4'>
                             <h1>
-                                Availability:{' '}
-                                <span className='text-[#30BD57]  text-[16px]'>
-                                    {' '}
-                                    <span className='ti-check text-[#30BD57] text-[16px]'></span>In stock
-                                </span>
+                                Availability:
+                                {product?.is_in_inventory ? (
+                                    <>
+                                        <span className='text-[#30BD57]  text-[16px]'>
+                                            <span className='ti-check text-[#30BD57] text-[16px]'></span>In stock
+                                        </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span className='text-[#ee534f] text-[16px]'>
+                                            <span className='ti-close text-[#ee534f] text-[16px]'></span>Out stock
+                                        </span>
+                                    </>
+                                )}
                             </h1>
                         </div>
-                        <div className='flex space-x-1 mt-4'>
-                            <p className='text-[15px] pb-3 text-[#5D5D5D] border-b w-full border-[#BDBDBD]'>
-                                Hurry up! only 34 productDetail left in stock!
-                            </p>
+                        <div className='flex space-x-1 pb-3 mt-4 border-b w-full border-[#BDBDBD]'>
+                            <h1>
+                                Gender: <span className='text-[#30BD57]  text-[16px]'>{product?.gender}</span>
+                            </h1>
                         </div>
 
                         {/* Color */}
@@ -225,13 +249,12 @@ const Detail = () => {
                         </div>
                         <div className='flex space-x-1 mt-4'>
                             <h1>
-                                Category: <span className='text-[#30BD57]  text-[16px]'>20% off</span>
+                                Category: <span className='text-[#30BD57]  text-[16px]'>{product?.category}</span>
                             </h1>
                         </div>
-                        <div className='flex space-x-1 mt-4'>
-                            <h1>
-                                Share: <span className='text-[#30BD57]  text-[16px]'>gg, fb, ig</span>
-                            </h1>
+                        <div className='flex flex-col mt-4'>
+                            <h1 className='pb-2'>Description</h1>
+                            <p className='text-[15px] text-[#5D5D5D] w-full'>{product?.description}</p>
                         </div>
                     </div>
                 </div>

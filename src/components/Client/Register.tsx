@@ -1,15 +1,41 @@
-import Login from './Login'
+import { useForm } from 'react-hook-form'
+import { TUsers } from '../../interfaces/Users'
+import { joiResolver } from '@hookform/resolvers/joi'
+import Joi from 'joi'
+import { useContext } from 'react'
+import { userCT } from '../../contexts/UsersContext'
+
+const schema = Joi.object({
+    name: Joi.string().alphanum().min(3).max(30).required(),
+    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
+    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).min(6),
+    rule: Joi.number().default(1)
+})
 
 const Register = () => {
+    const { handleRegister } = useContext(userCT)
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm<TUsers>({
+        resolver: joiResolver(schema)
+    })
+
+    const onSubmit = (user: TUsers) => {
+        console.log(user)
+        handleRegister(user)
+    }
+
     return (
         <>
-            <div id='my_modal_regiter' className='modal'>
+            <dialog id='my_modal_regiter' className='modal'>
                 <div className='modal-box font-[sans-serif] bg-white max-w-4xl flex items-center mx-auto md:h-screen p-4'>
                     <form method='dialog'>
                         <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>✕</button>
                     </form>
                     <div className='grid md:grid-cols-3 items-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-xl overflow-hidden'>
-                        <form className='md:col-span-2 w-full py-6 px-6 sm:px-16'>
+                        <form onSubmit={handleSubmit(onSubmit)} className='md:col-span-2 w-full py-6 px-6 sm:px-16'>
                             <div className='mb-6'>
                                 <h3 className='text-gray-800 text-2xl font-bold'>Create an account</h3>
                             </div>
@@ -19,11 +45,10 @@ const Register = () => {
                                     <label className='text-gray-800 text-sm mb-2 block text-left'>Name</label>
                                     <div className='relative flex items-center'>
                                         <input
-                                            name='name'
                                             type='text'
-                                            required
                                             className='text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500'
                                             placeholder='Enter name'
+                                            {...register('name')}
                                         />
                                         <svg
                                             xmlns='http://www.w3.org/2000/svg'
@@ -39,17 +64,17 @@ const Register = () => {
                                             ></path>
                                         </svg>
                                     </div>
+                                    {errors?.name && <span className='text-red-500'>{errors.name.message}</span>}
                                 </div>
 
                                 <div>
                                     <label className='text-gray-800 text-sm mb-2 block text-left'>Email Id</label>
                                     <div className='relative flex items-center'>
                                         <input
-                                            name='email'
                                             type='email'
-                                            required
                                             className='text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500'
                                             placeholder='Enter email'
+                                            {...register('email')}
                                         />
                                         <svg
                                             xmlns='http://www.w3.org/2000/svg'
@@ -78,17 +103,17 @@ const Register = () => {
                                             </g>
                                         </svg>
                                     </div>
+                                    {errors?.email && <span className='text-red-500'>{errors.email.message}</span>}
                                 </div>
 
                                 <div>
                                     <label className='text-gray-800 text-sm mb-2 block text-left'>Password</label>
                                     <div className='relative flex items-center'>
                                         <input
-                                            name='password'
                                             type='password'
-                                            required
                                             className='text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-2.5 rounded-md outline-blue-500'
                                             placeholder='Enter password'
+                                            {...register('password')}
                                         />
                                         <svg
                                             xmlns='http://www.w3.org/2000/svg'
@@ -103,6 +128,9 @@ const Register = () => {
                                             ></path>
                                         </svg>
                                     </div>
+                                    {errors?.password && (
+                                        <span className='text-red-500'>{errors.password.message}</span>
+                                    )}
                                 </div>
 
                                 <div className='flex items-center'>
@@ -123,7 +151,7 @@ const Register = () => {
 
                             <div className='!mt-12'>
                                 <button
-                                    type='button'
+                                    type='submit'
                                     className='w-full py-3 px-4 tracking-wider text-sm rounded-md text-white bg-gray-700 hover:bg-gray-800 focus:outline-none'
                                 >
                                     Create an account
@@ -174,7 +202,7 @@ const Register = () => {
                 <form method='dialog' className='modal-backdrop'>
                     <button>close</button>
                 </form>
-            </div>
+            </dialog>
         </>
     )
 }
