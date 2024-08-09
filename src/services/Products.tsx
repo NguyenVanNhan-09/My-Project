@@ -1,0 +1,47 @@
+import instance from '../API'
+import { TProduct } from '../interfaces/Products'
+export const GET_ALL_Products = async () => {
+    try {
+        const { data } = await instance.get('/products')
+        return data
+    } catch (error) {
+        console.log(error)
+        throw error
+    }
+}
+export const GET_BY_ID_Product = async (id: number | string) => {
+    try {
+        const { data } = await instance.get(`/products/${id}`)
+        return data
+    } catch (error) {
+        console.log(error)
+        throw error
+    }
+}
+export const Create_Product = async (product: TProduct) => {
+    try {
+        const { data } = await instance.post('/products', product)
+        return data
+    } catch (error) {
+        console.log(error)
+        throw error
+    }
+}
+export const Delete_Product = async (id: number | string) => {
+    try {
+        const { data } = await instance.delete(`/products/${id}`)
+        return data
+    } catch (error) {
+        console.log(error)
+        throw error
+    }
+}
+export const Update_Product = async (id: number | string, product: TProduct) => {
+    try {
+        const { data } = await instance.patch(`/products/${id}`, product)
+        return data
+    } catch (error) {
+        console.log(error)
+        throw error
+    }
+}
