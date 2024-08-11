@@ -5,11 +5,11 @@ import { TCategories } from '../../interfaces/Categories'
 import { Link } from 'react-router-dom'
 
 const Header = () => {
-    const { categories } = useContext(categoriesCT)
     var checkRole = false
     const isUser = localStorage.getItem('user')
-    const userName = isUser ? JSON.parse(localStorage.getItem('user')!).name : undefined
-    const userRole = isUser ? JSON.parse(localStorage.getItem('user')!).role : undefined
+    const userName = isUser ? JSON.parse(localStorage.getItem('user')!)?.user?.name : undefined
+    const userRole = isUser ? JSON.parse(localStorage.getItem('user')!)?.user?.role : undefined
+    const { categories } = useContext(categoriesCT)
     if (userRole === 2) {
         checkRole = true
     }
@@ -90,18 +90,18 @@ const Header = () => {
                                                         tabIndex={0}
                                                         className='dropdown-content menu bg-[#cbd4e1] rounded-box z-[1] w-52 mt-3 p-2 shadow'
                                                     >
-                                                        <li className='hover:text-[#eae589]'>
+                                                        <li className='hover:text-[#eda515] text-black'>
                                                             <Link to={'/account-setting'}>My Account</Link>
                                                         </li>
                                                         {checkRole ? (
                                                             <>
-                                                                <li className='hover:text-[#eae589]'>
+                                                                <li className='hover:text-[#eda515] text-black'>
                                                                     <Link to={'/admin'}>Admin</Link>
                                                                 </li>
                                                             </>
                                                         ) : null}
 
-                                                        <li className='hover:text-[#eae589]'>
+                                                        <li className='hover:text-[#eda515] text-black'>
                                                             <Link onClick={() => logout()} to={''}>
                                                                 Logout
                                                             </Link>

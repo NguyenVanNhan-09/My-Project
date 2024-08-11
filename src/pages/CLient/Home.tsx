@@ -3,9 +3,14 @@ import BannerBottom from '../../components/Client/BannerBottom'
 import { productCT } from '../../contexts/ProductsContext'
 import { TProduct } from '../../interfaces/Products'
 import Product from '../../components/Client/Product'
+import Products from '../../components/Client/Products'
+import { categoriesCT } from '../../contexts/CategoriesContext'
+import { TCategories } from '../../interfaces/Categories'
 
 const Home = () => {
     const { products } = useContext(productCT)
+    const { categories } = useContext(categoriesCT)
+
     return (
         <>
             <div className='font-[sans-serif]'>
@@ -29,13 +34,17 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-
+                    {/* List-product */}
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6'>
                         {products.map((product: TProduct) => (
                             <Product key={product.id} data={product} />
                         ))}
                     </div>
                 </div>
+                {/* list Products by category */}
+                {categories.map((item: TCategories) => (
+                    <Products key={item.id} IdCategory={item.id} nameCategory={item.name} />
+                ))}
             </div>
             {/* Phân trang */}
             <nav className='flex items-center gap-x-1 justify-center mt-10'>

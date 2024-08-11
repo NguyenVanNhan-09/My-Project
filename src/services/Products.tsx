@@ -45,3 +45,13 @@ export const Update_Product = async (id: number | string, product: TProduct) => 
         throw error
     }
 }
+
+export const GET_ALL_Products_By_Cate = async (idCate: number | string) => {
+    try {
+        const response = await instance.get(`/products?category=${idCate}`)
+        return response.data
+    } catch (error) {
+        console.error(error)
+        throw error
+    }
+}

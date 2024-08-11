@@ -3,7 +3,6 @@ import { TUsers } from '../interfaces/Users'
 import { Create_User, Delete_User, GET_ALL_Users, Login_User, Register_User, Update_User } from '../services/Users'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import instance from '../API'
 type Props = {
     children: React.ReactNode
 }
@@ -84,7 +83,7 @@ const UsersContext = ({ children }: Props) => {
             const { data } = await Login_User(user)
             if (data) {
                 const isConfirm = confirm('login successfully, go to home now ?')
-                localStorage.setItem('user', JSON.stringify(data.user))
+                localStorage.setItem('user', JSON.stringify(data))
                 if (isConfirm) {
                     const currentModal = document.getElementById('my_modal_2') as HTMLDialogElement
                     if (currentModal) {

@@ -8,10 +8,7 @@ type Props = {
 const Product = ({ data }: Props) => {
     return (
         <>
-            <Link
-                to={`/detail/${data.id}`}
-                className='border border-[#B6B6B6] shadow-md overflow-hidden rounded-[19.67px] cursor-pointer hover:-translate-y-2 transition-all relative event_hover min-h-[332px]'
-            >
+            <div className='border border-[#B6B6B6] shadow-md overflow-hidden rounded-[19.67px] cursor-pointer hover:-translate-y-2 transition-all relative event_hover min-h-[332px]'>
                 <div className='bg-[#87BCD9] w-10 h-10 flex items-center justify-center rounded-full cursor-pointer absolute top-3 right-3'>
                     <svg
                         xmlns='http://www.w3.org/2000/svg'
@@ -86,11 +83,14 @@ const Product = ({ data }: Props) => {
                         <p className='text-[19px] text-white'>Add to cart</p>
                         <i className='ti-shopping-cart text-[15.5px] bg-[#EDA415] px-2 py-2 rounded-full text-white'></i>
                     </div>
-                    <div className='border border-[#87BCD9] rounded-[19px] w-[70.81px] h-[60px] flex items-center justify-center mr-4 bg-[#87BCD9]'>
+                    <Link
+                        to={`/detail/${data.id}`}
+                        className='border border-[#87BCD9] rounded-[19px] w-[70.81px] h-[60px] flex items-center justify-center mr-4 bg-[#87BCD9]'
+                    >
                         <i className='ti-eye text-[23px] text-white'></i>
-                    </div>
+                    </Link>
                 </div>
-            </Link>
+            </div>
         </>
     )
 }

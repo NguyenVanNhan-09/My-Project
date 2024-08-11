@@ -1,9 +1,11 @@
-import { Outlet } from 'react-router-dom'
+// import { Outlet } from 'react-router-dom'
+import Dashboard from '../pages/Admin/Dashboard'
 
 const Admin = () => {
     return (
         <div>
-            <Outlet />
+            <Dashboard />
+            {/* <Outlet /> */}
         </div>
     )
 }
