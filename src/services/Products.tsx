@@ -1,3 +1,4 @@
+import axios from 'axios'
 import instance from '../API'
 import { TProduct } from '../interfaces/Products'
 export const GET_ALL_Products = async () => {
@@ -53,5 +54,14 @@ export const GET_ALL_Products_By_Cate = async (idCate: number | string) => {
     } catch (error) {
         console.error(error)
         throw error
+    }
+}
+
+export const UploadImageProductToCloudinary = async (formData: any) => {
+    try {
+        const { data } = await axios.post('https://api.cloudinary.com/v1_1/dbaq8kdwn/upload', formData)
+        return data
+    } catch (error) {
+        console.log(error)
     }
 }

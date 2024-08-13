@@ -20,18 +20,15 @@ const Home = () => {
                             <h2 className='text-4xl font-extrabold text-gray-800 m-0'>Popular products</h2>
                         </div>
                         <div className='flex '>
-                            <div className='rounded-full text-xs sm:text-sm min-w-fit px-4 bg-white border-[#B5B5B5] border self-center py-2 mr-2'>
-                                Cameras
-                            </div>
-                            <div className='rounded-full text-xs sm:text-sm min-w-fit px-4 bg-white border-[#B5B5B5] border self-center py-2 mr-2'>
-                                Laptops
-                            </div>
-                            <div className='rounded-full text-xs sm:text-sm min-w-fit px-4 bg-white border-[#B5B5B5] border self-center py-2 mr-2'>
-                                Tablets
-                            </div>
-                            <div className='rounded-full text-xs sm:text-sm min-w-fit px-4 bg-white border-[#B5B5B5] border self-center py-2 mr-2'>
-                                Mouse
-                            </div>
+                            {categories.map((item: TCategories) => (
+                                <a
+                                    href={`#${item.name}`}
+                                    key={item.id}
+                                    className='rounded-full text-xs sm:text-sm min-w-fit px-4 bg-white border-[#B5B5B5] border self-center py-2 mr-2'
+                                >
+                                    {item.name}
+                                </a>
+                            ))}
                         </div>
                     </div>
                     {/* List-product */}

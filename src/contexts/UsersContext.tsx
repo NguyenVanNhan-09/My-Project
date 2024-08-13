@@ -101,14 +101,6 @@ const UsersContext = ({ children }: Props) => {
             }
         }
     }
-
-    const checkRole = (role: number | string) => {
-        if (role === 2) {
-            // đây là admin
-        } else {
-            // đây là user
-        }
-    }
     return (
         <userCT.Provider
             value={{
