@@ -1,54 +1,50 @@
-import { useContext, useRef, useState } from 'react'
+import { useContext } from 'react'
 import { categoriesCT } from '../../contexts/CategoriesContext'
 import { TCategories } from '../../interfaces/Categories'
 import { useForm } from 'react-hook-form'
 import { TProduct } from '../../interfaces/Products'
-import { UploadImageProductToCloudinary } from '../../services/Products'
+// import { UploadImageProductToCloudinary } from '../../services/Products'
 
 const AddProduct = () => {
     const { categories } = useContext(categoriesCT)
-    const [thumbnail, setThumbnail] = useState<string>('')
-    const [images, setImages] = useState<string[]>([])
-    const fileInputRef = useRef<HTMLInputElement | null>(null)
+    // const [thumbnail, setThumbnail] = useState<string>('')
+    // const [images, setImages] = useState<string[]>([])
+    // const fileInputRef = useRef<HTMLInputElement | null>(null)
 
-    const handleFileSelect = () => {
-        fileInputRef.current?.click()
-    }
+    // const handleFileSelect = () => {
+    //     fileInputRef.current?.click()
+    // }
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors }
-    } = useForm<TProduct>()
-    const uploadThumbnail = async (file: File) => {
-        const formData = new FormData()
-        formData.append('file', file)
-        formData.append('upload_preset', 'o70gyljw')
-        try {
-            const image = await UploadImageProductToCloudinary(formData)
-            setThumbnail(image.url) // Cập nhật thumbnail
-        } catch (error) {
-            console.error('Error uploading thumbnail:', error)
-        }
-    }
-    const uploadImages = async (files: FileList) => {
-        if (!files || files.length === 0) return
+    const { register, handleSubmit } = useForm<TProduct>()
+    // const uploadThumbnail = async (file: File) => {
+    //     const formData = new FormData()
+    //     formData.append('file', file)
+    //     formData.append('upload_preset', 'o70gyljw')
+    //     try {
+    //         const image = await UploadImageProductToCloudinary(formData)
+    //         setThumbnail(image.url) // Cập nhật thumbnail
+    //     } catch (error) {
+    //         console.error('Error uploading thumbnail:', error)
+    //     }
+    // }
+    // const uploadImages = async (files: FileList) => {
+    // if (!files || files.length === 0) return
 
-        const uploadPromises = Array.from(files).map((file) => {
-            const formData = new FormData()
-            formData.append('file', file)
-            formData.append('upload_preset', 'o70gyljw')
-            return UploadImageProductToCloudinary(formData)
-        })
+    // const uploadPromises = Array.from(files).map((file) => {
+    //     const formData = new FormData()
+    //     formData.append('file', file)
+    //     formData.append('upload_preset', 'o70gyljw')
+    //     return UploadImageProductToCloudinary(formData)
+    // })
 
-        try {
-            const responses = await Promise.all(uploadPromises)
-            const newImageUrls = responses.map((response) => response.url)
-            setImages((prevImages) => [...prevImages, ...newImageUrls])
-        } catch (error) {
-            console.error('Error uploading images:', error)
-        }
-    }
+    //     try {
+    //         const responses = await Promise.all(uploadPromises)
+    //         const newImageUrls = responses.map((response) => response.url)
+    //         setImages((prevImages) => [...prevImages, ...newImageUrls])
+    //     } catch (error) {
+    //         console.error('Error uploading images:', error)
+    //     }
+    // }
 
     const onSubmit = (data: TProduct) => {
         console.log(data)
@@ -162,16 +158,7 @@ const AddProduct = () => {
                                                 />
                                             </svg>
                                             Upload file
-                                            <input
-                                                type='file'
-                                                id='uploadFile1'
-                                                className='hidden'
-                                                onChange={(e) => {
-                                                    if (e.target.files && e.target.files[0]) {
-                                                        uploadThumbnail(e.target.files[0])
-                                                    }
-                                                }}
-                                            />
+                                            <input type='file' id='uploadFile1' className='hidden' />
                                             <p className='text-xs font-medium text-gray-400 mt-2'>
                                                 PNG, JPG SVG, WEBP, and GIF are Allowed.
                                             </p>
@@ -185,17 +172,7 @@ const AddProduct = () => {
                                         >
                                             Upload file
                                         </label>
-                                        <input
-                                            type='file'
-                                            ref={fileInputRef}
-                                            multiple
-                                            onChange={(e) => {
-                                                const files = e.target.files
-                                                if (files) {
-                                                    uploadImages(files)
-                                                }
-                                            }}
-                                        />
+                                        <input type='file' />
 
                                         <p className='text-xs text-gray-400 mt-2'>
                                             PNG, JPG SVG, WEBP, and GIF are Allowed.
