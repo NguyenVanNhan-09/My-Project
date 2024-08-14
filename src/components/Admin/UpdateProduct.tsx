@@ -1,10 +1,14 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { categoriesCT } from '../../contexts/CategoriesContext'
 import { TCategories } from '../../interfaces/Categories'
 import { useForm } from 'react-hook-form'
 import { TProduct } from '../../interfaces/Products'
 import { productCT } from './../../contexts/ProductsContext'
-import { UploadFilesImagesToCloudinary, UploadImageProductToCloudinary } from './../../services/Products'
+import {
+    GET_BY_ID_Product,
+    UploadFilesImagesToCloudinary,
+    UploadImageProductToCloudinary
+} from './../../services/Products'
 import Joi from 'joi'
 import { joiResolver } from '@hookform/resolvers/joi'
 
@@ -18,27 +22,55 @@ const schema = Joi.object({
     is_in_inventory: Joi.boolean().default(true),
     images: Joi.array().default([])
 })
-const AddProduct = () => {
+type Props = {
+    id: number | string
+}
+const UpdateProduct = ({ id }: Props) => {
     const { categories } = useContext(categoriesCT)
-    const { handleAdd } = useContext(productCT)
+    const { handleUpdate } = useContext(productCT)
     const [thumbnail, setThumbnail] = useState<string>('')
     const [files, setFiles] = useState<any[]>([])
 
     const {
         register,
         handleSubmit,
-        formState: { errors }
+        formState: { errors },
+        reset
     } = useForm<TProduct>({ resolver: joiResolver(schema) })
+
+    useEffect(() => {
+        if (id !== null) {
+            ;(async () => {
+                try {
+                    const data = await GET_BY_ID_Product(id)
+                    reset({
+                        name: data.name,
+                        brand: data.brand,
+                        price: data.price,
+                        description: data.description,
+                        category: data.category,
+                        gender: data.gender
+                    })
+                    setThumbnail(data.thumbnail)
+                    setFiles(data.images || [])
+                } catch (error) {
+                    console.error('Error fetching product:', error)
+                }
+            })()
+        }
+    }, [id])
+
     const uploadThumbnail = async (file: any) => {
+        if (!file) return
         const formData = new FormData()
         formData.append('file', file[0])
         formData.append('upload_preset', 'o70gyljw')
         const image = await UploadImageProductToCloudinary(formData)
+        console.log(image)
         setThumbnail(image.url)
     }
     const uploadFiles = async (files: FileList | null) => {
-        if (!files) return // Nếu không có tệp tin nào được chọn
-
+        if (!files) return
         const formData = new FormData()
         formData.append('upload_preset', 'o70gyljw')
 
@@ -54,21 +86,21 @@ const AddProduct = () => {
             })
         )
 
-        // Cập nhật trạng thái files bằng cách ghép các tệp tin đã tải lên mới vào trạng thái hiện tại
-        setFiles((prevFiles) => [...prevFiles, ...uploadedFiles])
+        // Cập nhật trạng thái files bằng cách thay thế các tệp tin hiện tại với các tệp tin đã tải lên mới
+        setFiles(uploadedFiles)
     }
     const onSubmit = async (data: TProduct) => {
-        await handleAdd({ ...data, thumbnail, images: files })
+        await handleUpdate(id, { ...data, thumbnail, images: files })
         location.reload()
     }
     return (
         <>
-            <dialog id='modal_add_product' className='modal'>
+            <dialog id='modal_update_product' className='modal'>
                 <div className='modal-box flex-col font-[sans-serif] bg-white max-w-4xl flex items-center mx-auto md:h-screen p-4'>
                     <form method='dialog'>
                         <button className='btn btn-sm btn-circle btn-ghost text-black absolute right-2 top-2'>✕</button>
                     </form>
-                    <h2 className='mb-4 text-xl font-bold text-gray-900 dark:text-white'>Add product</h2>
+                    <h2 className='mb-4 text-xl font-bold text-gray-900 dark:text-white'>Update product</h2>
                     <section className='bg-white w-full flex justify-center dark:bg-gray-900'>
                         <div className='pt-4 pb-8 px-4 mx-auto max-w-2xl'>
                             <form action='#' onSubmit={handleSubmit(onSubmit)}>
@@ -122,7 +154,7 @@ const AddProduct = () => {
                                             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                                             {...register('category')}
                                         >
-                                            <option selected disabled>
+                                            <option selected={false} disabled>
                                                 Category
                                             </option>
                                             {categories.map((item: TCategories) => (
@@ -203,7 +235,16 @@ const AddProduct = () => {
                                             Upload files
                                         </label>
                                         <input type='file' multiple onChange={(e) => uploadFiles(e.target.files)} />
-                                        <div className='flex flex-wrap gap-2 mt-2'></div>
+                                        <div className='flex flex-wrap gap-2 mt-2'>
+                                            {files.map((fileUrl, index) => (
+                                                <img
+                                                    key={index}
+                                                    src={fileUrl}
+                                                    alt={`Image Preview ${index + 1}`}
+                                                    className='w-32 h-32 object-cover'
+                                                />
+                                            ))}
+                                        </div>
                                         <p className='text-xs text-gray-400 mt-2'>
                                             PNG, JPG SVG, WEBP, and GIF are Allowed.
                                         </p>
@@ -230,7 +271,7 @@ const AddProduct = () => {
                                     type='submit'
                                     className='py-2 px-4 rounded-lg bg-[#EDA315] border-2 border-transparent hover:text-white text-white text-md mr-4 hover:bg-[#316887] inline-flex items-center mt-4 sm:mt-6 text-sm font-medium text-center bg-primary-700  focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800'
                                 >
-                                    Add product
+                                    Update product
                                 </button>
                             </form>
                         </div>
@@ -244,4 +285,4 @@ const AddProduct = () => {
     )
 }
 
-export default AddProduct
+export default UpdateProduct

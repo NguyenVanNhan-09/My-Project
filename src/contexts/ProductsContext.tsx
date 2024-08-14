@@ -36,6 +36,7 @@ const ProductsContext = ({ children }: Props) => {
     const handleUpdate = async (id: number | string, product: TProduct) => {
         const data = await Update_Product(id, product)
         if (data) {
+            alert('update successfully !!!')
             setProducts(products.filter((product) => (product.id == id ? data : product)))
         } else {
             alert('error update !!!')

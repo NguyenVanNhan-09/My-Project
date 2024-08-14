@@ -1,300 +1,364 @@
 {
-    "Products": [
+  "Products": [
+    {
+      "id": 1,
+      "name": "Nike React Infinity Run Flyknit up",
+      "brand": "NIKE",
+      "gender": "MEN",
+      "category": "1",
+      "price": 160,
+      "description": "descriptions shoes",
+      "is_in_inventory": true,
+      "thumbnail": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyi-ly699qt7mogyea",
+      "images": [
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rdy8-ly699rtk43av14",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rdx0-ly699rzxurg4be",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxo-ly699sa7fpxif0"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Nike React Miler",
+      "brand": "NIKE",
+      "gender": "MEN",
+      "category": "1",
+      "price": 130,
+      "description": "descriptions shoes",
+      "is_in_inventory": true,
+      "thumbnail": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdww-ly697y3md67e0b",
+      "images": [
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyl-ly697y9g4mpz31",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxg-ly697yqncnjg38",
+        "image-3"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Nike Air Zoom Pegasus 37",
+      "brand": "NIKE",
+      "gender": "WOMEN",
+      "category": "1",
+      "price": 120,
+      "description": "descriptions shoes",
+      "is_in_inventory": true,
+      "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-33b0a0a5-c171-46cc-ad20-04a768703e47/air-zoom-pegasus-37-womens-running-shoe-Jl0bDf.jpg",
+      "images": [
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxq-ly3dfvquccmr84",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyo-ly3dfw3bvhf724",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxc-ly3dfvwy3f4g0a"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Nike Joyride Run Flyknit",
+      "brand": "NIKE",
+      "gender": "WOMEN",
+      "category": "1",
+      "price": 180,
+      "description": "descriptions shoes",
+      "is_in_inventory": true,
+      "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/99a7d3cb-e40c-4474-91c2-0f2e6d231fd2/joyride-run-flyknit-womens-running-shoe-HcfnJd.jpg",
+      "images": [
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rbk6-lnv03nc9bwkw59",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rbkr-lnv03moeatfw1b",
+        "image-3"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Mercurial vapor vii 13 elite 2",
+      "brand": "NIKE",
+      "gender": "WOMEN",
+      "category": "1",
+      "price": 250,
+      "description": "descriptions shoes",
+      "is_in_inventory": true,
+      "thumbnail": "https://down-vn.img.susercontent.com/file/a69378973c7c28f2af45c359e4cfe2c0",
+      "images": [
+        "https://down-vn.img.susercontent.com/file/1cbcade764ea22bc9f2227e82b12a3fc",
+        "https://down-vn.img.susercontent.com/file/16bc330909b9e15943d2291366b00233",
+        "https://down-vn.img.susercontent.com/file/34332ade724a1aa50f378666dc7ed90d"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Nike Phantom Vision Elite Dynamic Fit FG",
+      "brand": "NIKE",
+      "gender": "WOMEN",
+      "category": "1",
+      "price": 150,
+      "description": "descriptions shoes",
+      "is_in_inventory": true,
+      "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/s1amp7uosrn0nqpsxeue/phantom-vision-elite-dynamic-fit-fg-firm-ground-soccer-cleat-19Kv1V.jpg",
+      "images": [
+        "image-1",
+        "image-2",
+        "image-3"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Nike Phantom Venom Academy FG",
+      "brand": "NIKE",
+      "gender": "WOMEN",
+      "category": "1",
+      "price": 80,
+      "description": "descriptions shoes",
+      "is_in_inventory": true,
+      "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/whegph8z9ornhxklc8rp/phantom-venom-academy-fg-firm-ground-soccer-cleat-6JVNll.jpg",
+      "images": [
+        "image-1",
+        "image-2",
+        "image-3"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Nike Mercurial Vapor 13 Elite Tech Craft FG",
+      "brand": "NIKE",
+      "gender": "MEN",
+      "category": "1",
+      "price": 145,
+      "description": "descriptions shoes",
+      "is_in_inventory": true,
+      "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/vhbwnkor8sxt8qtecgia/mercurial-vapor-13-elite-tech-craft-fg-firm-ground-soccer-cleat-l38JPj.jpg",
+      "images": [
+        "image-1",
+        "image-2",
+        "image-3"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Nike Mercurial Superfly 7 Pro MDS FG",
+      "brand": "NIKE",
+      "gender": "MEN",
+      "category": "1",
+      "price": 137,
+      "description": "descriptions shoes",
+      "is_in_inventory": true,
+      "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-a52a8aec-22dc-4982-961b-75c5f4c72805/mercurial-superfly-7-pro-mds-fg-firm-ground-soccer-cleat-mhcpdN.jpg",
+      "images": [
+        "image-1",
+        "image-2",
+        "image-3"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Nike Air Force 1 ud",
+      "brand": "NIKE",
+      "gender": "MAN-WOMEN",
+      "category": "2",
+      "price": 90111,
+      "description": "descriptions shoes ud",
+      "is_in_inventory": true,
+      "thumbnail": "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/178b2a46-3ee4-492b-882e-f71efdd53a36/air-force-1-big-kids-shoe-2zqp8D.jpg",
+      "images": [
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723666568/q71bthvhotpkb90ggfvr.jpg",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723666568/pbxrucagyfzjfcbe5aha.jpg",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723666569/nnleyl7oli0njfvzqelw.jpg"
+      ]
+    },
+    {
+      "id": 1240,
+      "name": "Áo Thun Balenciaga",
+      "brand": "balenciaga",
+      "gender": "MEN-WOMEN",
+      "category": "2",
+      "price": 90,
+      "description": "descriptions clothers",
+      "is_in_inventory": true,
+      "thumbnail": "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lxm09e536qjd4f",
+      "images": [
+        "image-1",
+        "image-2",
+        "image-3"
+      ]
+    },
+    {
+      "id": 140,
+      "name": "Myers áo phông nam",
+      "brand": "Myers",
+      "gender": "MEN",
+      "category": "2",
+      "price": 90,
+      "description": "descriptions clothers",
+      "is_in_inventory": true,
+      "thumbnail": "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-ltnohe99oiwd5d",
+      "images": [
+        "image-1",
+        "image-2",
+        "image-3"
+      ]
+    },
+    {
+      "name": "a",
+      "brand": "a",
+      "price": 111,
+      "category": "2",
+      "gender": "MEN",
+      "description": "ncoanscjnaskljcnascascasc",
+      "is_in_inventory": true,
+      "images": [
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665812/bnjbq8fys4nkq3oulbxt.jpg",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665813/jfx99b0a4jq5hmw1shuk.jpg",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665813/gabe4yuivhxqq4azeuxy.jpg"
+      ],
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665809/dodmxbscprfbrd67755k.webp",
+      "id": 1241
+    },
+    {
+      "name": "n",
+      "brand": "n",
+      "price": 111,
+      "category": "2",
+      "gender": "WOMEN",
+      "description": "qqqqqqqqqqqqqqq",
+      "is_in_inventory": true,
+      "images": [
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665882/x4dbv4dwh2vyrkzqve68.jpg",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665882/c45meoubxdwj2bukueay.jpg"
+      ],
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665877/i8ovugbg3sglkiybvezl.webp",
+      "id": 1242
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "shoes",
+      "thumbnail": "cat_thumbnail1.jpg"
+    },
+    {
+      "id": "2",
+      "name": "clothers",
+      "thumbnail": "cat_thumbnail2.jpg"
+    }
+  ],
+  "blogs": [
+    {
+      "id": "b1",
+      "title": "Blog Post 1",
+      "thumbnail": "blog_thumb1.jpg",
+      "content": "Content for blog post 1.",
+      "images": [
+        "blog_image1.jpg",
+        "blog_image2.jpg"
+      ]
+    },
+    {
+      "id": "b2",
+      "title": "Blog Post 2",
+      "thumbnail": "blog_thumb2.jpg",
+      "content": "Content for blog post 2.",
+      "images": [
+        "blog_image3.jpg"
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "u1",
+      "name": "User 1",
+      "email": "user1@example.com",
+      "password": "hashed_password1",
+      "role": 1
+    },
+    {
+      "id": "u2",
+      "name": "User 2",
+      "email": "user2@example.com",
+      "password": "hashed_password2",
+      "role": 2
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$.O327icVf.RBd8SY3lmIkOKnSAuL43OUDOBerA87ZSnJbMBz9l/gq",
+      "name": "admin",
+      "role": 1,
+      "id": "IPDrhjN"
+    },
+    {
+      "email": "user@gmail.com",
+      "password": "$2a$10$3vcmp/jrbcm0D3sMKDm2hu56pwmygOFNCIaRH6dFqOvFbColuxgKe",
+      "name": "user",
+      "role": 1,
+      "id": "GhYGQ_h"
+    },
+    {
+      "email": "nhan@gmail.com",
+      "password": "$2a$10$6wjrQqybtpr8oOa/WC.NL.6/JQSn05eYe1GfnVqZ48CMGoqfove9K",
+      "name": "nhan",
+      "role": 1,
+      "id": "Fwxb_pD"
+    },
+    {
+      "email": "thuy@gmail.com",
+      "password": "$2a$10$D5mg/lkZHaPEgSywu33/N.qtLQXBt09QnJuLA2Bo3T5np6ETW1AxK",
+      "name": "thuy",
+      "role": 1,
+      "id": "eU2ZxTx"
+    },
+    {
+      "email": "phuong@gmail.com",
+      "password": "$2a$10$43KJghNS7.nzprL3FDZwaO.ljeG2p5q4GWTyuJ/ekE3oG6DCmKrR2",
+      "name": "phuong",
+      "role": 1,
+      "id": "gpVK2my"
+    },
+    {
+      "email": "nghia@gmail.com",
+      "password": "$2a$10$Qzr7fdHI1J9zXFWOGOVMcuLqmMwjWeW2AP9LR9AiUAmnge.xlSY9y",
+      "name": "nghia",
+      "role": 1,
+      "id": "mx9GSDr"
+    },
+    {
+      "email": "nhinh@gmail.com",
+      "password": "$2a$10$AZgwoEO0EYdGHd4aXSavEubPcyqtp6ut8cD2.gZ.zoJGDFuIx.Hh.",
+      "name": "user",
+      "role": 2,
+      "id": "O0yFsAw"
+    },
+    {
+      "email": "nhinh1@gmail.com",
+      "password": "$2a$10$Rs.zTSzLpLh4BJuyDsmf.u74SuuM/VIoWm4DSGDdZu/YVrRF.lHu.",
+      "name": "user",
+      "role": 1,
+      "id": "OvZcy1o"
+    },
+    {
+      "email": "dung@gmail.com",
+      "password": "$2a$10$ivlcWcpqv/FzFJRbrbpPbu1ehRMj2GMGuNrV17G/6XfoOUpFbL.ae",
+      "name": "dung",
+      "role": 1,
+      "id": "L5VK7i9"
+    }
+  ],
+  "cart": [
+    {
+      "id": "cart1",
+      "name": "John Doe",
+      "phone": 1234567890,
+      "address": "123 Main St, City, Country",
+      "payment_method": "Credit Card",
+      "products": [
         {
-            "id": 1,
-            "name": "Nike React Infinity Run Flyknit",
-            "brand": "NIKE",
-            "gender": "MEN",
-            "category": "1",
-            "price": 160,
-            "description": "descriptions shoes",
-            "is_in_inventory": false,
-            "thumbnail": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyi-ly699qt7mogyea",
-            "images": [
-                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdy8-ly699rtk43av14",
-                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdx0-ly699rzxurg4be",
-                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxo-ly699sa7fpxif0"
-            ]
+          "id": "p1",
+          "title": "Product 1",
+          "price": 29.99,
+          "quantity": 2
         },
         {
-            "id": 2,
-            "name": "Nike React Miler",
-            "brand": "NIKE",
-            "gender": "MEN",
-            "category": "1",
-            "price": 130,
-            "description": "descriptions shoes",
-            "is_in_inventory": true,
-            "thumbnail": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdww-ly697y3md67e0b",
-            "images": [
-                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyl-ly697y9g4mpz31",
-                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxg-ly697yqncnjg38",
-                "image-3"
-            ]
-        },
-        {
-            "id": 3,
-            "name": "Nike Air Zoom Pegasus 37",
-            "brand": "NIKE",
-            "gender": "WOMEN",
-            "category": "1",
-            "price": 120,
-            "description": "descriptions shoes",
-            "is_in_inventory": true,
-            "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-33b0a0a5-c171-46cc-ad20-04a768703e47/air-zoom-pegasus-37-womens-running-shoe-Jl0bDf.jpg",
-            "images": [
-                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxq-ly3dfvquccmr84",
-                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyo-ly3dfw3bvhf724",
-                "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxc-ly3dfvwy3f4g0a"
-            ]
-        },
-        {
-            "id": 4,
-            "name": "Nike Joyride Run Flyknit",
-            "brand": "NIKE",
-            "gender": "WOMEN",
-            "category": "1",
-            "price": 180,
-            "description": "descriptions shoes",
-            "is_in_inventory": true,
-            "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/99a7d3cb-e40c-4474-91c2-0f2e6d231fd2/joyride-run-flyknit-womens-running-shoe-HcfnJd.jpg",
-            "images": [
-                "https://down-vn.img.susercontent.com/file/sg-11134201-7rbk6-lnv03nc9bwkw59",
-                "https://down-vn.img.susercontent.com/file/sg-11134201-7rbkr-lnv03moeatfw1b",
-                "image-3"
-            ]
-        },
-        {
-            "id": 5,
-            "name": "Mercurial vapor vii 13 elite 2",
-            "brand": "NIKE",
-            "gender": "WOMEN",
-            "category": "1",
-            "price": 250,
-            "description": "descriptions shoes",
-            "is_in_inventory": true,
-            "thumbnail": "https://down-vn.img.susercontent.com/file/a69378973c7c28f2af45c359e4cfe2c0",
-            "images": [
-                "https://down-vn.img.susercontent.com/file/1cbcade764ea22bc9f2227e82b12a3fc",
-                "https://down-vn.img.susercontent.com/file/16bc330909b9e15943d2291366b00233",
-                "https://down-vn.img.susercontent.com/file/34332ade724a1aa50f378666dc7ed90d"
-            ]
-        },
-        {
-            "id": 6,
-            "name": "Nike Phantom Vision Elite Dynamic Fit FG",
-            "brand": "NIKE",
-            "gender": "WOMEN",
-            "category": "1",
-            "price": 150,
-            "description": "descriptions shoes",
-            "is_in_inventory": true,
-            "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/s1amp7uosrn0nqpsxeue/phantom-vision-elite-dynamic-fit-fg-firm-ground-soccer-cleat-19Kv1V.jpg",
-            "images": ["image-1", "image-2", "image-3"]
-        },
-        {
-            "id": 7,
-            "name": "Nike Phantom Venom Academy FG",
-            "brand": "NIKE",
-            "gender": "WOMEN",
-            "category": "1",
-            "price": 80,
-            "description": "descriptions shoes",
-            "is_in_inventory": true,
-            "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/whegph8z9ornhxklc8rp/phantom-venom-academy-fg-firm-ground-soccer-cleat-6JVNll.jpg",
-            "images": ["image-1", "image-2", "image-3"]
-        },
-        {
-            "id": 8,
-            "name": "Nike Mercurial Vapor 13 Elite Tech Craft FG",
-            "brand": "NIKE",
-            "gender": "MEN",
-            "category": "1",
-            "price": 145,
-            "description": "descriptions shoes",
-            "is_in_inventory": true,
-            "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/vhbwnkor8sxt8qtecgia/mercurial-vapor-13-elite-tech-craft-fg-firm-ground-soccer-cleat-l38JPj.jpg",
-            "images": ["image-1", "image-2", "image-3"]
-        },
-        {
-            "id": 9,
-            "name": "Nike Mercurial Superfly 7 Pro MDS FG",
-            "brand": "NIKE",
-            "gender": "MEN",
-            "category": "1",
-            "price": 137,
-            "description": "descriptions shoes",
-            "is_in_inventory": true,
-            "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-a52a8aec-22dc-4982-961b-75c5f4c72805/mercurial-superfly-7-pro-mds-fg-firm-ground-soccer-cleat-mhcpdN.jpg",
-            "images": ["image-1", "image-2", "image-3"]
-        },
-        {
-            "id": 10,
-            "name": "Nike Air Force 1",
-            "brand": "NIKE",
-            "gender": "KIDS",
-            "category": "1",
-            "price": 90,
-            "description": "descriptions shoes",
-            "is_in_inventory": true,
-            "thumbnail": "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/178b2a46-3ee4-492b-882e-f71efdd53a36/air-force-1-big-kids-shoe-2zqp8D.jpg",
-            "images": ["image-1", "image-2", "image-3"]
-        },
-        {
-            "id": 1240,
-            "name": "Áo Thun Balenciaga",
-            "brand": "balenciaga",
-            "gender": "MEN-WOMEN",
-            "category": "2",
-            "price": 90,
-            "description": "descriptions clothers",
-            "is_in_inventory": true,
-            "thumbnail": "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lxm09e536qjd4f",
-            "images": ["image-1", "image-2", "image-3"]
-        },
-        {
-            "id": 140,
-            "name": "Myers áo phông nam",
-            "brand": "Myers",
-            "gender": "MEN",
-            "category": "2",
-            "price": 90,
-            "description": "descriptions clothers",
-            "is_in_inventory": true,
-            "thumbnail": "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-ltnohe99oiwd5d",
-            "images": ["image-1", "image-2", "image-3"]
+          "id": "p2",
+          "title": "Product 2",
+          "price": 49.99,
+          "quantity": 1
         }
-    ],
-    "categories": [
-        {
-            "id": "1",
-            "name": "shoes",
-            "thumbnail": "cat_thumbnail1.jpg"
-        },
-        {
-            "id": "2",
-            "name": "clothers",
-            "thumbnail": "cat_thumbnail2.jpg"
-        }
-    ],
-    "blogs": [
-        {
-            "id": "b1",
-            "title": "Blog Post 1",
-            "thumbnail": "blog_thumb1.jpg",
-            "content": "Content for blog post 1.",
-            "images": ["blog_image1.jpg", "blog_image2.jpg"]
-        },
-        {
-            "id": "b2",
-            "title": "Blog Post 2",
-            "thumbnail": "blog_thumb2.jpg",
-            "content": "Content for blog post 2.",
-            "images": ["blog_image3.jpg"]
-        }
-    ],
-    "users": [
-        {
-            "id": "u1",
-            "name": "User 1",
-            "email": "user1@example.com",
-            "password": "hashed_password1",
-            "role": 1
-        },
-        {
-            "id": "u2",
-            "name": "User 2",
-            "email": "user2@example.com",
-            "password": "hashed_password2",
-            "role": 2
-        },
-        {
-            "email": "admin@gmail.com",
-            "password": "$2a$10$.O327icVf.RBd8SY3lmIkOKnSAuL43OUDOBerA87ZSnJbMBz9l/gq",
-            "name": "admin",
-            "role": 1,
-            "id": "IPDrhjN"
-        },
-        {
-            "email": "user@gmail.com",
-            "password": "$2a$10$3vcmp/jrbcm0D3sMKDm2hu56pwmygOFNCIaRH6dFqOvFbColuxgKe",
-            "name": "user",
-            "role": 1,
-            "id": "GhYGQ_h"
-        },
-        {
-            "email": "nhan@gmail.com",
-            "password": "$2a$10$6wjrQqybtpr8oOa/WC.NL.6/JQSn05eYe1GfnVqZ48CMGoqfove9K",
-            "name": "nhan",
-            "role": 1,
-            "id": "Fwxb_pD"
-        },
-        {
-            "email": "thuy@gmail.com",
-            "password": "$2a$10$D5mg/lkZHaPEgSywu33/N.qtLQXBt09QnJuLA2Bo3T5np6ETW1AxK",
-            "name": "thuy",
-            "role": 1,
-            "id": "eU2ZxTx"
-        },
-        {
-            "email": "phuong@gmail.com",
-            "password": "$2a$10$43KJghNS7.nzprL3FDZwaO.ljeG2p5q4GWTyuJ/ekE3oG6DCmKrR2",
-            "name": "phuong",
-            "role": 1,
-            "id": "gpVK2my"
-        },
-        {
-            "email": "nghia@gmail.com",
-            "password": "$2a$10$Qzr7fdHI1J9zXFWOGOVMcuLqmMwjWeW2AP9LR9AiUAmnge.xlSY9y",
-            "name": "nghia",
-            "role": 1,
-            "id": "mx9GSDr"
-        },
-        {
-            "email": "nhinh@gmail.com",
-            "password": "$2a$10$AZgwoEO0EYdGHd4aXSavEubPcyqtp6ut8cD2.gZ.zoJGDFuIx.Hh.",
-            "name": "user",
-            "role": 2,
-            "id": "O0yFsAw"
-        },
-        {
-            "email": "nhinh1@gmail.com",
-            "password": "$2a$10$Rs.zTSzLpLh4BJuyDsmf.u74SuuM/VIoWm4DSGDdZu/YVrRF.lHu.",
-            "name": "user",
-            "role": 1,
-            "id": "OvZcy1o"
-        },
-        {
-            "email": "dung@gmail.com",
-            "password": "$2a$10$ivlcWcpqv/FzFJRbrbpPbu1ehRMj2GMGuNrV17G/6XfoOUpFbL.ae",
-            "name": "dung",
-            "role": 1,
-            "id": "L5VK7i9"
-        }
-    ],
-    "cart": [
-        {
-            "id": "cart1",
-            "name": "John Doe",
-            "phone": 1234567890,
-            "address": "123 Main St, City, Country",
-            "payment_method": "Credit Card",
-            "products": [
-                {
-                    "id": "p1",
-                    "title": "Product 1",
-                    "price": 29.99,
-                    "quantity": 2
-                },
-                {
-                    "id": "p2",
-                    "title": "Product 2",
-                    "price": 49.99,
-                    "quantity": 1
-                }
-            ],
-            "total_price": 109.97,
-            "shipping_method": "Standard Shipping"
-        }
-    ]
+      ],
+      "total_price": 109.97,
+      "shipping_method": "Standard Shipping"
+    }
+  ]
 }

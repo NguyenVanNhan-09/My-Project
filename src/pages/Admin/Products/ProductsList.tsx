@@ -1,13 +1,24 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { productCT } from '../../../contexts/ProductsContext'
 import { TProduct } from '../../../interfaces/Products'
 import { categoriesCT } from '../../../contexts/CategoriesContext'
 import { TCategories } from '../../../interfaces/Categories'
 import AddProduct from '../../../components/Admin/AddProduct'
+import UpdateProduct from '../../../components/Admin/UpdateProduct'
+import ChangeStock from '../../../components/Admin/changeStock'
 
 const ProductsList = () => {
     const { products, handleDelete } = useContext(productCT)
     const { categories } = useContext(categoriesCT)
+    const [idProduct, setIdProduct] = useState<any>(null)
+    const showUpdate = (id: any) => {
+        ;(document.getElementById('modal_update_product') as HTMLDialogElement)?.showModal()
+        setIdProduct(id)
+    }
+    const showChangeStock = (id: any) => {
+        ;(document.getElementById('modal_change_stock') as HTMLDialogElement)?.showModal()
+        setIdProduct(id)
+    }
     return (
         <>
             <section className='bg-[#eeeeee] dark:bg-gray-900 py-3 sm:py-5  h-[100vh]'>
@@ -50,7 +61,6 @@ const ProductsList = () => {
                                         </svg>
                                         Add new product
                                     </button>
-                                    <AddProduct />
 
                                     <button
                                         type='button'
@@ -163,24 +173,39 @@ const ProductsList = () => {
                                                 <td className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
                                                     {product.is_in_inventory ? (
                                                         <>
-                                                            <div className='w-max'>
+                                                            <button
+                                                                type='button'
+                                                                onClick={() => showChangeStock(product.id)}
+                                                                className='w-max'
+                                                            >
                                                                 <div className='relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20'>
                                                                     <span className=''>In Stock</span>
                                                                 </div>
-                                                            </div>
+                                                            </button>
                                                         </>
                                                     ) : (
                                                         <>
-                                                            <div className='w-max'>
+                                                            <button
+                                                                type='button'
+                                                                onClick={() => showChangeStock(product.id)}
+                                                                className='w-max'
+                                                            >
                                                                 <div className='relative grid items-center px-2 py-1 font-sans text-xs font-bold text-black uppercase rounded-md select-none whitespace-nowrap bg-red-500/20'>
                                                                     <span className=''>Out Stock</span>
                                                                 </div>
-                                                            </div>
+                                                            </button>
                                                         </>
                                                     )}
                                                 </td>
                                                 <td className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-                                                    <button className='mr-4' title='Edit'>
+                                                    <button
+                                                        className='mr-4'
+                                                        title='Edit'
+                                                        type='button'
+                                                        onClick={() => {
+                                                            showUpdate(product.id)
+                                                        }}
+                                                    >
                                                         <svg
                                                             xmlns='http://www.w3.org/2000/svg'
                                                             className='w-5 fill-blue-500 hover:fill-blue-700'
@@ -322,6 +347,9 @@ const ProductsList = () => {
                     </div>
                 </div>
             </section>
+            <AddProduct />
+            <UpdateProduct id={idProduct} />
+            <ChangeStock id={idProduct} />
         </>
     )
 }
