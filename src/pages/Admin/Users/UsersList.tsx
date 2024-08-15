@@ -66,7 +66,7 @@ const UsersList = () => {
                                         viewBox='0 0 24 24'
                                         fill='currentColor'
                                         aria-hidden='true'
-                                        stroke-width='2'
+                                        strokeWidth='2'
                                         className='w-4 h-4'
                                     >
                                         <path d='M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z'></path>
@@ -114,14 +114,14 @@ const UsersList = () => {
                                             xmlns='http://www.w3.org/2000/svg'
                                             fill='none'
                                             viewBox='0 0 24 24'
-                                            stroke-width='1.5'
+                                            strokeWidth='1.5'
                                             stroke='currentColor'
                                             aria-hidden='true'
                                             className='w-5 h-5'
                                         >
                                             <path
-                                                stroke-linecap='round'
-                                                stroke-linejoin='round'
+                                                strokeLinecap='round'
+                                                strokeLinejoin='round'
                                                 d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
                                             ></path>
                                         </svg>

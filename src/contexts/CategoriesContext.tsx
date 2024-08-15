@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { TCategories } from '../interfaces/Categories'
-import { Delete_Category, GET_ALL_Categories } from '../services/Categories'
+import { Create_Category, Delete_Category, GET_ALL_Categories, Update_Category } from '../services/Categories'
 
 type Props = {
     children: React.ReactNode
@@ -34,11 +34,34 @@ const CategoriesContext = ({ children }: Props) => {
             }
         }
     }
+    const handleUpdate = async (id: number | string, category: TCategories) => {
+        const data = await Update_Category(id, category)
+        if (data) {
+            alert('update successfully !!!')
+            setCategories(categories.filter((category) => (category.id == id ? data : category)))
+            location.reload()
+        } else {
+            alert('error update !!!')
+        }
+    }
+
+    const handleAdd = async (user: TCategories) => {
+        const data = await Create_Category(user)
+        if (data) {
+            alert('Add user successfully!!!')
+            location.reload()
+        } else {
+            alert('error !!!')
+        }
+        setCategories([...categories, data])
+    }
     return (
         <categoriesCT.Provider
             value={{
                 categories,
-                handleDelete
+                handleDelete,
+                handleUpdate,
+                handleAdd
             }}
         >
             {children}

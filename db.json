@@ -211,29 +211,47 @@
     {
       "id": "1",
       "name": "Shoes",
-      "thumbnail": "https://e7.pngegg.com/pngimages/845/161/png-clipart-sneakers-shoe-shoes-fashion-baby-shoes-thumbnail.png"
+      "thumbnail": "https://e7.pngegg.com/pngimages/845/161/png-clipart-sneakers-shoe-shoes-fashion-baby-shoes-thumbnail.png",
+      "status": true
     },
     {
       "id": "2",
       "name": "Clothers",
-      "thumbnail": "https://wp.inews.co.uk/pre-owned-clothes-resale-or-donation"
+      "thumbnail": "https://wp.inews.co.uk/pre-owned-clothes-resale-or-donation",
+      "status": true
+    },
+    {
+      "name": "bikini",
+      "status": true,
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723759837/uistxv99yf8hnszd253f.png",
+      "id": "xrhuNUW"
     }
   ],
   "brands": [
     {
       "id": "1",
       "name": "Nike",
-      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723709132/wypxnakqrnihyb9w6kvh.png"
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723757808/vwb2ureabgm0apeuotij.png",
+      "status": true
     },
     {
       "id": "2",
       "name": "Addidas",
-      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723709132/wypxnakqrnihyb9w6kvh.png"
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723757746/g462rsy6cqysnci2evnu.png",
+      "status": false
     },
     {
       "id": "3",
       "name": "Balenciaga",
-      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723709132/wypxnakqrnihyb9w6kvh.png"
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723757685/ukoup1uh4o07k6lrqwhv.png",
+      "status": false
+    },
+    {
+      "name": "Nike",
+      "stautus": true,
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723756937/ks4bwybkl5tin9c4k76u.png",
+      "id": "JQitEzn",
+      "status": true
     }
   ],
   "blogs": [

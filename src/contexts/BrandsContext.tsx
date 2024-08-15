@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { TBrands } from '../interfaces/Brands'
-import { Delete_Brand, GET_ALL_Brands } from '../services/Brands'
+import { Create_Brand, Delete_Brand, GET_ALL_Brands, Update_Brand } from '../services/Brands'
 import { TProduct } from '../interfaces/Products'
 import { GET_ALL_Products_By_Brands } from '../services/Products'
 
@@ -36,11 +36,34 @@ const BrandsContext = ({ children }: Props) => {
             }
         }
     }
+    const handleUpdate = async (id: number | string, brand: TBrands) => {
+        const data = await Update_Brand(id, brand)
+        if (data) {
+            alert('update successfully !!!')
+            setBrands(brands.filter((brand) => (brand.id == id ? data : brand)))
+            location.reload()
+        } else {
+            alert('error update !!!')
+        }
+    }
+
+    const handleAdd = async (user: TBrands) => {
+        const data = await Create_Brand(user)
+        if (data) {
+            alert('Add user successfully!!!')
+            location.reload()
+        } else {
+            alert('error !!!')
+        }
+        setBrands([...brands, data])
+    }
     return (
         <brandsCT.Provider
             value={{
                 brands,
-                handleDelete
+                handleDelete,
+                handleUpdate,
+                handleAdd
             }}
         >
             {children}

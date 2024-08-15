@@ -27,7 +27,7 @@ const schema = Joi.object({
 })
 const AddUser = () => {
     const { handleAdd } = useContext(userCT)
-    const [image, setImage] = useState<string>()
+    const [image, setImage] = useState<string>('')
 
     const uploadImage = async (file: any) => {
         const formData = new FormData()

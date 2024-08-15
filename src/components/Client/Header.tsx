@@ -47,6 +47,7 @@ const Header = () => {
                     <section className='md:flex lg:items-center relative py-3 px-2  border-gray-200 bg-[#003F62] lg:min-h-[80px] max-lg:min-h-[60px] h-[100px] ml-[110px] mr-[110px]'>
                         <a href='#' className='max-sm:w-full max-sm:mb-3 shrink-0'>
                             <img src='../../public/image/logo1.png' alt='logo' className='w-[160px]' />
+                            Aura
                         </a>
 
                         <div className='flex flex-wrap w-full items-center'>
