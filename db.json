@@ -242,81 +242,37 @@
   ],
   "users": [
     {
-      "id": "u1",
-      "name": "User 1",
-      "email": "user1@example.com",
-      "password": "hashed_password1",
-      "role": 1
-    },
-    {
-      "id": "u2",
-      "name": "User 2",
-      "email": "user2@example.com",
-      "password": "hashed_password2",
-      "role": 2
+      "email": "user@gmail.com",
+      "password": "$2a$10$mkehYuO/9GYH8qipOaN.E.kx6AKkuoBkEdUzTwLcB1jx7gv9Q7Sii",
+      "image": "https://laravelui.spruko.com/tailwind/ynex/build/assets/images/faces/9.jpg",
+      "name": "user",
+      "role": 1,
+      "phone": "0987654321",
+      "address": "hải phòng",
+      "year": "16/08/2024",
+      "id": "TNBtr4J"
     },
     {
       "email": "admin@gmail.com",
-      "password": "$2a$10$.O327icVf.RBd8SY3lmIkOKnSAuL43OUDOBerA87ZSnJbMBz9l/gq",
+      "password": "$2a$10$C4pGhDVwACN5eASy8cBYMeGx9Q6pkkCLaIGZSwr66qEBQbk7IJ6RG",
       "name": "admin",
-      "role": 1,
-      "id": "IPDrhjN"
-    },
-    {
-      "email": "user@gmail.com",
-      "password": "$2a$10$3vcmp/jrbcm0D3sMKDm2hu56pwmygOFNCIaRH6dFqOvFbColuxgKe",
-      "name": "user",
-      "role": 1,
-      "id": "GhYGQ_h"
-    },
-    {
-      "email": "nhan@gmail.com",
-      "password": "$2a$10$6wjrQqybtpr8oOa/WC.NL.6/JQSn05eYe1GfnVqZ48CMGoqfove9K",
-      "name": "nhan",
-      "role": 1,
-      "id": "Fwxb_pD"
-    },
-    {
-      "email": "thuy@gmail.com",
-      "password": "$2a$10$D5mg/lkZHaPEgSywu33/N.qtLQXBt09QnJuLA2Bo3T5np6ETW1AxK",
-      "name": "thuy",
-      "role": 1,
-      "id": "eU2ZxTx"
-    },
-    {
-      "email": "phuong@gmail.com",
-      "password": "$2a$10$43KJghNS7.nzprL3FDZwaO.ljeG2p5q4GWTyuJ/ekE3oG6DCmKrR2",
-      "name": "phuong",
-      "role": 1,
-      "id": "gpVK2my"
-    },
-    {
-      "email": "nghia@gmail.com",
-      "password": "$2a$10$Qzr7fdHI1J9zXFWOGOVMcuLqmMwjWeW2AP9LR9AiUAmnge.xlSY9y",
-      "name": "nghia",
-      "role": 1,
-      "id": "mx9GSDr"
-    },
-    {
-      "email": "nhinh@gmail.com",
-      "password": "$2a$10$AZgwoEO0EYdGHd4aXSavEubPcyqtp6ut8cD2.gZ.zoJGDFuIx.Hh.",
-      "name": "user",
+      "phone": "09999999",
+      "address": "hà nội",
       "role": 2,
-      "id": "O0yFsAw"
+      "year": "15/08/2024",
+      "image": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723738386/k9og7suc0sejphkj20fq.png",
+      "id": "jF7wxW8"
     },
     {
-      "email": "nhinh1@gmail.com",
-      "password": "$2a$10$Rs.zTSzLpLh4BJuyDsmf.u74SuuM/VIoWm4DSGDdZu/YVrRF.lHu.",
-      "name": "user",
-      "role": 1,
-      "id": "OvZcy1o"
-    },
-    {
-      "email": "dung@gmail.com",
-      "password": "$2a$10$ivlcWcpqv/FzFJRbrbpPbu1ehRMj2GMGuNrV17G/6XfoOUpFbL.ae",
-      "name": "dung",
-      "role": 1,
-      "id": "L5VK7i9"
+      "email": "dev@gmail.com",
+      "password": "$2a$10$QctDytO2RkXPQe7EotLxRO19R.HdrSsSev7BUhlnid6rDZnG6t9ee",
+      "name": "dev",
+      "phone": "0111111111",
+      "address": "hải dương",
+      "role": 3,
+      "year": "16/08/2024",
+      "image": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723741919/xexvldy3vyrk6v78gv1z.png",
+      "id": "3eEk62a"
     }
   ],
   "cart": [

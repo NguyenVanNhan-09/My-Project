@@ -78,3 +78,6 @@ export const UploadFilesImagesToCloudinary = async (formData: any) => {
         console.log(error)
     }
 }
+// http://localhost:3000/products?brand=addidas => tìm kiếm theo brand
+// http://localhost:3000/products?name=admin => tìm kiếm theo name
+// http://localhost:3000/products?is_in_inventory=false => tìm kiếm theo is_in_inventory

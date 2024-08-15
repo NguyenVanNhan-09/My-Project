@@ -28,6 +28,7 @@ const UsersContext = ({ children }: Props) => {
         const data = await Create_User(user)
         if (data) {
             alert('Add user successfully!!!')
+            location.reload()
         } else {
             alert('error !!!')
         }
@@ -37,7 +38,9 @@ const UsersContext = ({ children }: Props) => {
     const handleUpdate = async (id: number | string, user: TUsers) => {
         const data = await Update_User(id, user)
         if (data) {
+            alert('update successfully!!!')
             setUsers(users.filter((user) => (user.id == id ? data : user)))
+            location.reload()
         } else {
             alert('error update !!!')
         }
@@ -47,6 +50,7 @@ const UsersContext = ({ children }: Props) => {
         const isConfirm = confirm('You sure???')
         if (isConfirm) {
             const data = await Delete_User(id)
+            localStorage.removeItem('user')
             if (data) {
                 alert('Delete Successfully!!!')
                 setUsers(users.filter((user: TUsers) => user.id !== id))

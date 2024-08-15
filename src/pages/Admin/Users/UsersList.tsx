@@ -1,4 +1,38 @@
+import { useContext, useEffect, useState } from 'react'
+import { userCT } from '../../../contexts/UsersContext'
+import { TUsers } from '../../../interfaces/Users'
+import AddUser from './AddUser'
+import ChangeRole from '../../../components/Admin/ChangeRole'
+import UpdateUser from './UpdateUser'
+
 const UsersList = () => {
+    const { users, handleDelete } = useContext(userCT)
+    const [idUser, setIdUser] = useState<number | string | null>(null)
+    const [modalType, setModalType] = useState<string | null>(null)
+    const showUpdate = (id: any) => {
+        setModalType('update')
+        setIdUser(id)
+    }
+    const showChangeRole = (id: any) => {
+        setModalType('changeRole')
+        setIdUser(id)
+    }
+
+    // useEffect
+    useEffect(() => {
+        const modalRole = document.getElementById('modal_change_role') as HTMLDialogElement
+        const modalUpdate = document.getElementById('modal_update_user') as HTMLDialogElement
+
+        if (modalType === 'update' && idUser !== null) {
+            modalUpdate?.showModal()
+        } else if (modalType === 'changeRole' && idUser !== null) {
+            modalRole?.showModal()
+        }
+        return () => {
+            setModalType(null)
+        }
+    }, [idUser, modalType])
+
     return (
         <>
             <div className='relative flex flex-col w-full h-full text-gray-70 shadow-md bg-clip-border px-12 py-5 '>
@@ -18,11 +52,14 @@ const UsersList = () => {
                                     className='select-none rounded-lg border border-gray-900 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
                                     type='button'
                                 >
-                                    view all
+                                    View all
                                 </button>
                                 <button
                                     className='flex select-none items-center gap-3 rounded-lg bg-gray-900 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
                                     type='button'
+                                    onClick={() => {
+                                        ;(document.getElementById('modal_add_user') as HTMLDialogElement)?.showModal()
+                                    }}
                                 >
                                     <svg
                                         xmlns='http://www.w3.org/2000/svg'
@@ -111,12 +148,12 @@ const UsersList = () => {
                                     </th>
                                     <th className='p-4 border-y border-blue-gray-100 bg-blue-gray-50/50'>
                                         <p className='block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70'>
-                                            Function
+                                            Phone
                                         </p>
                                     </th>
                                     <th className='p-4 border-y border-blue-gray-100 bg-blue-gray-50/50'>
                                         <p className='block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70'>
-                                            Status
+                                            Role
                                         </p>
                                     </th>
                                     <th className='p-4 border-y border-blue-gray-100 bg-blue-gray-50/50'>
@@ -125,306 +162,128 @@ const UsersList = () => {
                                         </p>
                                     </th>
                                     <th className='p-4 border-y border-blue-gray-100 bg-blue-gray-50/50'>
-                                        <p className='block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70'></p>
+                                        <p className='block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70'>
+                                            Actions
+                                        </p>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <div className='flex items-center gap-3'>
-                                            <img
-                                                src='https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg'
-                                                alt='John Michael'
-                                                className='relative inline-block h-9 w-9 !rounded-full object-cover object-center'
-                                            />
+                                {users.map((user: TUsers, index: any) => (
+                                    <tr key={index}>
+                                        <td className='p-4 border-b border-blue-gray-50'>
+                                            <div className='flex items-center gap-3'>
+                                                <img
+                                                    src={user.image}
+                                                    alt='John Michael'
+                                                    className='relative inline-block h-9 w-9 !rounded-full object-cover object-center'
+                                                />
+                                                <div className='flex flex-col'>
+                                                    <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
+                                                        {user.name}
+                                                    </p>
+                                                    <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70'>
+                                                        {user.email}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className='p-4 border-b border-blue-gray-50'>
                                             <div className='flex flex-col'>
                                                 <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                    John Michael
-                                                </p>
-                                                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70'>
-                                                    john@creative-tim.com
+                                                    {user.phone ? (
+                                                        user.phone
+                                                    ) : (
+                                                        <span className='text-red-600'>Not Updated</span>
+                                                    )}
                                                 </p>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <div className='flex flex-col'>
+                                        </td>
+                                        <td className='p-4 border-b border-blue-gray-50'>
+                                            <div className='w-max'>
+                                                {user.role === 1 ? (
+                                                    <>
+                                                        <button
+                                                            onClick={() => showChangeRole(user.id)}
+                                                            type='button'
+                                                            className='relative text-center grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20'
+                                                        >
+                                                            <span className=''>user</span>
+                                                        </button>
+                                                    </>
+                                                ) : user.role === 2 ? (
+                                                    <>
+                                                        <button
+                                                            onClick={() => showChangeRole(user.id)}
+                                                            type='button'
+                                                            className='relative text-center grid items-center px-2 py-1 font-sans text-xs font-bold text-red-900 uppercase rounded-md select-none whitespace-nowrap bg-red-500/20'
+                                                        >
+                                                            <span className=''>admin</span>
+                                                        </button>
+                                                    </>
+                                                ) : user.role === 3 ? (
+                                                    <>
+                                                        <button
+                                                            onClick={() => showChangeRole(user.id)}
+                                                            type='button'
+                                                            className='relative text-center grid items-center px-2 py-1 font-sans text-xs font-bold text-[#eda515] uppercase rounded-md select-none whitespace-nowrap bg-[#eda515]/20'
+                                                        >
+                                                            <span className=''>dev</span>
+                                                        </button>
+                                                    </>
+                                                ) : null}
+                                            </div>
+                                        </td>
+                                        <td className='p-4 border-b border-blue-gray-50'>
                                             <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                Manager
+                                                {user.year}
                                             </p>
-                                            <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70'>
-                                                Organization
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <div className='w-max'>
-                                            <div className='relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20'>
-                                                <span className=''>online</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                            23/04/18
-                                        </p>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <button
-                                            className='relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
-                                            type='button'
-                                        >
-                                            <span className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'>
-                                                <svg
-                                                    xmlns='http://www.w3.org/2000/svg'
-                                                    viewBox='0 0 24 24'
-                                                    fill='currentColor'
-                                                    aria-hidden='true'
-                                                    className='w-4 h-4'
-                                                >
-                                                    <path d='M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z'></path>
-                                                </svg>
-                                            </span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <div className='flex items-center gap-3'>
-                                            <img
-                                                src='https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg'
-                                                alt='Alexa Liras'
-                                                className='relative inline-block h-9 w-9 !rounded-full object-cover object-center'
-                                            />
-                                            <div className='flex flex-col'>
-                                                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                    Alexa Liras
-                                                </p>
-                                                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70'>
-                                                    alexa@creative-tim.com
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <div className='flex flex-col'>
-                                            <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                Programator
-                                            </p>
-                                            <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70'>
-                                                Developer
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <div className='w-max'>
-                                            <div className='relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900'>
-                                                <span className=''>offline</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                            23/04/18
-                                        </p>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <button
-                                            className='relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
-                                            type='button'
-                                        >
-                                            <span className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'>
-                                                <svg
-                                                    xmlns='http://www.w3.org/2000/svg'
-                                                    viewBox='0 0 24 24'
-                                                    fill='currentColor'
-                                                    aria-hidden='true'
-                                                    className='w-4 h-4'
-                                                >
-                                                    <path d='M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z'></path>
-                                                </svg>
-                                            </span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <div className='flex items-center gap-3'>
-                                            <img
-                                                src='https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-1.jpg'
-                                                alt='Laurent Perrier'
-                                                className='relative inline-block h-9 w-9 !rounded-full  object-cover object-center'
-                                            />
-                                            <div className='flex flex-col'>
-                                                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                    Laurent Perrier
-                                                </p>
-                                                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70'>
-                                                    laurent@creative-tim.com
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <div className='flex flex-col'>
-                                            <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                Executive
-                                            </p>
-                                            <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70'>
-                                                Projects
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <div className='w-max'>
-                                            <div className='relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900'>
-                                                <span className=''>offline</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                            19/09/17
-                                        </p>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <button
-                                            className='relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
-                                            type='button'
-                                        >
-                                            <span className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'>
-                                                <svg
-                                                    xmlns='http://www.w3.org/2000/svg'
-                                                    viewBox='0 0 24 24'
-                                                    fill='currentColor'
-                                                    aria-hidden='true'
-                                                    className='w-4 h-4'
-                                                >
-                                                    <path d='M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z'></path>
-                                                </svg>
-                                            </span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <div className='flex items-center gap-3'>
-                                            <img
-                                                src='https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-4.jpg'
-                                                alt='Michael Levi'
-                                                className='relative inline-block h-9 w-9 !rounded-full object-cover object-center'
-                                            />
-                                            <div className='flex flex-col'>
-                                                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                    Michael Levi
-                                                </p>
-                                                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70'>
-                                                    michael@creative-tim.com
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <div className='flex flex-col'>
-                                            <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                Programator
-                                            </p>
-                                            <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70'>
-                                                Developer
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <div className='w-max'>
-                                            <div className='relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20'>
-                                                <span className=''>online</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                            24/12/08
-                                        </p>
-                                    </td>
-                                    <td className='p-4 border-b border-blue-gray-50'>
-                                        <button
-                                            className='relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
-                                            type='button'
-                                        >
-                                            <span className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'>
-                                                <svg
-                                                    xmlns='http://www.w3.org/2000/svg'
-                                                    viewBox='0 0 24 24'
-                                                    fill='currentColor'
-                                                    aria-hidden='true'
-                                                    className='w-4 h-4'
-                                                >
-                                                    <path d='M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z'></path>
-                                                </svg>
-                                            </span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className='p-4'>
-                                        <div className='flex items-center gap-3'>
-                                            <img
-                                                src='https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-5.jpg'
-                                                alt='Richard Gran'
-                                                className='relative inline-block h-9 w-9 !rounded-full object-cover object-center'
-                                            />
-                                            <div className='flex flex-col'>
-                                                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                    Richard Gran
-                                                </p>
-                                                <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70'>
-                                                    richard@creative-tim.com
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className='p-4'>
-                                        <div className='flex flex-col'>
-                                            <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                Manager
-                                            </p>
-                                            <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70'>
-                                                Executive
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td className='p-4'>
-                                        <div className='w-max'>
-                                            <div className='relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900'>
-                                                <span className=''>offline</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className='p-4'>
-                                        <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                            04/10/21
-                                        </p>
-                                    </td>
-                                    <td className='p-4'>
-                                        <button
-                                            className='relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
-                                            type='button'
-                                        >
-                                            <span className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'>
-                                                <svg
-                                                    xmlns='http://www.w3.org/2000/svg'
-                                                    viewBox='0 0 24 24'
-                                                    fill='currentColor'
-                                                    aria-hidden='true'
-                                                    className='w-4 h-4'
-                                                >
-                                                    <path d='M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z'></path>
-                                                </svg>
-                                            </span>
-                                        </button>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td className='p-4 border-b border-blue-gray-50'>
+                                            <button
+                                                className='relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
+                                                type='button'
+                                                onClick={() => showUpdate(user.id)}
+                                            >
+                                                <span className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'>
+                                                    <svg
+                                                        xmlns='http://www.w3.org/2000/svg'
+                                                        viewBox='0 0 24 24'
+                                                        fill='currentColor'
+                                                        aria-hidden='true'
+                                                        className='w-4 h-4'
+                                                    >
+                                                        <path d='M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z'></path>
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                            <button
+                                                onClick={() => handleDelete(user.id)}
+                                                className='relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
+                                                type='button'
+                                            >
+                                                <span className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'>
+                                                    <svg
+                                                        xmlns='http://www.w3.org/2000/svg'
+                                                        className='w-4 h-4 fill-red-500 hover:fill-red-700'
+                                                        viewBox='0 0 24 24'
+                                                        fill='currentColor'
+                                                        aria-hidden='true'
+                                                    >
+                                                        <path
+                                                            d='M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z'
+                                                            data-original='#000000'
+                                                        />
+                                                        <path
+                                                            d='M11 17v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Zm4 0v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Z'
+                                                            data-original='#000000'
+                                                        />
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>
@@ -449,6 +308,14 @@ const UsersList = () => {
                     </div>
                 </div>
             </div>
+
+            {idUser !== null && (
+                <>
+                    <UpdateUser id={idUser} />
+                    <ChangeRole id={idUser} />
+                </>
+            )}
+            <AddUser />
         </>
     )
 }

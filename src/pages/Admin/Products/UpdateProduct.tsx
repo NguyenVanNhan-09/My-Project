@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from 'react'
-import { categoriesCT } from '../../contexts/CategoriesContext'
-import { TCategories } from '../../interfaces/Categories'
+import { categoriesCT } from '../../../contexts/CategoriesContext'
+import { TCategories } from '../../../interfaces/Categories'
 import { useForm } from 'react-hook-form'
-import { TProduct } from '../../interfaces/Products'
-import { productCT } from './../../contexts/ProductsContext'
+import { TProduct } from '../../../interfaces/Products'
+import { productCT } from '../../../contexts/ProductsContext'
 import {
     GET_BY_ID_Product,
     UploadFilesImagesToCloudinary,
     UploadImageProductToCloudinary
-} from './../../services/Products'
+} from '../../../services/Products'
 import Joi from 'joi'
 import { joiResolver } from '@hookform/resolvers/joi'
 

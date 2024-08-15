@@ -3,5 +3,9 @@ export interface TUsers {
     name: string
     email: string
     password: string
+    image: string
+    phone: string
+    address: string
+    year: string
     role?: number | string
 }

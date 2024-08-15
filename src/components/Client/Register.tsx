@@ -5,11 +5,23 @@ import Joi from 'joi'
 import { useContext } from 'react'
 import { userCT } from '../../contexts/UsersContext'
 
+const getCurrentDate = () => {
+    const today = new Date()
+    const year = today.getFullYear()
+    const month = String(today.getMonth() + 1).padStart(2, '0')
+    const day = String(today.getDate()).padStart(2, '0')
+    return `${day}/${month}/${year}` // Định dạng ngày/tháng/năm
+}
+
 const schema = Joi.object({
     name: Joi.string().alphanum().min(3).max(30).required(),
     email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).min(6),
-    rule: Joi.number().default(1)
+    role: Joi.number().default(1),
+    phone: Joi.string().default(''),
+    address: Joi.string().default(''),
+    year: Joi.string().default(getCurrentDate),
+    image: Joi.string().default('')
 })
 
 const Register = () => {
