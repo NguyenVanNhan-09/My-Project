@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { productCT } from './../../contexts/ProductsContext'
 
 type Props = {
-    id: number | string
+    id: any
 }
 
 const ChangeStock = ({ id }: Props) => {
@@ -18,9 +18,9 @@ const ChangeStock = ({ id }: Props) => {
             <dialog id='modal_change_stock' className='modal'>
                 <div className='modal-box'>
                     <form method='dialog'>
-                        <button className='btn btn-sm btn-circle btn-ghost text-black absolute right-2 top-2'>✕</button>
+                        <button className='btn btn-sm btn-circle btn-ghost text-white absolute right-2 top-2'>✕</button>
                     </form>
-                    <div>
+                    <div className='flex justify-center'>
                         <button
                             onClick={() => handleUpdateStock(true)}
                             className='mr-2 px-4 py-2 text-white bg-green-500 rounded'

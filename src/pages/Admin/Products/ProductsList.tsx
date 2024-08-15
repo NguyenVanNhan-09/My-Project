@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { productCT } from '../../../contexts/ProductsContext'
 import { TProduct } from '../../../interfaces/Products'
 import { categoriesCT } from '../../../contexts/CategoriesContext'
@@ -6,22 +6,52 @@ import { TCategories } from '../../../interfaces/Categories'
 import AddProduct from '../../../components/Admin/AddProduct'
 import UpdateProduct from '../../../components/Admin/UpdateProduct'
 import ChangeStock from '../../../components/Admin/changeStock'
+import Pagination from '../../../components/Admin/Pagination'
 
 const ProductsList = () => {
     const { products, handleDelete } = useContext(productCT)
     const { categories } = useContext(categoriesCT)
-    const [idProduct, setIdProduct] = useState<any>(null)
+    const [idProduct, setIdProduct] = useState<number | null>(null)
+    const [modalType, setModalType] = useState<string | null>(null)
+    const [currentPage, setCurrentPage] = useState<number>(0)
+    const itemsPerPage = 10
+    console.log(idProduct)
     const showUpdate = (id: any) => {
-        ;(document.getElementById('modal_update_product') as HTMLDialogElement)?.showModal()
+        setModalType('update')
         setIdProduct(id)
     }
+
     const showChangeStock = (id: any) => {
-        ;(document.getElementById('modal_change_stock') as HTMLDialogElement)?.showModal()
+        setModalType('changeStock')
         setIdProduct(id)
     }
+    useEffect(() => {
+        const modal = document.getElementById('modal_update_product') as HTMLDialogElement
+        const stockModal = document.getElementById('modal_change_stock') as HTMLDialogElement
+
+        if (modalType === 'update' && idProduct !== null) {
+            modal?.showModal()
+        } else if (modalType === 'changeStock' && idProduct !== null) {
+            stockModal?.showModal()
+        }
+
+        // Reset modal type after showing
+        return () => {
+            setModalType(null)
+        }
+    }, [idProduct, modalType])
+    const handlePageChange = (selectedPage: number) => {
+        setCurrentPage(selectedPage)
+    }
+
+    // Phân trang dữ liệu
+    const offset = currentPage * itemsPerPage
+    const currentItems = products.slice(offset, offset + itemsPerPage)
+    const reversedItems = [...currentItems].reverse()
+    const pageCount = Math.ceil(products.length / itemsPerPage)
     return (
         <>
-            <section className='bg-[#eeeeee] dark:bg-gray-900 py-3 sm:py-5  h-[100vh]'>
+            <section className='bg-[#eeeeee] dark:bg-gray-900 py-3 sm:py-5 h-[100vh]'>
                 <div className='px-4 mx-auto max-w-screen-2xl lg:px-12 h-full'>
                     <div className='relative flex flex-col justify-between w-full h-full overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg'>
                         <div>
@@ -54,8 +84,8 @@ const ProductsList = () => {
                                             aria-hidden='true'
                                         >
                                             <path
-                                                clip-rule='evenodd'
-                                                fill-rule='evenodd'
+                                                clipRule='evenodd'
+                                                fillRule='evenodd'
                                                 d='M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z'
                                             />
                                         </svg>
@@ -71,13 +101,13 @@ const ProductsList = () => {
                                             xmlns='http://www.w3.org/2000/svg'
                                             fill='none'
                                             viewBox='0 0 24 24'
-                                            stroke-width='2'
+                                            strokeWidth='2'
                                             stroke='currentColor'
                                             aria-hidden='true'
                                         >
                                             <path
-                                                stroke-linecap='round'
-                                                stroke-linejoin='round'
+                                                strokeLinecap='round'
+                                                strokeLinejoin='round'
                                                 d='M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5'
                                             />
                                         </svg>
@@ -85,7 +115,7 @@ const ProductsList = () => {
                                     </button>
                                 </div>
                             </div>
-                            {/* table */}
+                            {/* Table */}
                             <div className='overflow-x-auto'>
                                 <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
                                     <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
@@ -123,7 +153,7 @@ const ProductsList = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {products.slice(0, 10).map((product: TProduct) => (
+                                        {reversedItems.map((product: TProduct) => (
                                             <tr
                                                 key={product.id}
                                                 className='border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700'
@@ -131,7 +161,7 @@ const ProductsList = () => {
                                                 <td className='w-4 px-4 py-3'>
                                                     <div className='flex items-center'>
                                                         <input
-                                                            id={`checkbox-table-search-${product.id}`} // Đổi id cho duy nhất
+                                                            id={`checkbox-table-search-${product.id}`}
                                                             type='checkbox'
                                                             onClick={(e) => e.stopPropagation()}
                                                             className='w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
@@ -160,11 +190,9 @@ const ProductsList = () => {
                                                 </td>
                                                 <td className='px-4 py-2'>
                                                     <span className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-                                                        {categories.map((category: TCategories) => {
-                                                            if (product.category === category.id) {
-                                                                return category.name
-                                                            }
-                                                        })}
+                                                        {categories.find(
+                                                            (category: TCategories) => product.category === category.id
+                                                        )?.name || 'Unknown'}
                                                     </span>
                                                 </td>
                                                 <td className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
@@ -172,39 +200,33 @@ const ProductsList = () => {
                                                 </td>
                                                 <td className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
                                                     {product.is_in_inventory ? (
-                                                        <>
-                                                            <button
-                                                                type='button'
-                                                                onClick={() => showChangeStock(product.id)}
-                                                                className='w-max'
-                                                            >
-                                                                <div className='relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20'>
-                                                                    <span className=''>In Stock</span>
-                                                                </div>
-                                                            </button>
-                                                        </>
+                                                        <button
+                                                            type='button'
+                                                            onClick={() => showChangeStock(product.id)}
+                                                            className='w-max'
+                                                        >
+                                                            <div className='relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20'>
+                                                                <span className=''>In Stock</span>
+                                                            </div>
+                                                        </button>
                                                     ) : (
-                                                        <>
-                                                            <button
-                                                                type='button'
-                                                                onClick={() => showChangeStock(product.id)}
-                                                                className='w-max'
-                                                            >
-                                                                <div className='relative grid items-center px-2 py-1 font-sans text-xs font-bold text-black uppercase rounded-md select-none whitespace-nowrap bg-red-500/20'>
-                                                                    <span className=''>Out Stock</span>
-                                                                </div>
-                                                            </button>
-                                                        </>
+                                                        <button
+                                                            type='button'
+                                                            onClick={() => showChangeStock(product.id)}
+                                                            className='w-max'
+                                                        >
+                                                            <div className='relative grid items-center px-2 py-1 font-sans text-xs font-bold text-black uppercase rounded-md select-none whitespace-nowrap bg-red-500/20'>
+                                                                <span className=''>Out Stock</span>
+                                                            </div>
+                                                        </button>
                                                     )}
                                                 </td>
-                                                <td className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                                                <td className='px-4 py-2'>
                                                     <button
                                                         className='mr-4'
                                                         title='Edit'
                                                         type='button'
-                                                        onClick={() => {
-                                                            showUpdate(product.id)
-                                                        }}
+                                                        onClick={() => showUpdate(product.id)}
                                                     >
                                                         <svg
                                                             xmlns='http://www.w3.org/2000/svg'
@@ -221,6 +243,7 @@ const ProductsList = () => {
                                                             />
                                                         </svg>
                                                     </button>
+
                                                     <button
                                                         onClick={() => handleDelete(product.id)}
                                                         className='mr-4'
@@ -248,7 +271,7 @@ const ProductsList = () => {
                                 </table>
                             </div>
                         </div>
-                        <nav
+                        {/* <nav
                             className='flex flex-col items-start justify-between p-4 space-y-3 md:flex-row md:items-center md:space-y-0'
                             aria-label='Table navigation'
                         >
@@ -273,9 +296,9 @@ const ProductsList = () => {
                                             xmlns='http://www.w3.org/2000/svg'
                                         >
                                             <path
-                                                fill-rule='evenodd'
+                                                fillRule='evenodd'
                                                 d='M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z'
-                                                clip-rule='evenodd'
+                                                clipRule='evenodd'
                                             />
                                         </svg>
                                     </a>
@@ -335,21 +358,26 @@ const ProductsList = () => {
                                             xmlns='http://www.w3.org/2000/svg'
                                         >
                                             <path
-                                                fill-rule='evenodd'
+                                                fillRule='evenodd'
                                                 d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
-                                                clip-rule='evenodd'
+                                                clipRule='evenodd'
                                             />
                                         </svg>
                                     </a>
                                 </li>
                             </ul>
-                        </nav>
+                        </nav> */}
+                        <Pagination pageCount={pageCount} onPageChange={handlePageChange} />
                     </div>
                 </div>
             </section>
+            {idProduct !== null && (
+                <>
+                    <UpdateProduct id={idProduct} />
+                    <ChangeStock id={idProduct} />
+                </>
+            )}
             <AddProduct />
-            <UpdateProduct id={idProduct} />
-            <ChangeStock id={idProduct} />
         </>
     )
 }

@@ -6,7 +6,6 @@ type Props = {
     children: React.ReactNode
 }
 export const productCT = createContext({} as any)
-
 const ProductsContext = ({ children }: Props) => {
     const [products, setProducts] = useState<TProduct[]>([])
     useEffect(() => {

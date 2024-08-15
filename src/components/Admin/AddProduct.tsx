@@ -34,6 +34,7 @@ const AddProduct = () => {
         formData.append('file', file[0])
         formData.append('upload_preset', 'o70gyljw')
         const image = await UploadImageProductToCloudinary(formData)
+        console.log(image)
         setThumbnail(image.url)
     }
     const uploadFiles = async (files: FileList | null) => {
@@ -121,8 +122,9 @@ const AddProduct = () => {
                                             id='category'
                                             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                                             {...register('category')}
+                                            defaultValue='default'
                                         >
-                                            <option selected disabled>
+                                            <option value='default' disabled>
                                                 Category
                                             </option>
                                             {categories.map((item: TCategories) => (
@@ -144,8 +146,9 @@ const AddProduct = () => {
                                             id='gender'
                                             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                                             {...register('gender')}
+                                            defaultValue='default'
                                         >
-                                            <option selected disabled>
+                                            <option value='default' disabled>
                                                 Gender
                                             </option>
                                             <option value='MEN'>Men</option>

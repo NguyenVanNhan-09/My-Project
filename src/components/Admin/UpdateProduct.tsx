@@ -19,11 +19,11 @@ const schema = Joi.object({
     category: Joi.string().required(),
     price: Joi.number().required().min(0),
     description: Joi.string().allow(''),
-    is_in_inventory: Joi.boolean().default(true),
+    thumbnail: Joi.string(),
     images: Joi.array().default([])
 })
 type Props = {
-    id: number | string
+    id: any
 }
 const UpdateProduct = ({ id }: Props) => {
     const { categories } = useContext(categoriesCT)
@@ -60,14 +60,13 @@ const UpdateProduct = ({ id }: Props) => {
         }
     }, [id])
 
-    const uploadThumbnail = async (file: any) => {
-        if (!file) return
+    const updateThumbnail = async (file: any) => {
+        if (!files) return
         const formData = new FormData()
         formData.append('file', file[0])
         formData.append('upload_preset', 'o70gyljw')
-        const image = await UploadImageProductToCloudinary(formData)
-        console.log(image)
-        setThumbnail(image.url)
+        const resThumbnail = await UploadImageProductToCloudinary(formData)
+        setThumbnail(resThumbnail.url)
     }
     const uploadFiles = async (files: FileList | null) => {
         if (!files) return
@@ -85,12 +84,10 @@ const UpdateProduct = ({ id }: Props) => {
                 return res.url
             })
         )
-
-        // Cập nhật trạng thái files bằng cách thay thế các tệp tin hiện tại với các tệp tin đã tải lên mới
         setFiles(uploadedFiles)
     }
     const onSubmit = async (data: TProduct) => {
-        await handleUpdate(id, { ...data, thumbnail, images: files })
+        await handleUpdate(id, { ...data, thumbnail: thumbnail, images: files })
         location.reload()
     }
     return (
@@ -153,8 +150,9 @@ const UpdateProduct = ({ id }: Props) => {
                                             id='category'
                                             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                                             {...register('category')}
+                                            defaultValue='default'
                                         >
-                                            <option selected={false} disabled>
+                                            <option value='default' disabled>
                                                 Category
                                             </option>
                                             {categories.map((item: TCategories) => (
@@ -176,8 +174,9 @@ const UpdateProduct = ({ id }: Props) => {
                                             id='gender'
                                             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
                                             {...register('gender')}
+                                            defaultValue='default'
                                         >
-                                            <option selected disabled>
+                                            <option value='default' disabled>
                                                 Gender
                                             </option>
                                             <option value='MEN'>Men</option>
@@ -186,6 +185,7 @@ const UpdateProduct = ({ id }: Props) => {
                                         </select>
                                         {errors.gender && <span className='text-red-400'>{errors.gender.message}</span>}
                                     </div>
+
                                     <div className='sm:col-span-2'>
                                         <label className='text-base text-gray-500 font-semibold mb-2 block'>
                                             Thumbnail
@@ -219,13 +219,14 @@ const UpdateProduct = ({ id }: Props) => {
                                                 type='file'
                                                 id='uploadFile1'
                                                 className='hidden'
-                                                onChange={(e) => uploadThumbnail(e.target.files!)}
+                                                onChange={(e) => updateThumbnail(e.target.files)}
                                             />
                                             <p className='text-xs font-medium text-gray-400 mt-2'>
                                                 PNG, JPG SVG, WEBP, and GIF are Allowed.
                                             </p>
                                         </label>
                                     </div>
+
                                     {/* images */}
                                     <div className='sm:col-span-2'>
                                         <label

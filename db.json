@@ -24,7 +24,7 @@
       "category": "1",
       "price": 130,
       "description": "descriptions shoes",
-      "is_in_inventory": true,
+      "is_in_inventory": false,
       "thumbnail": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdww-ly697y3md67e0b",
       "images": [
         "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyl-ly697y9g4mpz31",
@@ -55,8 +55,8 @@
       "gender": "WOMEN",
       "category": "1",
       "price": 180,
-      "description": "descriptions shoes",
-      "is_in_inventory": true,
+      "description": "descriptions shoes ud",
+      "is_in_inventory": false,
       "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/99a7d3cb-e40c-4474-91c2-0f2e6d231fd2/joyride-run-flyknit-womens-running-shoe-HcfnJd.jpg",
       "images": [
         "https://down-vn.img.susercontent.com/file/sg-11134201-7rbk6-lnv03nc9bwkw59",
@@ -120,44 +120,12 @@
       "category": "1",
       "price": 145,
       "description": "descriptions shoes",
-      "is_in_inventory": true,
+      "is_in_inventory": false,
       "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/vhbwnkor8sxt8qtecgia/mercurial-vapor-13-elite-tech-craft-fg-firm-ground-soccer-cleat-l38JPj.jpg",
       "images": [
         "image-1",
         "image-2",
         "image-3"
-      ]
-    },
-    {
-      "id": 9,
-      "name": "Nike Mercurial Superfly 7 Pro MDS FG",
-      "brand": "NIKE",
-      "gender": "MEN",
-      "category": "1",
-      "price": 137,
-      "description": "descriptions shoes",
-      "is_in_inventory": true,
-      "thumbnail": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-a52a8aec-22dc-4982-961b-75c5f4c72805/mercurial-superfly-7-pro-mds-fg-firm-ground-soccer-cleat-mhcpdN.jpg",
-      "images": [
-        "image-1",
-        "image-2",
-        "image-3"
-      ]
-    },
-    {
-      "id": 10,
-      "name": "Nike Air Force 1 ud",
-      "brand": "NIKE",
-      "gender": "MAN-WOMEN",
-      "category": "2",
-      "price": 90111,
-      "description": "descriptions shoes ud",
-      "is_in_inventory": true,
-      "thumbnail": "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/178b2a46-3ee4-492b-882e-f71efdd53a36/air-force-1-big-kids-shoe-2zqp8D.jpg",
-      "images": [
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723666568/q71bthvhotpkb90ggfvr.jpg",
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723666568/pbxrucagyfzjfcbe5aha.jpg",
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723666569/nnleyl7oli0njfvzqelw.jpg"
       ]
     },
     {
@@ -171,9 +139,8 @@
       "is_in_inventory": true,
       "thumbnail": "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lxm09e536qjd4f",
       "images": [
-        "image-1",
-        "image-2",
-        "image-3"
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723707968/ug1burpdw5hxee5oma5m.png",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723707968/nnzvhkyffh1rmx7a8x7i.png"
       ]
     },
     {
@@ -184,7 +151,7 @@
       "category": "2",
       "price": 90,
       "description": "descriptions clothers",
-      "is_in_inventory": true,
+      "is_in_inventory": false,
       "thumbnail": "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-ltnohe99oiwd5d",
       "images": [
         "image-1",
@@ -193,35 +160,51 @@
       ]
     },
     {
-      "name": "a",
-      "brand": "a",
-      "price": 111,
-      "category": "2",
-      "gender": "MEN",
-      "description": "ncoanscjnaskljcnascascasc",
+      "name": "nhân",
+      "brand": "NIKE",
+      "price": 9122004,
+      "category": "1",
+      "gender": "MAN-WOMEN",
+      "description": "hihihhihihihhihi upd",
       "is_in_inventory": true,
       "images": [
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665812/bnjbq8fys4nkq3oulbxt.jpg",
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665813/jfx99b0a4jq5hmw1shuk.jpg",
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665813/gabe4yuivhxqq4azeuxy.jpg"
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723705690/d6yoovia0t0rnhbdtiqs.png",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723705691/vvvy7dmteud1o7ojqhz4.png",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723705691/o7pkxcvom7cjpn8longv.png"
       ],
-      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665809/dodmxbscprfbrd67755k.webp",
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723709132/wypxnakqrnihyb9w6kvh.png",
       "id": 1241
     },
     {
-      "name": "n",
-      "brand": "n",
-      "price": 111,
+      "name": "nhân",
+      "brand": "NIKE",
+      "price": 91220049999,
       "category": "2",
       "gender": "WOMEN",
-      "description": "qqqqqqqqqqqqqqq",
+      "description": "vuvugtkukukvgvkvkkvgkgvhgvkgvhgvhgvhgvhkhgvkhgvkghvhgvkhgvkhgvkghvkgvkhgvkgv",
       "is_in_inventory": true,
       "images": [
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665882/x4dbv4dwh2vyrkzqve68.jpg",
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665882/c45meoubxdwj2bukueay.jpg"
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723719255/tzmr8y74koigajoqylmv.png",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723719256/rvqmwv6cwqozuxoejtaf.png",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723719256/mriefnwhunbiwqe826kr.png"
       ],
-      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723665877/i8ovugbg3sglkiybvezl.webp",
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723719242/fuomykcww7bb8t30cyzq.png",
       "id": 1242
+    },
+    {
+      "name": "admin",
+      "brand": "addidas",
+      "price": 9122004,
+      "category": "1",
+      "gender": "MEN",
+      "description": "5ezwtrxydtucfyvigubohinpiobuvigycutyxerexydtcufyviguboh",
+      "is_in_inventory": true,
+      "images": [
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723719550/f7r0epqr53obpxnavbsw.png",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723719551/atb5jdyayiza08y0vgrx.png"
+      ],
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723719545/x1iiccjhtxatyaq0skdh.png",
+      "id": 1243
     }
   ],
   "categories": [

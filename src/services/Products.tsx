@@ -68,7 +68,11 @@ export const UploadImageProductToCloudinary = async (formData: any) => {
 
 export const UploadFilesImagesToCloudinary = async (formData: any) => {
     try {
-        const { data } = await axios.post('https://api.cloudinary.com/v1_1/dbaq8kdwn/image/upload', formData)
+        const { data } = await axios.post('https://api.cloudinary.com/v1_1/dbaq8kdwn/image/upload', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
         return data
     } catch (error) {
         console.log(error)
