@@ -7,10 +7,13 @@ import AddProduct from './AddProduct'
 import UpdateProduct from './UpdateProduct'
 import ChangeStock from '../../../components/Admin/changeStock'
 import Pagination from '../../../components/Admin/Pagination'
+import { brandsCT } from '../../../contexts/BrandsContext'
+import { TBrands } from '../../../interfaces/Brands'
 
 const ProductsList = () => {
     const { products, handleDelete } = useContext(productCT)
     const { categories } = useContext(categoriesCT)
+    const { brands } = useContext(brandsCT)
     const [idProduct, setIdProduct] = useState<number | null>(null)
     const [modalType, setModalType] = useState<string | null>(null)
     const [currentPage, setCurrentPage] = useState<number>(0)
@@ -186,7 +189,8 @@ const ProductsList = () => {
                                                     {product.name}
                                                 </th>
                                                 <td className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-                                                    {product.brand}
+                                                    {brands.find((brand: TBrands) => product.brand === brand.id)
+                                                        ?.name || 'Unkown'}
                                                 </td>
                                                 <td className='px-4 py-2'>
                                                     <span className='px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white'>

@@ -9,12 +9,12 @@ type Props = {
 }
 
 const Products = ({ IdCategory, nameCategory }: Props) => {
-    const [products, setProduct] = useState<TProduct[]>([])
+    const [products, setProducts] = useState<TProduct[]>([])
     useEffect(() => {
         const getProducts = async () => {
             try {
                 const data = await GET_ALL_Products_By_Cate(IdCategory)
-                setProduct(data)
+                setProducts(data)
             } catch (error) {
                 console.log(error)
             }

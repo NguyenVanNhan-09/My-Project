@@ -1,11 +1,11 @@
 import { useContext } from 'react'
-import { categoriesCT } from '../../../contexts/CategoriesContext'
-import { TCategories } from '../../../interfaces/Categories'
+import { brandsCT } from '../../../contexts/BrandsContext'
+import { TBrands } from '../../../interfaces/Brands'
 import { productCT } from '../../../contexts/ProductsContext'
 import { TProduct } from '../../../interfaces/Products'
 
-const Categories = () => {
-    const { categories, handleDelete } = useContext(categoriesCT)
+const BrandsList = () => {
+    const { brands, handleDelete } = useContext(brandsCT)
     const { products } = useContext(productCT)
     return (
         <>
@@ -15,10 +15,10 @@ const Categories = () => {
                         <div className='flex items-center justify-between gap-8 mb-4'>
                             <div>
                                 <h5 className='block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900'>
-                                    Categories list
+                                    Brands list
                                 </h5>
                                 <p className='block mt-1 font-sans text-base antialiased font-normal leading-relaxed text-gray-700'>
-                                    See information about all categories
+                                    See information about all brands
                                 </p>
                             </div>
                             <div className='flex flex-col gap-2 shrink-0 sm:flex-row'>
@@ -36,7 +36,7 @@ const Categories = () => {
                                     >
                                         <path d='M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z'></path>
                                     </svg>
-                                    Add Categories
+                                    Add brand
                                 </button>
                             </div>
                         </div>
@@ -78,7 +78,7 @@ const Categories = () => {
                                 <tr>
                                     <th className='p-4 border-y border-blue-gray-100 bg-blue-gray-50/50'>
                                         <p className='block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70'>
-                                            Categories
+                                            Brand
                                         </p>
                                     </th>
                                     <th className='p-4 border-y border-blue-gray-100 bg-blue-gray-50/50'>
@@ -99,35 +99,34 @@ const Categories = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {categories.map((category: TCategories) => (
-                                    <tr>
+                                {brands.map((brand: TBrands) => (
+                                    <tr key={brand.id}>
                                         <td className='p-4 border-b border-blue-gray-50'>
                                             <div className='flex items-center gap-3'>
                                                 <img
-                                                    src={category.thumbnail}
+                                                    src={brand.thumbnail}
                                                     alt='John Michael'
                                                     className='relative inline-block h-9 w-9 !rounded-full object-cover object-center'
                                                 />
                                                 <div>
                                                     <p className='block font-sans text-lg antialiased font-normal leading-normal text-blue-gray-900'>
-                                                        {category.name}
+                                                        {brand.name}
                                                     </p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td className='p-4 border-b border-blue-gray-50'>
                                             <div className='flex flex-col'>
-                                                {products.filter(
-                                                    (product: TProduct) => product.category === category.id
-                                                ).length !== 0 ? (
+                                                {products.filter((product: TProduct) => product.brand === brand.id)
+                                                    .length !== 0 ? (
                                                     <>
                                                         <div>
                                                             Inventory:
-                                                            <span className='pl-3'>
+                                                            <span className='pl-3 font-semibold'>
                                                                 {
                                                                     products.filter(
                                                                         (product: TProduct) =>
-                                                                            product.category === category.id
+                                                                            product.brand === brand.id
                                                                     ).length
                                                                 }
                                                             </span>
@@ -173,7 +172,7 @@ const Categories = () => {
                                             <button
                                                 className='relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
                                                 type='button'
-                                                onClick={() => handleDelete(category.id)}
+                                                onClick={() => handleDelete(brand.id)}
                                             >
                                                 <span className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'>
                                                     <svg
@@ -225,4 +224,4 @@ const Categories = () => {
     )
 }
 
-export default Categories
+export default BrandsList

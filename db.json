@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Nike React Infinity Run Flyknit up",
-      "brand": "NIKE",
+      "brand": "1",
       "gender": "MEN",
       "category": "1",
       "price": 160,
@@ -19,7 +19,7 @@
     {
       "id": 2,
       "name": "Nike React Miler",
-      "brand": "NIKE",
+      "brand": "1",
       "gender": "MEN",
       "category": "1",
       "price": 130,
@@ -35,7 +35,7 @@
     {
       "id": 3,
       "name": "Nike Air Zoom Pegasus 37",
-      "brand": "NIKE",
+      "brand": "1",
       "gender": "WOMEN",
       "category": "1",
       "price": 120,
@@ -51,7 +51,7 @@
     {
       "id": 4,
       "name": "Nike Joyride Run Flyknit",
-      "brand": "NIKE",
+      "brand": "1",
       "gender": "WOMEN",
       "category": "1",
       "price": 180,
@@ -67,7 +67,7 @@
     {
       "id": 5,
       "name": "Mercurial vapor vii 13 elite 2",
-      "brand": "NIKE",
+      "brand": "1",
       "gender": "WOMEN",
       "category": "1",
       "price": 250,
@@ -83,7 +83,7 @@
     {
       "id": 6,
       "name": "Nike Phantom Vision Elite Dynamic Fit FG",
-      "brand": "NIKE",
+      "brand": "1",
       "gender": "WOMEN",
       "category": "1",
       "price": 150,
@@ -99,7 +99,7 @@
     {
       "id": 7,
       "name": "Nike Phantom Venom Academy FG",
-      "brand": "NIKE",
+      "brand": "1",
       "gender": "WOMEN",
       "category": "1",
       "price": 80,
@@ -115,7 +115,7 @@
     {
       "id": 8,
       "name": "Nike Mercurial Vapor 13 Elite Tech Craft FG",
-      "brand": "NIKE",
+      "brand": "1",
       "gender": "MEN",
       "category": "1",
       "price": 145,
@@ -131,7 +131,7 @@
     {
       "id": 1240,
       "name": "Áo Thun Balenciaga",
-      "brand": "balenciaga",
+      "brand": "3",
       "gender": "MEN-WOMEN",
       "category": "2",
       "price": 90,
@@ -146,7 +146,7 @@
     {
       "id": 140,
       "name": "Myers áo phông nam",
-      "brand": "Myers",
+      "brand": "3",
       "gender": "MEN",
       "category": "2",
       "price": 90,
@@ -161,7 +161,7 @@
     },
     {
       "name": "nhân",
-      "brand": "NIKE",
+      "brand": "1",
       "price": 9122004,
       "category": "1",
       "gender": "MAN-WOMEN",
@@ -177,7 +177,7 @@
     },
     {
       "name": "nhân",
-      "brand": "NIKE",
+      "brand": "1",
       "price": 91220049999,
       "category": "2",
       "gender": "WOMEN",
@@ -193,7 +193,7 @@
     },
     {
       "name": "admin",
-      "brand": "addidas",
+      "brand": "2",
       "price": 9122004,
       "category": "1",
       "gender": "MEN",
@@ -210,13 +210,30 @@
   "categories": [
     {
       "id": "1",
-      "name": "shoes",
-      "thumbnail": "cat_thumbnail1.jpg"
+      "name": "Shoes",
+      "thumbnail": "https://e7.pngegg.com/pngimages/845/161/png-clipart-sneakers-shoe-shoes-fashion-baby-shoes-thumbnail.png"
     },
     {
       "id": "2",
-      "name": "clothers",
-      "thumbnail": "cat_thumbnail2.jpg"
+      "name": "Clothers",
+      "thumbnail": "https://wp.inews.co.uk/pre-owned-clothes-resale-or-donation"
+    }
+  ],
+  "brands": [
+    {
+      "id": "1",
+      "name": "Nike",
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723709132/wypxnakqrnihyb9w6kvh.png"
+    },
+    {
+      "id": "2",
+      "name": "Addidas",
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723709132/wypxnakqrnihyb9w6kvh.png"
+    },
+    {
+      "id": "3",
+      "name": "Balenciaga",
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723709132/wypxnakqrnihyb9w6kvh.png"
     }
   ],
   "blogs": [

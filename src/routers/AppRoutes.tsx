@@ -14,6 +14,8 @@ import ProductsList from './../pages/Admin/Products/ProductsList'
 import UsersList from './../pages/Admin/Users/UsersList'
 import Admin from './../layouts/Admin'
 import Client from './../layouts/Client'
+import BrandsList from '../pages/Admin/Brands/BrandsList'
+import Categories from '../pages/Admin/Categories/Categories'
 
 const AppRoutes = () => {
     const role = JSON.parse(localStorage.getItem('user')!)?.user?.role
@@ -43,8 +45,10 @@ const AppRoutes = () => {
             children: [
                 { path: '', element: <Navigate to='overview' /> },
                 { path: 'overview', element: <Overview /> },
-                { path: 'products-list', element: <ProductsList /> },
-                { path: 'users-list', element: <UsersList /> }
+                { path: 'products', element: <ProductsList /> },
+                { path: 'users', element: <UsersList /> },
+                { path: 'brands', element: <BrandsList /> },
+                { path: 'category', element: <Categories /> }
             ]
         },
         // Not-Found

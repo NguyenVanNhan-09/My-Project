@@ -81,3 +81,12 @@ export const UploadFilesImagesToCloudinary = async (formData: any) => {
 // http://localhost:3000/products?brand=addidas => tìm kiếm theo brand
 // http://localhost:3000/products?name=admin => tìm kiếm theo name
 // http://localhost:3000/products?is_in_inventory=false => tìm kiếm theo is_in_inventory
+
+export const GET_ALL_Products_By_Brands = async (idBrand: number | string) => {
+    try {
+        const { data } = await instance.post(`/products?brand=${idBrand}`)
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+}
