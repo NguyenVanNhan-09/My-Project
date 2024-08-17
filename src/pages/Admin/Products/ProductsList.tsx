@@ -9,16 +9,17 @@ import ChangeStock from '../../../components/Admin/changeStock'
 import Pagination from '../../../components/Admin/Pagination'
 import { brandsCT } from '../../../contexts/BrandsContext'
 import { TBrands } from '../../../interfaces/Brands'
+import { useForm } from 'react-hook-form'
 
 const ProductsList = () => {
+    const itemsPerPage = 10
     const { products, handleDelete } = useContext(productCT)
     const { categories } = useContext(categoriesCT)
     const { brands } = useContext(brandsCT)
     const [idProduct, setIdProduct] = useState<number | null>(null)
     const [modalType, setModalType] = useState<string | null>(null)
     const [currentPage, setCurrentPage] = useState<number>(0)
-    const itemsPerPage = 10
-    console.log(idProduct)
+    const { register, handleSubmit } = useForm()
     const showUpdate = (id: any) => {
         setModalType('update')
         setIdProduct(id)
@@ -52,70 +53,91 @@ const ProductsList = () => {
     const currentItems = products.slice(offset, offset + itemsPerPage)
     const reversedItems = [...currentItems].reverse()
     const pageCount = Math.ceil(products.length / itemsPerPage)
+
+    const onSubmit = (data: any) => {
+        const { keywords } = data
+        console.log(keywords)
+    }
     return (
         <>
             <section className='bg-[#eeeeee] dark:bg-gray-900 py-3 sm:py-5 h-[100vh]'>
                 <div className='px-4 mx-auto max-w-screen-2xl lg:px-12 h-full'>
                     <div className='relative flex flex-col justify-between w-full h-full overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg'>
                         <div>
-                            <div className='flex flex-col px-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4'>
+                            <div className='flex px-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4'>
                                 <div className='flex items-center flex-1 space-x-4'>
                                     <h5>
                                         <span className='text-gray-500'>All Products:</span>
-                                        <span className='dark:text-black'>123456</span>
+                                        <span className='dark:text-black'>{products.length}</span>
                                     </h5>
                                     <h5>
                                         <span className='text-gray-500'>Total sales:</span>
-                                        <span className='dark:text-black'>$88.4k</span>
+                                        <span className='dark:text-black'>
+                                            $
+                                            {products.reduce(
+                                                (total: number, product: TProduct) => total + product.price,
+                                                0
+                                            )}
+                                        </span>
                                     </h5>
                                 </div>
-                                <div className='flex flex-col flex-shrink-0 space-y-3 md:flex-row md:items-center lg:justify-end md:space-y-0 md:space-x-3'>
-                                    <button
-                                        type='button'
-                                        className='flex items-center justify-center flex-shrink-0 px-3 py-2 text-sm font-medium text-[#1b5a7d] bg-white border border-[#eea216] rounded-lg focus:outline-none hover:bg-[#eea216] hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
-                                        onClick={() => {
-                                            ;(
-                                                document.getElementById('modal_add_product') as HTMLDialogElement
-                                            )?.showModal()
-                                        }}
+                                <div className='flex'>
+                                    <form
+                                        onSubmit={handleSubmit(onSubmit)}
+                                        className='relative h-10 w-full min-w-[200px] mr-4'
                                     >
-                                        <svg
-                                            className='h-3.5 w-3.5 mr-2'
-                                            fill='currentColor'
-                                            viewBox='0 0 20 20'
-                                            xmlns='http://www.w3.org/2000/svg'
-                                            aria-hidden='true'
+                                        <div className='absolute grid w-5 h-5 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500'>
+                                            <svg
+                                                xmlns='http://www.w3.org/2000/svg'
+                                                fill='none'
+                                                viewBox='0 0 24 24'
+                                                strokeWidth='1.5'
+                                                stroke='currentColor'
+                                                aria-hidden='true'
+                                                className='w-5 h-5'
+                                            >
+                                                <path
+                                                    strokeLinecap='round'
+                                                    strokeLinejoin='round'
+                                                    d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
+                                                ></path>
+                                            </svg>
+                                        </div>
+                                        <input
+                                            className='peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 !pr-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50'
+                                            placeholder=''
+                                            {...register('keywords')}
+                                        />
+                                        <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                                            Search
+                                        </label>
+                                    </form>
+                                    <div className='flex flex-col flex-shrink-0 space-y-3 md:flex-row md:items-center lg:justify-end md:space-y-0 md:space-x-3'>
+                                        <button
+                                            type='button'
+                                            className='flex items-center justify-center flex-shrink-0 px-3 py-2 text-sm font-medium text-[#1b5a7d] bg-white border border-[#eea216] rounded-lg focus:outline-none hover:bg-[#eea216] hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
+                                            onClick={() => {
+                                                ;(
+                                                    document.getElementById('modal_add_product') as HTMLDialogElement
+                                                )?.showModal()
+                                            }}
                                         >
-                                            <path
-                                                clipRule='evenodd'
-                                                fillRule='evenodd'
-                                                d='M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z'
-                                            />
-                                        </svg>
-                                        Add new product
-                                    </button>
-
-                                    <button
-                                        type='button'
-                                        className='flex items-center justify-center flex-shrink-0 px-3 py-2 text-sm font-medium text-[#1b5a7d] bg-white border border-[#eea216] rounded-lg focus:outline-none hover:bg-[#eea216] hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
-                                    >
-                                        <svg
-                                            className='w-4 h-4 mr-2'
-                                            xmlns='http://www.w3.org/2000/svg'
-                                            fill='none'
-                                            viewBox='0 0 24 24'
-                                            strokeWidth='2'
-                                            stroke='currentColor'
-                                            aria-hidden='true'
-                                        >
-                                            <path
-                                                strokeLinecap='round'
-                                                strokeLinejoin='round'
-                                                d='M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5'
-                                            />
-                                        </svg>
-                                        Export
-                                    </button>
+                                            <svg
+                                                className='h-3.5 w-3.5 mr-2'
+                                                fill='currentColor'
+                                                viewBox='0 0 20 20'
+                                                xmlns='http://www.w3.org/2000/svg'
+                                                aria-hidden='true'
+                                            >
+                                                <path
+                                                    clipRule='evenodd'
+                                                    fillRule='evenodd'
+                                                    d='M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z'
+                                                />
+                                            </svg>
+                                            Add new product
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             {/* Table */}

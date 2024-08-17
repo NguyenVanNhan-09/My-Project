@@ -54,7 +54,7 @@
       "category": "2",
       "gender": "WOMEN",
       "description": "Say hello to your new favourite cotton tee. Slightly dropped shoulders and a loose fit provide a comfortable, confident feel.",
-      "is_in_inventory": true,
+      "is_in_inventory": false,
       "images": [
         "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723906525/oyk7mdybz9yoae1m1pej.webp",
         "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723906526/esiwoktb831di8k8b55g.jpg",
@@ -70,7 +70,7 @@
       "category": "2",
       "gender": "MAN-WOMEN",
       "description": "Experience the future-forward sports style of Adilenium with this adidas Megabreak jacket. Featuring a laid-back yet trendy design, the jacket is made from smooth tricot fabric and has a relaxed fit. Zippered pockets securely hold essentials, and snap plackets and a bungee-adjustable hem allow you to customize your look. Instantly connect with the 3-Stripes brand heritage and stand out with this vertical zip-up jacket",
-      "is_in_inventory": false,
+      "is_in_inventory": true,
       "images": [
         "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723907552/g9ouigeorfxxvw5o6rx4.avif",
         "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723907553/pwjgcbvte2robp0x2vyo.avif"
@@ -137,6 +137,83 @@
       ],
       "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723909853/kimtnlof6hphwzccxfj8.webp",
       "id": 1248
+    },
+    {
+      "name": "Nike Juniper Trail 3",
+      "brand": "1",
+      "price": 120,
+      "category": "1",
+      "gender": "MAN-WOMEN",
+      "description": "Embrace the hilly terrain in the Juniper Trail 3. Our Trail ATC outsole helps keep you upright for your trails. And we made the midsole and upper softer and more flexible compared with the previous iteration.",
+      "is_in_inventory": true,
+      "images": [
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723917157/gokkd7hofdwc79kzgu5y.webp",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723917158/iedssbiekutgujieh1wl.webp"
+      ],
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723917153/t7la4gcphf3avmf0jqzw.webp",
+      "id": 1249
+    },
+    {
+      "name": "Nike Free Metcon 6",
+      "brand": "1",
+      "price": 132,
+      "category": "1",
+      "gender": "MAN-WOMEN",
+      "description": "The Free Metcon 6 opens your world of workout possibilities. We added even more forefoot flexibility to our most adaptable trainer and reinforced the heel with extra foam. That means more freedom for dynamic movements during plyos and cardio classes, plus the stable base you need for weights.",
+      "is_in_inventory": false,
+      "images": [
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723917501/ihpibctzboxqgtqs4n5c.webp",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723917503/fvrsyxe1szytlu9fqike.webp"
+      ],
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723917496/mxvbkewozhylztvbpcb1.webp",
+      "id": 1250
+    },
+    {
+      "name": "Nike Precision 7",
+      "brand": "1",
+      "price": 210,
+      "category": "1",
+      "gender": "MAN-WOMEN",
+      "description": "Score at will at the rim or from deep in the Nike Precision 7. Crafted with a combination of ground control, comfort and on-court traction, it's perfect for instant impact plays when your name is called for the next casual game. Check in and make the plays that swing the outcome in your favour.",
+      "is_in_inventory": true,
+      "images": [
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723917618/ovesy7kmsbkw4xzxwixj.jpg",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723917619/u7ea9rvthk2mzuugvv2r.webp"
+      ],
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723917613/jruttq85gasfl10tamdr.jpg",
+      "id": 1251
+    },
+    {
+      "name": "Men's Fluid Coat in Grey/black",
+      "brand": "3",
+      "price": 252,
+      "category": "2",
+      "gender": "MEN",
+      "description": "• Prince of Wales fluid fabric\n• This item is unisex\n• Hooded\n• Simple-breasted front\n• 6 button front\n• 2 flap pockets at front\n• 4 button cuffs\n• Made in Italy",
+      "is_in_inventory": true,
+      "images": [
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723918392/qhi7r9ueocg88w9uhvdh.avif",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723918392/iutmfv7qqkn456e2rt6v.avif"
+      ],
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723918385/mjzstronqjcnx0daqs6n.avif",
+      "id": 1252
+    },
+    {
+      "name": "Women's Tracksuit Jacket in Dark Green",
+      "brand": "3",
+      "price": 211,
+      "category": "2",
+      "gender": "WOMEN",
+      "description": "Tracksuit Jacket in dark green snake embossed calfskin and lambskin\nGarde-Robe is made up of wardrobe staples in elevated cuts, sharp finishing, and luxe materials without any branding other than bold silhouettes and precise tailoring with minimalist construction techniques.",
+      "is_in_inventory": true,
+      "images": [
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723918392/qhi7r9ueocg88w9uhvdh.avif",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723918392/iutmfv7qqkn456e2rt6v.avif",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723918529/edehzr4dczj3zvpfwwx7.avif",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723918530/wkyzwttsv4uraaqcj7oa.avif"
+      ],
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723918524/t7igqjbfpefpnwd6bfq7.avif",
+      "id": 1253
     }
   ],
   "categories": [
@@ -177,6 +254,12 @@
       "status": false,
       "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723912839/egwiwh9jokrotxlzrtfh.jpg",
       "id": "WRd6L0p"
+    },
+    {
+      "name": "guicci",
+      "status": true,
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723918219/zjeuoknnxxuuvmwenpj8.jpg",
+      "id": "l29_hWJ"
     }
   ],
   "blogs": [

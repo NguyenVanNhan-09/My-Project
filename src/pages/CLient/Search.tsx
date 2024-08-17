@@ -1,16 +1,48 @@
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { GET_ALL_Products_By_Description, GET_ALL_Products_By_Name } from '../../services/Products'
+import { TProduct } from '../../interfaces/Products'
+import Product from '../../components/Client/Product'
+
 const Search = () => {
+    const [search] = useSearchParams()
+    const [productsSearch, setProductsSearch] = useState<TProduct[]>([])
+    const keyword = search.get('keywords')
+    useEffect(() => {
+        const fetchProductById = async () => {
+            try {
+                // Dùng Promise.all để tất cả function chạy cùng 1 lúc
+                const [dataName, dataDesc]: [TProduct[], TProduct[]] = await Promise.all([
+                    GET_ALL_Products_By_Name(keyword as string),
+                    GET_ALL_Products_By_Description(keyword as string)
+                ])
+                // Nối mảng
+                const mergedData = [...dataName, ...dataDesc]
+                // self: Chính là mảng mergedData
+                const uniqueProducts = mergedData.filter(
+                    // Lặp những id nào trùng
+                    (product, index, self) => index === self.findIndex((p) => p.id === product.id)
+                )
+                setProductsSearch(uniqueProducts)
+            } catch (error) {
+                console.error('Error fetching products:', error)
+            }
+        }
+        fetchProductById()
+    }, [keyword])
+
     return (
         <>
             <div className='font-[sans-serif]'>
                 <div className='p-4 mx-auto lg:max-w-7xl sm:max-w-full'>
                     <div className='flex justify-between items-center mb-[48px] mt-[48px]'>
                         <div>
-                            <h2 className='text-4xl font-extrabold text-gray-800 m-0'>Items:</h2>
+                            <h2 className='text-4xl font-extrabold text-gray-800 m-0'>Keyword search: {keyword}</h2>
                         </div>
                     </div>
 
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6'>
-                        <a
+                        {/* <a
                             href='client/product-detail/{{item.id}}'
                             className='border border-[#B6B6B6] shadow-md overflow-hidden rounded-[19.67px] cursor-pointer hover:-translate-y-2 transition-all relative'
                         >
@@ -79,17 +111,13 @@ const Search = () => {
                                     </svg>
                                 </div>
                             </div>
-                        </a>
+                        </a> */}
+                        {productsSearch.map((product: TProduct, index: number) => (
+                            <Product key={index} data={product} />
+                        ))}
                     </div>
                 </div>
             </div>
-            <nav className='flex items-center gap-x-1 justify-center mt-10'>
-                <div className='flex items-center gap-x-1'>
-                    <span className='min-h-[16px] min-w-4 flex justify-center items-center border border-gray-200 py-[1px] px-[1px] rounded-full dark:border-[#ADADAD] dark:bg-white/10'></span>
-                    <span className='min-h-[16px] min-w-4 flex justify-center items-center border border-gray-200 py-[1px] px-[1px] rounded-full dark:border-[#ADADAD] dark:bg-white/10'></span>
-                    <span className='min-h-[16px] min-w-4 flex justify-center items-center border border-gray-200 py-[1px] px-[1px] rounded-full dark:border-[#ADADAD] dark:bg-white/10'></span>
-                </div>
-            </nav>
         </>
     )
 }

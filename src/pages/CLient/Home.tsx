@@ -36,9 +36,12 @@ const Home = () => {
                         id='new-products'
                         className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6'
                     >
-                        {products.map((product: TProduct) => (
-                            <Product key={product.id} data={product} />
-                        ))}
+                        {products
+                            .reverse()
+                            .slice(0, 8)
+                            .map((product: TProduct) => (
+                                <Product key={product.id} data={product} />
+                            ))}
                     </div>
                 </div>
                 {/* list Products by category */}

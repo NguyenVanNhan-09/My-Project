@@ -2,18 +2,22 @@ import { useContext, useState } from 'react'
 import Login from './Login'
 import { categoriesCT } from '../../contexts/CategoriesContext'
 import { TCategories } from '../../interfaces/Categories'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { brandsCT } from '../../contexts/BrandsContext'
 import { TBrands } from '../../interfaces/Brands'
 import Cart from './Cart'
 import { cartCT } from '../../contexts/CartContext'
+import { useForm } from 'react-hook-form'
 
 const Header = () => {
     var checkRole = false
+    const navi = useNavigate()
+    const { register, handleSubmit } = useForm()
     const { categories } = useContext(categoriesCT)
     const { brands } = useContext(brandsCT)
     const { cartQty } = useContext(cartCT)
     const [showExample, setShowExample] = useState(false)
+
     const isUser = localStorage.getItem('user')
     const userName = isUser ? JSON.parse(localStorage.getItem('user')!)?.user?.name : undefined
     const userRole = isUser ? JSON.parse(localStorage.getItem('user')!)?.user?.role : undefined
@@ -28,6 +32,11 @@ const Header = () => {
     }
     const handleClick = () => {
         setShowExample(!showExample)
+    }
+
+    const onSearch = (data: any) => {
+        const { keywords } = data
+        navi(`search?keywords=${keywords}`)
     }
     return (
         <>
@@ -66,7 +75,7 @@ const Header = () => {
 
                         <div className='flex flex-wrap w-full items-center'>
                             <div className='xl:w-96 max-lg:w-full lg:ml-10 max-md:mt-4 max-lg:ml- focus:bg-transparent px-6 rounded h-11 outline-[#333] text-sm transition-all'>
-                                <form className='max-w-md mx-auto'>
+                                <form className='max-w-md mx-auto' onSubmit={handleSubmit(onSearch)}>
                                     <label
                                         htmlFor='default-search'
                                         className='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white'
@@ -79,7 +88,7 @@ const Header = () => {
                                             id='default-search'
                                             className='w-full block px-4 py-3 ps-10 text-sm text-black border border-gray-300 rounded-[20px]  focus:ring-blue-500 focus:border-blue-500 bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500'
                                             placeholder='Search any things'
-                                            required
+                                            {...register('keywords')}
                                         />
                                         <button
                                             type='submit'

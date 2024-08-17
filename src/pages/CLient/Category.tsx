@@ -83,7 +83,10 @@ const Category = () => {
             </nav>
 
             <div className='grid grid-cols-1 gap-4 lg:grid-cols-7 lg:gap-8 ml-[110px] mr-[110px] mt-10 mb-10'>
-                <div className='rounded-lg lg:col-span-2 h-screen bg-gray-200'>
+                <div className='rounded-lg lg:col-span-2 h-scree'>
+                    <span className='text-red-500'>
+                        Cảnh báo: Chức năng này chưa được phát triển không thể xử dụng !!!
+                    </span>
                     <div className='flex h-screen flex-col justify-between border-e bg-white'>
                         <div className='px-4 py-6'>
                             <div className='flex justify-between'>

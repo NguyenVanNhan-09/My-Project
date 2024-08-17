@@ -29,6 +29,7 @@ const AddProduct = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors }
     } = useForm<TProduct>({ resolver: joiResolver(schema) })
     const uploadThumbnail = async (file: any) => {
@@ -62,6 +63,8 @@ const AddProduct = () => {
     }
     const onSubmit = async (data: TProduct) => {
         await handleAdd({ ...data, thumbnail, images: files })
+        reset()
+        setThumbnail('')
     }
     return (
         <>

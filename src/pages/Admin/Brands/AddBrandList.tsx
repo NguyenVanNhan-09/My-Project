@@ -32,6 +32,8 @@ const AddBrand = () => {
     } = useForm<TBrands>({ resolver: joiResolver(schema) })
     const onSubmit = (brand: TBrands) => {
         handleAdd({ ...brand, thumbnail: thumbnail })
+        reset()
+        setThumbnail('')
     }
     return (
         <>

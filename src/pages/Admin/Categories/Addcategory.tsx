@@ -31,6 +31,8 @@ const Addcategory = () => {
     } = useForm<TCategories>({ resolver: joiResolver(schema) })
     const onSubmit = (brand: TCategories) => {
         handleAdd({ ...brand, thumbnail: thumbnail })
+        reset()
+        setThumbnail('')
     }
     return (
         <>
