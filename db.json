@@ -151,29 +151,13 @@
       "category": "2",
       "price": 90,
       "description": "descriptions clothers",
-      "is_in_inventory": false,
+      "is_in_inventory": true,
       "thumbnail": "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-ltnohe99oiwd5d",
       "images": [
         "image-1",
         "image-2",
         "image-3"
       ]
-    },
-    {
-      "name": "nhân",
-      "brand": "1",
-      "price": 9122004,
-      "category": "1",
-      "gender": "MAN-WOMEN",
-      "description": "hihihhihihihhihi upd",
-      "is_in_inventory": true,
-      "images": [
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723705690/d6yoovia0t0rnhbdtiqs.png",
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723705691/vvvy7dmteud1o7ojqhz4.png",
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723705691/o7pkxcvom7cjpn8longv.png"
-      ],
-      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723709132/wypxnakqrnihyb9w6kvh.png",
-      "id": 1241
     },
     {
       "name": "nhân",
@@ -205,6 +189,21 @@
       ],
       "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723719545/x1iiccjhtxatyaq0skdh.png",
       "id": 1243
+    },
+    {
+      "name": "bikini_balen",
+      "brand": "3",
+      "price": 9122004,
+      "category": "xrhuNUW",
+      "gender": "MAN-WOMEN",
+      "description": "kjnkljnlrjcwlerclwe cn weljr clwejrc lwer cljw ecjlw ẹlcnwelrcnweljrnclwejrnc",
+      "is_in_inventory": true,
+      "images": [
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723763367/cvhqjlmbonxteche3xup.png",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723763368/ashpei7fbkfb0iduykqd.png"
+      ],
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723763353/facn7bo0lspg8y6rhygg.png",
+      "id": 1244
     }
   ],
   "categories": [
@@ -222,7 +221,7 @@
     },
     {
       "name": "bikini",
-      "status": true,
+      "status": false,
       "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723759837/uistxv99yf8hnszd253f.png",
       "id": "xrhuNUW"
     }
@@ -238,20 +237,13 @@
       "id": "2",
       "name": "Addidas",
       "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723757746/g462rsy6cqysnci2evnu.png",
-      "status": false
+      "status": true
     },
     {
       "id": "3",
       "name": "Balenciaga",
       "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723757685/ukoup1uh4o07k6lrqwhv.png",
       "status": false
-    },
-    {
-      "name": "Nike",
-      "stautus": true,
-      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723756937/ks4bwybkl5tin9c4k76u.png",
-      "id": "JQitEzn",
-      "status": true
     }
   ],
   "blogs": [
@@ -310,29 +302,68 @@
       "id": "3eEk62a"
     }
   ],
-  "cart": [
+  "carts": [
     {
-      "id": "cart1",
-      "name": "John Doe",
-      "phone": 1234567890,
-      "address": "123 Main St, City, Country",
-      "payment_method": "Credit Card",
-      "products": [
+      "name": "Nguyễn Văn Nhân",
+      "phone": "0344639810",
+      "address": "Cầu Giấy, Hà Nội",
+      "voucher": "codeofx",
+      "method_pay": "cash",
+      "items": [
         {
-          "id": "p1",
-          "title": "Product 1",
-          "price": 29.99,
-          "quantity": 2
+          "id": 140,
+          "name": "Myers áo phông nam",
+          "brand": "3",
+          "gender": "MEN",
+          "category": "2",
+          "price": 90,
+          "description": "descriptions clothers",
+          "is_in_inventory": true,
+          "thumbnail": "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-ltnohe99oiwd5d",
+          "images": [
+            "image-1",
+            "image-2",
+            "image-3"
+          ],
+          "qty": 1
         },
         {
-          "id": "p2",
-          "title": "Product 2",
-          "price": 49.99,
-          "quantity": 1
+          "id": 1,
+          "name": "Nike React Infinity Run Flyknit up",
+          "brand": "1",
+          "gender": "MEN",
+          "category": "1",
+          "price": 160,
+          "description": "descriptions shoes",
+          "is_in_inventory": true,
+          "thumbnail": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyi-ly699qt7mogyea",
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rdy8-ly699rtk43av14",
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rdx0-ly699rzxurg4be",
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxo-ly699sa7fpxif0"
+          ],
+          "qty": 1
+        },
+        {
+          "id": 2,
+          "name": "Nike React Miler",
+          "brand": "1",
+          "gender": "MEN",
+          "category": "1",
+          "price": 130,
+          "description": "descriptions shoes",
+          "is_in_inventory": false,
+          "thumbnail": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdww-ly697y3md67e0b",
+          "images": [
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rdyl-ly697y9g4mpz31",
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxg-ly697yqncnjg38",
+            "image-3"
+          ],
+          "qty": 2
         }
       ],
-      "total_price": 109.97,
-      "shipping_method": "Standard Shipping"
+      "total": 510,
+      "id": 1
     }
   ]
 }

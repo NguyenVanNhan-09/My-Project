@@ -3,6 +3,7 @@ import ProductsContext from './ProductsContext'
 import CategoriesContext from './CategoriesContext'
 import UsersContext from './UsersContext'
 import BrandsContext from './BrandsContext'
+import CartContext from './CartContext'
 
 type Props = {
     children: React.ReactNode
@@ -10,13 +11,15 @@ type Props = {
 
 const ContextProviders = ({ children }: Props) => {
     return (
-        <ProductsContext>
-            <CategoriesContext>
-                <BrandsContext>
-                    <UsersContext>{children}</UsersContext>
-                </BrandsContext>
-            </CategoriesContext>
-        </ProductsContext>
+        <CartContext>
+            <ProductsContext>
+                <CategoriesContext>
+                    <BrandsContext>
+                        <UsersContext>{children}</UsersContext>
+                    </BrandsContext>
+                </CategoriesContext>
+            </ProductsContext>
+        </CartContext>
     )
 }
 

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const Footer = () => {
     return (
         <>
@@ -25,9 +27,14 @@ const Footer = () => {
                     </div>
                     <div className='grid  grid-cols-2 min-[690px]:grid-cols-2 lg:grid-cols-4 gap-2 xl:gap-2 pt-14 pb-10 max-w-xs mx-auto min-[690px]:max-w-2xl lg:max-w-full'>
                         <div className='col-span-full mb-10 lg:col-span-1 lg:mb-0'>
-                            <a href='#' className='flex justify-center lg:justify-start'>
-                                <img src='../../public/image/logo-11.png' className='w-[140px] h-[40px]' alt='' />
-                            </a>
+                            <Link to={`/`} className='max-sm:w-full flex items-center  max-sm:mb-3 shrink-0'>
+                                <img
+                                    src='../../../public/image/Aura_Logo-removebg-preview.png'
+                                    alt='logo'
+                                    className='w-[70px] h-[60px]'
+                                />
+                                <span className='text-2xl font-bold'>Aura</span>
+                            </Link>
                             <p className='py-8 text-gray-500 lg:max-w-[183px] text-center lg:text-left border-b border-black'>
                                 64 st james boulevard hoswick , ze2 7zj
                             </p>

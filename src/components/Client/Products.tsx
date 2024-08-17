@@ -1,27 +1,32 @@
 import { useEffect, useState } from 'react'
 import { TProduct } from '../../interfaces/Products'
 import Product from './Product'
-import { GET_ALL_Products_By_Cate } from '../../services/Products'
+import { GET_ALL_Products_By_Brands, GET_ALL_Products_By_Cate } from '../../services/Products'
 
 type Props = {
     IdCategory: number | string
     nameCategory: string
+    idBrand: number | string
 }
 
-const Products = ({ IdCategory, nameCategory }: Props) => {
+const Products = ({ IdCategory, nameCategory, idBrand }: Props) => {
     const [products, setProducts] = useState<TProduct[]>([])
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const data = await GET_ALL_Products_By_Cate(IdCategory)
-                setProducts(data)
+                if (IdCategory) {
+                    const data = await GET_ALL_Products_By_Cate(IdCategory)
+                    setProducts(data)
+                } else if (idBrand) {
+                    const data = await GET_ALL_Products_By_Brands(idBrand)
+                    setProducts(data)
+                }
             } catch (error) {
                 console.log(error)
             }
         }
         getProducts()
-    }, [IdCategory])
-
+    }, [IdCategory, idBrand])
     return (
         <>
             <div id={nameCategory} className='p-4 mx-auto lg:max-w-7xl sm:max-w-full'>

@@ -1,5 +1,5 @@
 const BannerBottom = () => {
-    const imageBanerBottom = '../../public/image/pexels-nao-triponez-1292081.png'
+    const imageBanerBottom = '../../../public/image/shoes-467459_1280.jpg'
     return (
         <>
             <div
@@ -12,15 +12,15 @@ const BannerBottom = () => {
                     <div className='flex justify-end'>
                         <div className='flex flex-col items-center'>
                             <a
-                                href='#'
+                                href='#new-products'
                                 className='bg-[#EDA415] min-w-[134px] py-[0.85rem] px-8 text-white font-bold text-[14px] rounded-[20px] hover:bg-gray-200 hover:text-gray-800'
                             >
-                                New laptop{' '}
+                                New Products
                             </a>
                             <p className='text-[41px] font-bold text-[#2E8FC5]'>Sale up to 50% off</p>
                             <p className='text-[18px] mb-10 leading-none text-white'>12 inch hd display</p>
                             <a
-                                href='#'
+                                href='#new-products'
                                 className='bg-[#EDA415] min-w-[134px] py-[0.85rem] px-8 text-white font-bold text-[14px] rounded-[20px] hover:bg-gray-200 hover:text-gray-800'
                             >
                                 Shop now

@@ -11,7 +11,7 @@ const PrivateRoutes = ({ children, role }: Props) => {
     const [hasConfirmed, setHasConfirmed] = useState(false)
 
     useEffect(() => {
-        if (role !== 2 && !hasConfirmed) {
+        if (role !== 2 && role !== 3 && !hasConfirmed) {
             const isConfirm = window.confirm('Bạn không có quyền đăng nhập admin!!! Chuyển hướng về trang chính ngay?')
             if (isConfirm) {
                 setHasConfirmed(true)
@@ -20,7 +20,7 @@ const PrivateRoutes = ({ children, role }: Props) => {
         }
     }, [role, hasConfirmed, navigate])
 
-    if (role === 2) {
+    if (role === 2 || role === 3) {
         return <>{children}</>
     } else {
         return (

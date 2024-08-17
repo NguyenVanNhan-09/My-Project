@@ -1,4 +1,29 @@
+import { useEffect, useState } from 'react'
+
 const HeaderAdmin = () => {
+    const [nameRole, setNameRole] = useState<string>('')
+    const [userName, setUserName] = useState<string | undefined>(undefined)
+    const [userImage, setUserImage] = useState<string | undefined>(undefined)
+
+    useEffect(() => {
+        const isUser = localStorage.getItem('user')
+        if (isUser) {
+            const user = JSON.parse(isUser).user
+            const userRole = user?.role
+            const userImage = user?.image
+            const userName = user?.name
+
+            setUserName(userName)
+            setUserImage(userImage)
+            if (userRole === 1) {
+                setNameRole('User')
+            } else if (userRole === 2) {
+                setNameRole('Admin')
+            } else if (userRole === 3) {
+                setNameRole('Dev')
+            }
+        }
+    }, [])
     return (
         <>
             <div className='py-2 px-6 bg-[#f8f4f3] flex items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30'>
@@ -157,18 +182,14 @@ const HeaderAdmin = () => {
                         <button type='button' className='dropdown-toggle flex items-center'>
                             <div className='flex-shrink-0 w-10 h-10 relative'>
                                 <div className='p-1 bg-white rounded-full focus:outline-none focus:ring'>
-                                    <img
-                                        className='w-8 h-8 rounded-full'
-                                        src='https://laravelui.spruko.com/tailwind/ynex/build/assets/images/faces/9.jpg'
-                                        alt=''
-                                    />
+                                    <img className='w-8 h-8 rounded-full' src={userImage} alt='' />
                                     <div className='top-0 left-7 absolute w-3 h-3 bg-lime-400 border-2 border-white rounded-full animate-ping'></div>
                                     <div className='top-0 left-7 absolute w-3 h-3 bg-lime-500 border-2 border-white rounded-full'></div>
                                 </div>
                             </div>
                             <div className='p-2 md:block text-left'>
-                                <h2 className='text-sm font-semibold text-gray-800'>John Doe</h2>
-                                <p className='text-xs text-gray-500'>Administrator</p>
+                                <h2 className='text-sm font-semibold text-gray-800'>{userName}</h2>
+                                <p className='text-xs text-gray-500'>{nameRole}</p>
                             </div>
                         </button>
                         {/* Dropdown user */}

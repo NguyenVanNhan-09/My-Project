@@ -16,6 +16,7 @@ import Admin from './../layouts/Admin'
 import Client from './../layouts/Client'
 import BrandsList from '../pages/Admin/Brands/BrandsList'
 import Categories from '../pages/Admin/Categories/Categories'
+import Checkout from '../pages/Client/Checkout'
 
 const AppRoutes = () => {
     const role = JSON.parse(localStorage.getItem('user')!)?.user?.role
@@ -32,7 +33,8 @@ const AppRoutes = () => {
                 { path: 'blogs', element: <Blogs /> },
                 { path: 'blog/:id', element: <BlogItem /> },
                 { path: 'account-setting', element: <AccountSettings /> },
-                { path: 'about-us', element: <AboutUs /> }
+                { path: 'about-us', element: <AboutUs /> },
+                { path: 'checkout', element: <Checkout /> }
             ]
         },
         {

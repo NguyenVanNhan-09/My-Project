@@ -84,7 +84,7 @@ export const UploadFilesImagesToCloudinary = async (formData: any) => {
 
 export const GET_ALL_Products_By_Brands = async (idBrand: number | string) => {
     try {
-        const { data } = await instance.post(`/products?brand=${idBrand}`)
+        const { data } = await instance.get(`/products?brand=${idBrand}`)
         return data
     } catch (error) {
         console.log(error)

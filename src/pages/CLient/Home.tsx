@@ -32,7 +32,10 @@ const Home = () => {
                         </div>
                     </div>
                     {/* List-product */}
-                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6'>
+                    <div
+                        id='new-products'
+                        className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-xl:gap-4 gap-6'
+                    >
                         {products.map((product: TProduct) => (
                             <Product key={product.id} data={product} />
                         ))}
@@ -40,7 +43,7 @@ const Home = () => {
                 </div>
                 {/* list Products by category */}
                 {categories.map((item: TCategories) => (
-                    <Products key={item.id} IdCategory={item.id} nameCategory={item.name} />
+                    <Products idBrand={''} key={item.id} IdCategory={item.id} nameCategory={item.name} />
                 ))}
             </div>
             {/* Phân trang */}

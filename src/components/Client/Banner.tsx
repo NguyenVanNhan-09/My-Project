@@ -7,7 +7,7 @@ const Banner = () => {
                         <div className='sm:w-2/3 lg:w-2/5 flex flex-col relative z-20'>
                             <span className='w-20 h-2 bg-white dark:bg-white mb-12'></span>
                             <h1 className='font-bebas-neue text-6xl sm:text-8xl font-black flex flex-col leading-none text-[#1B5A7D]'>
-                                Canon camera
+                                Nike Shoes
                             </h1>
                             <div className='flex mt-8'>
                                 <a
@@ -25,7 +25,10 @@ const Banner = () => {
                             </div>
                         </div>
                         <div className='hidden sm:block sm:w-1/3 lg:w-3/5 relative'>
-                            <img src='../../public/image/camera.png' className='max-w-xs md:max-w-sm m-auto' />
+                            <img
+                                src='../../../public/image/tennis-7968714_1920.png'
+                                className='max-w-xs md:max-w-sm m-auto'
+                            />
                         </div>
                     </div>
                 </div>

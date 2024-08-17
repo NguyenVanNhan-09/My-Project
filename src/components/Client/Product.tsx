@@ -1,11 +1,18 @@
 import { Link } from 'react-router-dom'
 import { TProduct } from '../../interfaces/Products'
+import { useContext } from 'react'
+import { cartCT } from '../../contexts/CartContext'
 
 type Props = {
     data: TProduct
 }
-
+const scrollToTop = () => {
+    window.scrollTo({
+        top: 0
+    })
+}
 const Product = ({ data }: Props) => {
+    const { HandleAddCart } = useContext(cartCT)
     return (
         <>
             <div className='border border-[#B6B6B6] shadow-md overflow-hidden rounded-[19.67px] cursor-pointer hover:-translate-y-2 transition-all relative event_hover min-h-[332px]'>
@@ -79,11 +86,16 @@ const Product = ({ data }: Props) => {
                     </div>
                 </div>
                 <div className='absolute bottom-[10%] justify-between w-full mb-4 event_move'>
-                    <div className=' border border-[#87BCD9] rounded-[19px] flex flex-1 items-center justify-around ml-4 mr-4 w-[204.58px] h-[60px] bg-[#87BCD9]'>
+                    <button
+                        onClick={() => HandleAddCart(data)}
+                        type='button'
+                        className=' border border-[#87BCD9] rounded-[19px] flex flex-1 items-center justify-around ml-4 mr-4 w-[204.58px] h-[60px] bg-[#87BCD9]'
+                    >
                         <p className='text-[19px] text-white'>Add to cart</p>
                         <i className='ti-shopping-cart text-[15.5px] bg-[#EDA415] px-2 py-2 rounded-full text-white'></i>
-                    </div>
+                    </button>
                     <Link
+                        onClick={scrollToTop}
                         to={`/detail/${data.id}`}
                         className='border border-[#87BCD9] rounded-[19px] w-[70.81px] h-[60px] flex items-center justify-center mr-4 bg-[#87BCD9]'
                     >

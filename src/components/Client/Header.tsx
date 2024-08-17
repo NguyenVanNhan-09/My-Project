@@ -1,16 +1,23 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import Login from './Login'
 import { categoriesCT } from '../../contexts/CategoriesContext'
 import { TCategories } from '../../interfaces/Categories'
 import { Link } from 'react-router-dom'
+import { brandsCT } from '../../contexts/BrandsContext'
+import { TBrands } from '../../interfaces/Brands'
+import Cart from './Cart'
+import { cartCT } from '../../contexts/CartContext'
 
 const Header = () => {
     var checkRole = false
+    const { categories } = useContext(categoriesCT)
+    const { brands } = useContext(brandsCT)
+    const { cartQty } = useContext(cartCT)
+    const [showExample, setShowExample] = useState(false)
     const isUser = localStorage.getItem('user')
     const userName = isUser ? JSON.parse(localStorage.getItem('user')!)?.user?.name : undefined
     const userRole = isUser ? JSON.parse(localStorage.getItem('user')!)?.user?.role : undefined
-    const { categories } = useContext(categoriesCT)
-    if (userRole === 2) {
+    if (userRole === 2 || userRole === 3) {
         checkRole = true
     }
     const logout = () => {
@@ -18,6 +25,9 @@ const Header = () => {
         if (!localStorage.getItem('user')) {
             alert('Logout successfully!!!')
         }
+    }
+    const handleClick = () => {
+        setShowExample(!showExample)
     }
     return (
         <>
@@ -45,10 +55,14 @@ const Header = () => {
             <header className='shadow-md font-[sans-serif] tracking-wide relative z-50'>
                 <div className='bg-[#003F62]'>
                     <section className='md:flex lg:items-center relative py-3 px-2  border-gray-200 bg-[#003F62] lg:min-h-[80px] max-lg:min-h-[60px] h-[100px] ml-[110px] mr-[110px]'>
-                        <a href='#' className='max-sm:w-full max-sm:mb-3 shrink-0'>
-                            <img src='../../public/image/logo1.png' alt='logo' className='w-[160px]' />
-                            Aura
-                        </a>
+                        <Link to={`/`} className='max-sm:w-full flex items-center  max-sm:mb-3 shrink-0'>
+                            <img
+                                src='../../../public/image/Aura_Logo-removebg-preview.png'
+                                alt='logo'
+                                className='w-[100px] h-[100px]'
+                            />
+                            <span className='text-2xl font-bold'>Aura.vn</span>
+                        </Link>
 
                         <div className='flex flex-wrap w-full items-center'>
                             <div className='xl:w-96 max-lg:w-full lg:ml-10 max-md:mt-4 max-lg:ml- focus:bg-transparent px-6 rounded h-11 outline-[#333] text-sm transition-all'>
@@ -137,10 +151,17 @@ const Header = () => {
                                         </a>
                                     </li>
                                     <li className='max-sm:hidden flex text-[15px] max-lg:py-2 px-3 font-medium text-white cursor-pointer'>
-                                        <a href='/cart' className='flex items-center'>
+                                        <button
+                                            type='button'
+                                            onClick={() => handleClick()}
+                                            className='flex items-center relative'
+                                        >
                                             <span className='ti-shopping-cart w-[20px] h-[20px] mr-2 mt-1 text-white'></span>
+                                            <span className='absolute top-[-8px] left-[6px] md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-700 bg-red-200 rounded-full'>
+                                                {cartQty}
+                                            </span>
                                             cart
-                                        </a>
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
@@ -170,12 +191,9 @@ const Header = () => {
                                     <span className='ti-angle-down text-sm ml-2'></span>
                                 </li>
                                 <li className='relative max-lg:border-b max-lg:py-4 px-4 flex items-center Nav'>
-                                    <Link
-                                        to={'/category'}
-                                        className='hover:text-yellow-300 text-[#3A3A3A] text-[15px] font-medium block min-w-16 text-sm'
-                                    >
-                                        category
-                                    </Link>
+                                    <div className='hover:text-yellow-300 text-[#3A3A3A] text-[15px] font-medium block min-w-16 text-sm'>
+                                        Categories
+                                    </div>
                                     <span className='ti-angle-down text-sm ml-2'></span>
                                     <ul className='Sub_nav absolute min-w-36 top-9 right-5 bg-slate-300'>
                                         {categories.map((category: TCategories) => (
@@ -196,14 +214,21 @@ const Header = () => {
                                         Blogs
                                     </Link>
                                 </li>
-                                <li className='max-lg:border-b max-lg:py-4 px-4 flex items-center'>
-                                    <Link
-                                        to={'/page'}
-                                        className='hover:text-yellow-300 text-[#3A3A3A] text-[15px] font-medium block min-w-16 text-sm'
-                                    >
-                                        Pages
-                                    </Link>
+                                <li className='relative max-lg:border-b max-lg:py-4 px-4 flex items-center Nav'>
+                                    <div className='hover:text-yellow-300 text-[#3A3A3A] text-[15px] font-medium block min-w-16 text-sm'>
+                                        Brand
+                                    </div>
                                     <span className='ti-angle-down text-sm ml-2'></span>
+                                    <ul className='Sub_nav absolute min-w-36 top-9 right-5 bg-slate-300'>
+                                        {brands.map((brand: TBrands) => (
+                                            <li
+                                                key={brand.id}
+                                                className='cursor-pointer hover:text-yellow-500 py-2 px-5 w-full'
+                                            >
+                                                <Link to={`/brand/${brand.id}`}>{brand.name}</Link>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </li>
                                 <li className='max-lg:border-b max-lg:py-4 px-4 flex items-center'>
                                     <Link
@@ -222,6 +247,7 @@ const Header = () => {
                     </ul>
                 </div>
             </header>
+            {showExample && <Cart change={showExample} setChange={setShowExample} />}
         </>
     )
 }
