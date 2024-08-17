@@ -10,7 +10,10 @@ const ChangeStatusCate = ({ id, valueTrue, valueFalse }: Props) => {
 
     const handleUpdateStatus = async (status: boolean) => {
         await handleUpdate(id, { status: status })
-        location.reload()
+        const modal = document.getElementById('modal_change_status') as HTMLDialogElement
+        if (modal) {
+            modal.close()
+        }
     }
     return (
         <>

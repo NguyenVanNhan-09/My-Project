@@ -121,7 +121,9 @@ const UpdateCategory = ({ id }: Props) => {
                                 <button
                                     onClick={() => {
                                         reset()
-                                        ;(document.getElementById('modal_update_brand') as HTMLDialogElement)?.close()
+                                        ;(
+                                            document.getElementById('modal_update_category') as HTMLDialogElement
+                                        )?.close()
                                     }}
                                     type='button'
                                     className='px-6 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#eda515] transition duration-300'
@@ -130,6 +132,9 @@ const UpdateCategory = ({ id }: Props) => {
                                 </button>
                                 <button
                                     type='submit'
+                                    onClick={() =>
+                                        (document.getElementById('modal_update_category') as HTMLDialogElement)?.close()
+                                    }
                                     className='px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#eda515] hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#eda515] transition duration-300'
                                 >
                                     Save Changes

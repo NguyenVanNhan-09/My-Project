@@ -62,7 +62,6 @@ const AddProduct = () => {
     }
     const onSubmit = async (data: TProduct) => {
         await handleAdd({ ...data, thumbnail, images: files })
-        location.reload()
     }
     return (
         <>
@@ -240,6 +239,9 @@ const AddProduct = () => {
 
                                 <button
                                     type='submit'
+                                    onClick={() =>
+                                        (document.getElementById('modal_add_product') as HTMLDialogElement)?.close()
+                                    }
                                     className='py-2 px-4 rounded-lg bg-[#EDA315] border-2 border-transparent hover:text-white text-white text-md mr-4 hover:bg-[#316887] inline-flex items-center mt-4 sm:mt-6 text-sm font-medium text-center bg-primary-700  focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800'
                                 >
                                     Add product

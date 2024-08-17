@@ -10,9 +10,12 @@ type Props = {
 const ChangeStatus = ({ id, valueTrue, valueFalse }: Props) => {
     const { handleUpdate } = useContext(brandsCT)
 
-    const handleUpdateStatus = async (status: boolean) => {
-        await handleUpdate(id, { status: status })
-        location.reload()
+    const handleUpdateStatus = (status: boolean) => {
+        handleUpdate(id, { status: status })
+        const modal = document.getElementById('modal_change_status') as HTMLDialogElement
+        if (modal) {
+            modal.close()
+        }
     }
 
     return (

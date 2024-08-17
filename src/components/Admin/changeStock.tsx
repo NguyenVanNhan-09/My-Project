@@ -8,9 +8,12 @@ type Props = {
 const ChangeStock = ({ id }: Props) => {
     const { handleUpdate } = useContext(productCT)
 
-    const handleUpdateStock = async (isInStock: boolean) => {
-        await handleUpdate(id, { is_in_inventory: isInStock })
-        location.reload()
+    const handleUpdateStock = (isInStock: boolean) => {
+        handleUpdate(id, { is_in_inventory: isInStock })
+        const modal = document.getElementById('modal_change_stock') as HTMLDialogElement
+        if (modal) {
+            modal.close()
+        }
     }
 
     return (

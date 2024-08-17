@@ -11,6 +11,7 @@ import {
 } from '../../../services/Products'
 import Joi from 'joi'
 import { joiResolver } from '@hookform/resolvers/joi'
+import { brandsCT } from '../../../contexts/BrandsContext'
 
 const schema = Joi.object({
     name: Joi.string().required(),
@@ -27,6 +28,7 @@ type Props = {
 }
 const UpdateProduct = ({ id }: Props) => {
     const { categories } = useContext(categoriesCT)
+    const { brands } = useContext(brandsCT)
     const { handleUpdate } = useContext(productCT)
     const [thumbnail, setThumbnail] = useState<string>('')
     const [files, setFiles] = useState<any[]>([])
@@ -86,9 +88,8 @@ const UpdateProduct = ({ id }: Props) => {
         )
         setFiles(uploadedFiles)
     }
-    const onSubmit = async (data: TProduct) => {
-        await handleUpdate(id, { ...data, thumbnail: thumbnail, images: files })
-        location.reload()
+    const onSubmit = (data: TProduct) => {
+        handleUpdate(id, { ...data, thumbnail: thumbnail, images: files })
     }
     return (
         <>
@@ -119,14 +120,21 @@ const UpdateProduct = ({ id }: Props) => {
                                         <label className='text-base text-gray-500 font-semibold mb-2 block'>
                                             Brand
                                         </label>
-
-                                        <input
-                                            type='text'
-                                            id='brand'
-                                            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                                            placeholder='Product brand'
-                                            {...register('brand', { required: true })}
-                                        />
+                                        <select
+                                            id='category'
+                                            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
+                                            {...register('brand')}
+                                            defaultValue='default'
+                                        >
+                                            <option value='default' disabled>
+                                                Brand
+                                            </option>
+                                            {brands.map((item: TCategories) => (
+                                                <option key={item.id} value={item.id}>
+                                                    {item.name}
+                                                </option>
+                                            ))}
+                                        </select>
                                         {errors.brand && <span className='text-red-400'>{errors.brand.message}</span>}
                                     </div>
                                     <div className='w-full'>
@@ -269,6 +277,9 @@ const UpdateProduct = ({ id }: Props) => {
                                 </div>
 
                                 <button
+                                    onClick={() =>
+                                        (document.getElementById('modal_update_product') as HTMLDialogElement)?.close()
+                                    }
                                     type='submit'
                                     className='py-2 px-4 rounded-lg bg-[#EDA315] border-2 border-transparent hover:text-white text-white text-md mr-4 hover:bg-[#316887] inline-flex items-center mt-4 sm:mt-6 text-sm font-medium text-center bg-primary-700  focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800'
                                 >

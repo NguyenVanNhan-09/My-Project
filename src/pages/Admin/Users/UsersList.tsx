@@ -174,16 +174,16 @@ const UsersList = () => {
                                         <td className='p-4 border-b border-blue-gray-50'>
                                             <div className='flex items-center gap-3'>
                                                 <img
-                                                    src={user.image}
+                                                    src={user?.image}
                                                     alt='John Michael'
                                                     className='relative inline-block h-9 w-9 !rounded-full object-cover object-center'
                                                 />
                                                 <div className='flex flex-col'>
                                                     <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                        {user.name}
+                                                        {user?.name}
                                                     </p>
                                                     <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70'>
-                                                        {user.email}
+                                                        {user?.email}
                                                     </p>
                                                 </div>
                                             </div>
@@ -191,8 +191,8 @@ const UsersList = () => {
                                         <td className='p-4 border-b border-blue-gray-50'>
                                             <div className='flex flex-col'>
                                                 <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                    {user.phone ? (
-                                                        user.phone
+                                                    {user?.phone ? (
+                                                        user?.phone
                                                     ) : (
                                                         <span className='text-red-600'>Not Updated</span>
                                                     )}
@@ -201,7 +201,7 @@ const UsersList = () => {
                                         </td>
                                         <td className='p-4 border-b border-blue-gray-50'>
                                             <div className='w-max'>
-                                                {user.role === 1 ? (
+                                                {user?.role === 1 ? (
                                                     <>
                                                         <button
                                                             onClick={() => showChangeRole(user.id)}
@@ -211,7 +211,7 @@ const UsersList = () => {
                                                             <span className=''>user</span>
                                                         </button>
                                                     </>
-                                                ) : user.role === 2 ? (
+                                                ) : user?.role === 2 ? (
                                                     <>
                                                         <button
                                                             onClick={() => showChangeRole(user.id)}
@@ -221,7 +221,7 @@ const UsersList = () => {
                                                             <span className=''>admin</span>
                                                         </button>
                                                     </>
-                                                ) : user.role === 3 ? (
+                                                ) : user?.role === 3 ? (
                                                     <>
                                                         <button
                                                             onClick={() => showChangeRole(user.id)}
@@ -236,14 +236,14 @@ const UsersList = () => {
                                         </td>
                                         <td className='p-4 border-b border-blue-gray-50'>
                                             <p className='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
-                                                {user.year}
+                                                {user?.year}
                                             </p>
                                         </td>
                                         <td className='p-4 border-b border-blue-gray-50'>
                                             <button
                                                 className='relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
                                                 type='button'
-                                                onClick={() => showUpdate(user.id)}
+                                                onClick={() => showUpdate(user?.id)}
                                             >
                                                 <span className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'>
                                                     <svg
@@ -258,7 +258,7 @@ const UsersList = () => {
                                                 </span>
                                             </button>
                                             <button
-                                                onClick={() => handleDelete(user.id)}
+                                                onClick={() => handleDelete(user?.id)}
                                                 className='relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
                                                 type='button'
                                             >

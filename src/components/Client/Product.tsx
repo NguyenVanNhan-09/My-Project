@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { TProduct } from '../../interfaces/Products'
 import { useContext } from 'react'
 import { cartCT } from '../../contexts/CartContext'
+import { toast } from 'react-toastify'
 
 type Props = {
     data: TProduct
@@ -13,6 +14,13 @@ const scrollToTop = () => {
 }
 const Product = ({ data }: Props) => {
     const { HandleAddCart } = useContext(cartCT)
+    const onHandleAddCart = (data: TProduct) => {
+        if (data.is_in_inventory) {
+            HandleAddCart(data)
+        } else {
+            toast.warn('The product is out of stock.', { position: 'top-center' })
+        }
+    }
     return (
         <>
             <div className='border border-[#B6B6B6] shadow-md overflow-hidden rounded-[19.67px] cursor-pointer hover:-translate-y-2 transition-all relative event_hover min-h-[332px]'>
@@ -87,7 +95,7 @@ const Product = ({ data }: Props) => {
                 </div>
                 <div className='absolute bottom-[10%] justify-between w-full mb-4 event_move'>
                     <button
-                        onClick={() => HandleAddCart(data)}
+                        onClick={() => onHandleAddCart(data)}
                         type='button'
                         className=' border border-[#87BCD9] rounded-[19px] flex flex-1 items-center justify-around ml-4 mr-4 w-[204.58px] h-[60px] bg-[#87BCD9]'
                     >

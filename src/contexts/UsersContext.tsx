@@ -3,6 +3,8 @@ import { TUsers } from '../interfaces/Users'
 import { Create_User, Delete_User, GET_ALL_Users, Login_User, Register_User, Update_User } from '../services/Users'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import ConfirmModal from '../components/Admin/Confirm'
+import { toast } from 'react-toastify'
 type Props = {
     children: React.ReactNode
 }
@@ -10,27 +12,31 @@ export const userCT = createContext({} as any)
 const UsersContext = ({ children }: Props) => {
     const navi = useNavigate()
     const [users, setUsers] = useState<TUsers[]>([])
+    const [showModal, setShowModal] = useState<boolean>(false)
+    const [deleteId, setDeleteId] = useState<string | number | null>(null)
+    const [shouldFetch, setShouldFetch] = useState<boolean>(false)
+
     useEffect(() => {
         const fetchUsers = async () => {
             try {
                 const data = await GET_ALL_Users()
                 setUsers(data)
             } catch (error) {
-                console.error('Có lỗi xảy ra:', error)
+                toast.error(`${error}`, { position: 'top-center' })
             }
         }
 
         fetchUsers()
-    }, [])
+    }, [shouldFetch])
 
     // Create
     const handleAdd = async (user: TUsers) => {
         const data = await Create_User(user)
         if (data) {
-            alert('Add user successfully!!!')
-            location.reload()
+            toast.success('Add product successfully !!!', { position: 'top-center' })
+            setShouldFetch(!shouldFetch)
         } else {
-            alert('error !!!')
+            toast.error('Error create product.', { position: 'top-center' })
         }
         setUsers([...users, data])
     }
@@ -38,27 +44,29 @@ const UsersContext = ({ children }: Props) => {
     const handleUpdate = async (id: number | string, user: TUsers) => {
         const data = await Update_User(id, user)
         if (data) {
-            alert('update successfully!!!')
-            setUsers(users.filter((user) => (user.id == id ? data : user)))
-            location.reload()
+            const newProducts = users.filter((user) => (user.id == id ? data : user))
+            setUsers(newProducts)
+            setShouldFetch(!shouldFetch)
+            toast.success('update successfully !!!', { position: 'top-center' })
         } else {
-            alert('error update !!!')
+            toast.error('Error update product.', { position: 'top-center' })
         }
     }
     // Delete
     const handleDelete = async (id: number | string) => {
-        const isConfirm = confirm('You sure???')
-        if (isConfirm) {
-            const data = await Delete_User(id)
-            localStorage.removeItem('user')
-            if (data) {
-                alert('Delete Successfully!!!')
-                setUsers(users.filter((user: TUsers) => user.id !== id))
-            } else {
-                alert('error delete !!!')
-            }
+        setDeleteId(id)
+        setShowModal(true)
+    }
+
+    const confirmDelete = async () => {
+        const data = await Delete_User(deleteId as any)
+        if (data) {
+            setUsers(users.filter((user: TUsers) => user.id !== deleteId))
+        } else {
+            toast.error('Error deleting product.', { position: 'top-center' })
         }
     }
+
     const handleRegister = async (user: TUsers) => {
         try {
             const { data } = await Register_User(user)
@@ -76,7 +84,7 @@ const UsersContext = ({ children }: Props) => {
             if (axios.isAxiosError(error) && error.response) {
                 const errorMessage = error.response.data
                 console.error(errorMessage)
-                alert(`Message Error: ${errorMessage}`)
+                toast.error(`${errorMessage}`, { position: 'top-center' })
             } else {
                 console.error('Lỗi không xác định')
             }
@@ -117,6 +125,7 @@ const UsersContext = ({ children }: Props) => {
             }}
         >
             {children}
+            <ConfirmModal show={showModal} onClose={() => setShowModal(false)} onConfirm={confirmDelete} />
         </userCT.Provider>
     )
 }

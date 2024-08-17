@@ -106,7 +106,7 @@ const Checkout = () => {
                                                     <div className='mt-6 flex items-center px-3 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md'>
                                                         <svg
                                                             xmlns='http://www.w3.org/2000/svg'
-                                                            className='w-2.5 fill-current'
+                                                            className='w-2.5 fill-current cursor-pointer'
                                                             viewBox='0 0 124 124'
                                                             onClick={() => decreaQty(item.id)}
                                                         >
@@ -119,7 +119,7 @@ const Checkout = () => {
                                                         <span className='mx-3 font-bold'>{item.qty}</span>
                                                         <svg
                                                             xmlns='http://www.w3.org/2000/svg'
-                                                            className='w-2.5 fill-current'
+                                                            className='w-2.5 fill-current cursor-pointer'
                                                             viewBox='0 0 42 42'
                                                             onClick={() => increaseQty(item.id)}
                                                         >

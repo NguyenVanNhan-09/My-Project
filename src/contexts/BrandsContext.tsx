@@ -1,8 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { TBrands } from '../interfaces/Brands'
 import { Create_Brand, Delete_Brand, GET_ALL_Brands, Update_Brand } from '../services/Brands'
-import { TProduct } from '../interfaces/Products'
-import { GET_ALL_Products_By_Brands } from '../services/Products'
+import { toast } from 'react-toastify'
+import ConfirmModal from '../components/Admin/Confirm'
 
 type Props = {
     children: React.ReactNode
@@ -12,48 +12,53 @@ export const brandsCT = createContext({} as any)
 
 const BrandsContext = ({ children }: Props) => {
     const [brands, setBrands] = useState<TBrands[]>([])
+    const [shouldFetch, setShouldFetch] = useState<boolean>(false)
+    const [deleteId, setDeleteId] = useState<string | number | null>(null)
+    const [showModal, setShowModal] = useState<boolean>(false)
     useEffect(() => {
         const fetchBrands = async () => {
             try {
                 const data = await GET_ALL_Brands()
                 setBrands(data)
             } catch (error) {
-                console.error('Có lỗi xảy ra:', error)
+                toast.error(`${error}`, { position: 'top-center' })
             }
         }
 
         fetchBrands()
-    }, [])
-    const handleDelete = async (id: number | string) => {
-        const isConfirm = confirm('You sure???')
-        if (isConfirm) {
-            const data = await Delete_Brand(id)
-            if (data) {
-                alert('Delete Successfully!!!')
-                setBrands(brands.filter((brand: TBrands) => brand.id !== id))
-            } else {
-                alert('error delete !!!')
-            }
+    }, [shouldFetch])
+
+    const handleDelete = async (id: any) => {
+        setDeleteId(id)
+        setShowModal(true)
+    }
+    const confirmDelete = async () => {
+        const data = await Delete_Brand(deleteId as any)
+        if (data) {
+            setBrands(brands.filter((brand) => brand.id !== deleteId))
+        } else {
+            toast.error('Error deleting product.', { position: 'top-center' })
         }
     }
+
     const handleUpdate = async (id: number | string, brand: TBrands) => {
         const data = await Update_Brand(id, brand)
         if (data) {
-            alert('update successfully !!!')
-            setBrands(brands.filter((brand) => (brand.id == id ? data : brand)))
-            location.reload()
+            const newBrand = brands.filter((brand) => (brand.id == id ? data : brand))
+            setBrands(newBrand)
+            setShouldFetch(!shouldFetch)
+            toast.success('update successfully !!!', { position: 'top-center' })
         } else {
-            alert('error update !!!')
+            toast.error('Error update product.', { position: 'top-center' })
         }
     }
 
     const handleAdd = async (user: TBrands) => {
         const data = await Create_Brand(user)
         if (data) {
-            alert('Add user successfully!!!')
-            location.reload()
+            toast.success('Add product successfully !!!', { position: 'top-center' })
         } else {
-            alert('error !!!')
+            toast.error('Error create product.', { position: 'top-center' })
         }
         setBrands([...brands, data])
     }
@@ -67,6 +72,7 @@ const BrandsContext = ({ children }: Props) => {
             }}
         >
             {children}
+            <ConfirmModal show={showModal} onClose={() => setShowModal(false)} onConfirm={confirmDelete} />
         </brandsCT.Provider>
     )
 }

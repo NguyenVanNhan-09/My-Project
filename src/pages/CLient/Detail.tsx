@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { GET_BY_ID_Product } from '../../services/Products'
 import { TProduct } from '../../interfaces/Products'
 import Products from '../../components/Client/Products'
+import { cartCT } from '../../contexts/CartContext'
+import { toast } from 'react-toastify'
 
 const Detail = () => {
     const { id } = useParams()
+    const navigator = useNavigate()
     const [product, setProduct] = useState<TProduct | null>(null)
     useEffect(() => {
         const fetchProductById = async () => {
@@ -14,7 +17,14 @@ const Detail = () => {
         }
         fetchProductById()
     }, [id])
-    // console.log()
+    const { HandleAddCart } = useContext(cartCT)
+    const onHandleAddCart = (data: TProduct) => {
+        if (data.is_in_inventory) {
+            HandleAddCart(data)
+        } else {
+            toast.warn('The product is out of stock.', { position: 'top-center' })
+        }
+    }
     return (
         <>
             <div className='font-sans p-8 tracking-wide max-lg:max-w-2xl mx-auto ml-[110px] mr-[110px]'>
@@ -227,20 +237,25 @@ const Detail = () => {
                             </div>
                         </div>
                         <div className='flex flex-wrap gap-4 mt-8 border-b w-full border-[#BDBDBD] pb-4'>
-                            <a
-                                href='client/cart/{{productDetail.id}}'
+                            <button
                                 type='button'
+                                onClick={() => {
+                                    product && onHandleAddCart(product)
+                                    if (product?.is_in_inventory) {
+                                        navigator('/checkout')
+                                    }
+                                }}
                                 className='min-w-[200px] flex justify-center px-4 py-3 hover:opacity-45 text-white text-sm font-semibold  bg-[#EDA415] rounded-[20px]'
                             >
                                 Buy now
-                            </a>
-                            <a
-                                href=''
+                            </button>
+                            <button
                                 type='button'
+                                onClick={() => product && onHandleAddCart(product)}
                                 className='min-w-[200px] flex justify-center px-4 py-2.5 border  bg-[#EDA415]  text-white hover:bg-gray-50 text-sm font-semibold  rounded-[20px]'
                             >
                                 Add to cart
-                            </a>
+                            </button>
                         </div>
 
                         <div className='flex space-x-1 mt-4'>

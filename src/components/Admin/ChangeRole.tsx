@@ -8,9 +8,12 @@ type Props = {
 const ChangeRole = ({ id }: Props) => {
     const { handleUpdate } = useContext(userCT)
 
-    const handleUpdateStock = async (role: number | string) => {
-        await handleUpdate(id, { role: role })
-        location.reload()
+    const handleUpdateStock = (role: number | string) => {
+        handleUpdate(id, { role: role })
+        const modal = document.getElementById('modal_change_role') as HTMLDialogElement
+        if (modal) {
+            modal.close()
+        }
     }
 
     return (

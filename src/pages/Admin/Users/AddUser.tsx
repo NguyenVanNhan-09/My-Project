@@ -20,8 +20,8 @@ const schema = Joi.object({
     email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).min(6),
     role: Joi.number().default(1),
-    phone: Joi.string().default(''),
-    address: Joi.string().default(''),
+    phone: Joi.string().allow(''),
+    address: Joi.string().allow(''),
     year: Joi.string().default(getCurrentDate),
     image: Joi.string().default('')
 })
@@ -203,6 +203,10 @@ const AddUser = () => {
                                 </button>
                                 <button
                                     type='submit'
+                                    onClick={() => {
+                                        reset()
+                                        ;(document.getElementById('modal_add_user') as HTMLDialogElement)?.close()
+                                    }}
                                     className='px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#eda515] hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#eda515] transition duration-300'
                                 >
                                     Save Changes
