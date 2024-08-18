@@ -50,13 +50,13 @@ const Home = () => {
                 ))}
             </div>
             {/* Phân trang */}
-            <nav className='flex items-center gap-x-1 justify-center mt-10'>
+            {/* <nav className='flex items-center gap-x-1 justify-center mt-10'>
                 <div className='flex items-center gap-x-1'>
                     <span className='min-h-[16px] min-w-4 flex justify-center items-center border border-gray-200 py-[1px] px-[1px] rounded-full dark:border-[#ADADAD] dark:bg-white/10'></span>
                     <span className='min-h-[16px] min-w-4 flex justify-center items-center border border-gray-200 py-[1px] px-[1px] rounded-full dark:border-[#ADADAD] dark:bg-white/10'></span>
                     <span className='min-h-[16px] min-w-4 flex justify-center items-center border border-gray-200 py-[1px] px-[1px] rounded-full dark:border-[#ADADAD] dark:bg-white/10'></span>
                 </div>
-            </nav>
+            </nav> */}
             <BannerBottom />
         </>
     )

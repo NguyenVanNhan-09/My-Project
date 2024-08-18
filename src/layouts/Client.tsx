@@ -10,6 +10,7 @@ const Client = () => {
         location.pathname.includes('/detail') ||
         location.pathname.includes('/search') ||
         location.pathname.includes('/category') ||
+        location.pathname.includes('/brand') ||
         location.pathname.includes('/about-us') ||
         location.pathname.includes('/checkout') ||
         location.pathname.includes('/account-setting') ||

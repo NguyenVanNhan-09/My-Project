@@ -21,6 +21,7 @@ const Header = () => {
     const isUser = localStorage.getItem('user')
     const userName = isUser ? JSON.parse(localStorage.getItem('user')!)?.user?.name : undefined
     const userRole = isUser ? JSON.parse(localStorage.getItem('user')!)?.user?.role : undefined
+    const userId = isUser ? JSON.parse(localStorage.getItem('user')!)?.user?.id : undefined
     if (userRole === 2 || userRole === 3) {
         checkRole = true
     }
@@ -115,7 +116,7 @@ const Header = () => {
                                                         className='dropdown-content menu bg-[#cbd4e1] rounded-box z-[1] w-52 mt-3 p-2 shadow'
                                                     >
                                                         <li className='hover:text-[#eda515] text-black'>
-                                                            <Link to={'/account-setting'}>My Account</Link>
+                                                            <Link to={`/account-setting/${userId}`}>My Account</Link>
                                                         </li>
                                                         {checkRole ? (
                                                             <>

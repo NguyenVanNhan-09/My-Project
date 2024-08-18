@@ -36,40 +36,45 @@ const Banner = () => {
                     <div className='grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 w-full transition-transform duration-300'>
                         <a href='#' className='py-6 bg-white border border-[#A5A5A5] rounded-[20px]'>
                             <div className='flex items-center justify-around gap-4 h-full'>
-                                <img
-                                    src='../../public/image/product1.png'
-                                    alt=''
-                                    className='aspect-square w-20 rounded-lg object-cover'
-                                />
+                                <div className='overflow-hidden rounded-full'>
+                                    <img
+                                        src='https://e7.pngegg.com/pngimages/845/161/png-clipart-sneakers-shoe-shoes-fashion-baby-shoes-thumbnail.png'
+                                        alt=''
+                                        className='aspect-square w-20 rounded-lg object-contain'
+                                    />
+                                </div>
                                 <div className=''>
-                                    <h3 className='text-lg/tight font-medium text-gray-900'>Speaker</h3>
+                                    <h3 className='text-lg/tight font-medium text-gray-900'>Shoes</h3>
                                     <div>(6 item)</div>
                                 </div>
                             </div>
                         </a>
                         <a href='#' className='py-6 bg-white border border-[#A5A5A5] rounded-[20px]'>
                             <div className='flex items-center justify-around gap-4 h-full'>
-                                <img
-                                    src='../../public/image/product2.png'
-                                    alt=''
-                                    className='aspect-square w-20 rounded-lg object-cover'
-                                />
-
+                                <div className='overflow-hidden rounded-full'>
+                                    <img
+                                        src='https://wp.inews.co.uk/wp-content/uploads/2024/07/SEI_214950149.jpg'
+                                        alt=''
+                                        className='aspect-square w-20 rounded-lg object-contain'
+                                    />
+                                </div>
                                 <div className=''>
-                                    <h3 className='text-lg/tight font-medium text-gray-900'>Desktop & laptop</h3>
+                                    <h3 className='text-lg/tight font-medium text-gray-900'>Clothers</h3>
                                     <div>(6 item)</div>
                                 </div>
                             </div>
                         </a>
                         <a href='#' className='py-6 bg-white border border-[#A5A5A5] rounded-[20px]'>
                             <div className='flex items-center justify-around gap-4 h-full'>
-                                <img
-                                    src='../../public/image/product3.png'
-                                    alt=''
-                                    className='aspect-square w-20 rounded-lg object-cover'
-                                />
+                                <div className='overflow-hidden rounded-full'>
+                                    <img
+                                        src='../../../public/image/bowler-1295700_1280.png'
+                                        alt=''
+                                        className='aspect-square w-20 rounded-lg object-contain bg-center'
+                                    />
+                                </div>
                                 <div className=''>
-                                    <h3 className='text-lg/tight font-medium text-gray-900'>DSLR camera</h3>
+                                    <h3 className='text-lg/tight font-medium text-gray-900'>Hats</h3>
                                     <div>(6 item)</div>
                                 </div>
                             </div>

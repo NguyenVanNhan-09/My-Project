@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from 'react'
-import { TProduct } from '../interfaces/Products'
 import { TCart } from '../interfaces/Cart'
 import instance from '../API'
 import { toast } from 'react-toastify'
@@ -18,6 +17,7 @@ type CartItem = {
     gender: string
     price: number
     thumbnail: string
+    size: string
 }
 
 const CartContext = ({ children }: Props) => {
@@ -71,22 +71,21 @@ const CartContext = ({ children }: Props) => {
     }
 
     // Thềm vào giỏ hàng
-    const HandleAddCart = (product: TProduct) => {
+    const HandleAddCart = (product: CartItem) => {
         if (product) {
             const currentCartItem = cartItems.find((item) => item.id === product.id)
             if (currentCartItem) {
                 const newItem = cartItems.map((item) => {
                     if (item.id === product.id) {
-                        return { ...item, qty: item.qty + 1 }
+                        return { ...item, qty: item.qty + product.qty }
                     } else {
                         return item
                     }
                 })
-                alert('')
                 toast.success('Add to cart successfully !!!', { position: 'top-left' })
                 setCartItems(newItem)
             } else {
-                const newItem = { ...product, qty: 1 }
+                const newItem = { ...product, qty: product.qty }
                 toast.success('Add to cart successfully !!!', { position: 'top-left' })
                 setCartItems([...cartItems, newItem])
             }

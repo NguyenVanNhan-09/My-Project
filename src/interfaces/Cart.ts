@@ -9,3 +9,14 @@ export interface TCart {
     id: number
     voucher: string
 }
+
+export interface TCartItem {
+    id?: number | string
+    qty: number
+    name: string
+    brand: string
+    gender: string
+    price: number
+    thumbnail: string
+    is_in_inventory: boolean
+}

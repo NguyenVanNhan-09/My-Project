@@ -8,7 +8,7 @@
       "category": "1",
       "price": 90,
       "description": "• Sock-like design\n• Technical 3D knit\n• Black sole\n• Ultra-flexible molded sole\n• Ergonomic sole with \"No Memory\" technology\n• Extra light, nearly barefoot feel\n• White logo at side\n• Embossed logo on the back of the sole\n• Made in Serbia",
-      "is_in_inventory": false,
+      "is_in_inventory": true,
       "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723906737/edz13mkp4dp67thws9di.avif",
       "images": [
         "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723906742/br5hh0hwlinfljdhurap.jpg",
@@ -214,6 +214,22 @@
       ],
       "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723918524/t7igqjbfpefpnwd6bfq7.avif",
       "id": 1253
+    },
+    {
+      "name": "guicci",
+      "brand": "79N_H40",
+      "price": 12,
+      "category": "vVeUd6h",
+      "gender": "MAN-WOMEN",
+      "description": "Made from smooth knit fabric and with a relaxed fit, this midweight crew-neck sweatshirt is designed to help keep you comfortable throughout your run.",
+      "is_in_inventory": true,
+      "images": [
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723931586/a49f0kcrbynfgpqi3zba.avif",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723931586/ckdzguwhtsivuj5dfnwo.webp",
+        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723931587/dy8bwcorzsompnshgjoh.webp"
+      ],
+      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723931578/bi9wdnr3icfe14hiwxed.jpg",
+      "id": 1254
     }
   ],
   "categories": [
@@ -254,12 +270,6 @@
       "status": false,
       "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723912839/egwiwh9jokrotxlzrtfh.jpg",
       "id": "WRd6L0p"
-    },
-    {
-      "name": "guicci",
-      "status": true,
-      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723918219/zjeuoknnxxuuvmwenpj8.jpg",
-      "id": "l29_hWJ"
     }
   ],
   "blogs": [
@@ -299,22 +309,22 @@
       "email": "admin@gmail.com",
       "password": "$2a$10$C4pGhDVwACN5eASy8cBYMeGx9Q6pkkCLaIGZSwr66qEBQbk7IJ6RG",
       "name": "admin",
-      "phone": "09999999",
+      "phone": "0344639810",
       "address": "hà nội",
       "role": 2,
       "year": "15/08/2024",
-      "image": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723738386/k9og7suc0sejphkj20fq.png",
+      "image": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723926478/tsjclj0l6gkqd4ryftqe.avif",
       "id": "jF7wxW8"
     },
     {
       "email": "thuy@gmail.com",
-      "password": "$2a$10$.qZRCkoy8u32oGiIHMeo0.WxWNuSNvX2rHZvvDp7vfrjNsym72Tky",
+      "password": "$2a$10$vNw9VMkVW.RZDKdDpanOruniv4A0HRrXEzMNWviN6LoNpIg2hjvwy",
       "name": "thuy",
       "phone": "0987654321",
       "address": "hà nội",
       "role": 2,
       "year": "18/08/2024",
-      "image": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723915720/qt4kplnbakz9wsocwjai.jpg",
+      "image": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723996431/ngwfrithugpaohmlh5ky.jpg",
       "id": "qkDQnGR"
     },
     {
@@ -327,6 +337,17 @@
       "year": "18/08/2024",
       "image": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723915994/yduexzecgpkslbkcsaf3.jpg",
       "id": "7Y5-e9P"
+    },
+    {
+      "email": "nhinh@gmail.com",
+      "password": "$2a$10$PRcxNWr7s0Y6tmvDnJ59SeXNp6K0JwWFxsCKT8vspPD8XWKR2RFl2",
+      "name": "coder",
+      "role": 1,
+      "phone": "0987654321",
+      "address": "hải dương",
+      "year": "18/08/2024",
+      "image": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723930662/vf8wjtwmjewy8iqp43s3.jpg",
+      "id": "L_Rio7o"
     }
   ],
   "carts": [
@@ -391,6 +412,48 @@
       ],
       "total": 510,
       "id": 1
+    },
+    {
+      "name": "xxxx",
+      "phone": "0344639810",
+      "address": "hải phòng",
+      "voucher": "codeofx",
+      "method_pay": "online payment",
+      "items": [
+        {
+          "id": 1242,
+          "name": "Nike Run Energy",
+          "brand": "1",
+          "gender": "MEN",
+          "price": 45,
+          "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723905889/kbhyabmpjzngvhyhbtm6.webp",
+          "size": "SM",
+          "qty": 3
+        }
+      ],
+      "total": 135,
+      "id": 2
+    },
+    {
+      "name": "nhân",
+      "phone": "09999999",
+      "address": "Cầu Giấy, Hà Nội",
+      "voucher": "codeofx",
+      "method_pay": "cash",
+      "items": [
+        {
+          "id": 140,
+          "name": "Speed Sneaker in Black",
+          "brand": "3",
+          "gender": "MEN",
+          "price": 90,
+          "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723906737/edz13mkp4dp67thws9di.avif",
+          "size": "SM",
+          "qty": 2
+        }
+      ],
+      "total": 180,
+      "id": 3
     }
   ]
 }

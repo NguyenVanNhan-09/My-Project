@@ -2,12 +2,15 @@ import { useContext, useState } from 'react'
 import BannerBottom from '../../components/Client/BannerBottom'
 import { productCT } from '../../contexts/ProductsContext'
 import { TProduct } from '../../interfaces/Products'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Product from '../../components/Client/Product'
+import { categoriesCT } from '../../contexts/CategoriesContext'
+import { TCategories } from '../../interfaces/Categories'
 
 const Category = () => {
     const { id } = useParams()
     const { products } = useContext(productCT)
+    const { categories } = useContext(categoriesCT)
     const [checked, setChecked] = useState(false)
 
     const handleChange = (event: any) => {
@@ -18,7 +21,7 @@ const Category = () => {
             <nav aria-label='Breadcrumb' className=' flex items-center py-6 bg-[#FDFDFD]'>
                 <ol className='flex items-center gap-1 text-sm text-gray-600 ml-[110px] mr-[110px]'>
                     <li>
-                        <a href='#' className='block transition hover:text-gray-700'>
+                        <Link to={'/'} className='block transition hover:text-gray-700'>
                             <span className='sr-only'> Home </span>
 
                             <svg
@@ -35,7 +38,7 @@ const Category = () => {
                                     d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'
                                 />
                             </svg>
-                        </a>
+                        </Link>
                     </li>
 
                     <li className='rtl:rotate-180'>
@@ -54,9 +57,7 @@ const Category = () => {
                     </li>
 
                     <li>
-                        <a href='#' className='block transition hover:text-gray-700'>
-                            Category
-                        </a>
+                        <div className='block transition hover:text-gray-700'>Category</div>
                     </li>
 
                     <li className='rtl:rotate-180'>
@@ -75,9 +76,9 @@ const Category = () => {
                     </li>
 
                     <li>
-                        <a href='#' className='block transition hover:text-gray-700'>
-                            Men's clothing
-                        </a>
+                        <div className='block transition hover:text-gray-700'>
+                            {categories.find((cate: TCategories) => cate.id === id)?.name}
+                        </div>
                     </li>
                 </ol>
             </nav>
@@ -338,7 +339,6 @@ const Category = () => {
                 </div>
                 <div className='rounded-lg lg:col-span-5'>
                     <div className='grid grid-cols-1  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 max-xl:gap-2 gap-3'>
-                        {/* .filter((product) => product.category === id) */}
                         {products
                             .filter((product: TProduct) => product.category === id)
                             .map((item: TProduct) => (

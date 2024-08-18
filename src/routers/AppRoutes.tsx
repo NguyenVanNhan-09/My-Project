@@ -17,6 +17,7 @@ import Client from './../layouts/Client'
 import BrandsList from '../pages/Admin/Brands/BrandsList'
 import Categories from '../pages/Admin/Categories/Categories'
 import Checkout from '../pages/Client/Checkout'
+import Brand from '../pages/Client/Brand'
 
 const AppRoutes = () => {
     const role = JSON.parse(localStorage.getItem('user')!)?.user?.role
@@ -30,9 +31,10 @@ const AppRoutes = () => {
                 { path: 'search', element: <Search /> },
                 { path: 'detail/:id', element: <Detail /> },
                 { path: 'category/:id', element: <Category /> },
+                { path: 'brand/:id', element: <Brand /> },
                 { path: 'blogs', element: <Blogs /> },
                 { path: 'blog/:id', element: <BlogItem /> },
-                { path: 'account-setting', element: <AccountSettings /> },
+                { path: 'account-setting/:id', element: <AccountSettings /> },
                 { path: 'about-us', element: <AboutUs /> },
                 { path: 'checkout', element: <Checkout /> }
             ]

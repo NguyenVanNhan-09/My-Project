@@ -5,7 +5,6 @@ import Joi from 'joi'
 import { useForm } from 'react-hook-form'
 import { TCart } from '../../interfaces/Cart'
 import { joiResolver } from '@hookform/resolvers/joi'
-import { categoriesCT } from '../../contexts/CategoriesContext'
 import { toast } from 'react-toastify'
 
 const schema = Joi.object({
@@ -18,9 +17,9 @@ const schema = Joi.object({
 
 const Checkout = () => {
     const navi = useNavigate()
+    const isAccessToken = JSON.parse(localStorage.getItem('user')!)?.accessToken
     const { cartItems, HandleDeleteItem, decreaQty, increaseQty, totalPrice, HandleAdd, ClearCartItems } =
         useContext(cartCT)
-    const { categories } = useContext(categoriesCT)
     const {
         register,
         handleSubmit,
@@ -29,17 +28,21 @@ const Checkout = () => {
 
     // Submit
     const onSubmit = (cart: TCart) => {
-        if (cartItems.length === 0) {
-            toast.warn('There are no products in the cart!', { position: 'top-center' })
-            return
-        } else {
-            try {
-                HandleAdd(cart, cartItems, totalPrice)
-                ClearCartItems()
-                navi('/')
-            } catch (error) {
-                console.log(error)
+        if (isAccessToken) {
+            if (cartItems.length === 0) {
+                toast.warn('There are no products in the cart!', { position: 'top-center' })
+                return
+            } else {
+                try {
+                    HandleAdd(cart, cartItems, totalPrice)
+                    ClearCartItems()
+                    navi('/')
+                } catch (error) {
+                    toast.error(`${error}`, { position: 'top-center' })
+                }
             }
+        } else {
+            toast.error('You need to log in to continue payment!', { position: 'top-center' })
         }
     }
     return (
@@ -67,11 +70,7 @@ const Checkout = () => {
                                                             {item.name}
                                                         </h3>
                                                         <p className='text-xs font-semibold text-gray-500 mt-0.5'>
-                                                            {
-                                                                categories.find(
-                                                                    (cate: any) => cate.id === item.category
-                                                                )?.name
-                                                            }
+                                                            Size: {item.size}
                                                         </p>
 
                                                         <button

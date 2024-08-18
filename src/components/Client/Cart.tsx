@@ -56,8 +56,8 @@ const Cart = ({ change, setChange }: Props) => {
                                             <div className='mt-8'>
                                                 <div className='flow-root'>
                                                     <ul role='list' className='-my-6 divide-y divide-gray-200'>
-                                                        {cartItems.map((item: any) => (
-                                                            <li className='flex py-6'>
+                                                        {cartItems.map((item: any, index: any) => (
+                                                            <li key={index} className='flex py-6'>
                                                                 <div className='h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200'>
                                                                     <img
                                                                         src={item.thumbnail}
