@@ -7,10 +7,17 @@ import { cartCT } from '../../contexts/CartContext'
 import { toast } from 'react-toastify'
 import ErrorsModal from '../../components/ErrorsModal'
 import { useForm } from 'react-hook-form'
+import { categoriesCT } from '../../contexts/CategoriesContext'
+import { TCategories } from '../../interfaces/Categories'
+import { TBrands } from '../../interfaces/Brands'
+import { brandsCT } from '../../contexts/BrandsContext'
 
 const Detail = () => {
     const { id } = useParams()
     const navigator = useNavigate()
+    const { HandleAddCart } = useContext(cartCT)
+    const { categories } = useContext(categoriesCT)
+    const { brands } = useContext(brandsCT)
     const [product, setProduct] = useState<TProduct | null>(null)
     useEffect(() => {
         const fetchProductById = async () => {
@@ -19,6 +26,8 @@ const Detail = () => {
         }
         fetchProductById()
     }, [id])
+    const nameCate = categories.find((cate: TCategories) => cate.id === product?.category)?.name
+    const nameBrand = brands.find((brand: TBrands) => brand.id === product?.brand)?.name
     const { handleSubmit, watch, setValue } = useForm({
         defaultValues: {
             size: '', // Giá trị mặc định của size
@@ -27,7 +36,6 @@ const Detail = () => {
     })
     const size = watch('size')
     const quantity = watch('quantity')
-    const { HandleAddCart } = useContext(cartCT)
     const onSubmit = (data: any) => {
         if (product?.is_in_inventory) {
             const { id, name, brand, gender, price, thumbnail } = product
@@ -155,6 +163,12 @@ const Detail = () => {
                                 )}
                             </h1>
                         </div>
+                        <div className='flex space-x-1 mt-4'>
+                            <h1>
+                                Brand:
+                                <span className='text-[#30BD57]  text-[16px] ml-3'>{nameBrand}</span>
+                            </h1>
+                        </div>
                         <div className='flex space-x-1 pb-3 mt-4 border-b w-full border-[#BDBDBD]'>
                             <h1>
                                 Gender: <span className='text-[#30BD57]  text-[16px]'>{product?.gender}</span>
@@ -276,12 +290,13 @@ const Detail = () => {
 
                         <div className='flex space-x-1 mt-4'>
                             <h1>
-                                Sku: <span className='text-[#30BD57]  text-[16px]'>01133-9-9</span>
+                                Sku: <span className='text-[#30BD57]  text-[16px]'>{product?.id}</span>
                             </h1>
                         </div>
                         <div className='flex space-x-1 mt-4'>
                             <h1>
-                                Category: <span className='text-[#30BD57]  text-[16px]'>{product?.category}</span>
+                                Category:
+                                <span className='text-[#30BD57]  text-[16px]'>{nameCate}</span>
                             </h1>
                         </div>
                         <div className='flex flex-col mt-4'>

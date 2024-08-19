@@ -18,6 +18,7 @@ import BrandsList from '../pages/Admin/Brands/BrandsList'
 import Categories from '../pages/Admin/Categories/Categories'
 import Checkout from '../pages/Client/Checkout'
 import Brand from '../pages/Client/Brand'
+import CartsList from '../pages/Admin/Carts/CartsList'
 
 const AppRoutes = () => {
     const role = JSON.parse(localStorage.getItem('user')!)?.user?.role
@@ -52,7 +53,8 @@ const AppRoutes = () => {
                 { path: 'products', element: <ProductsList /> },
                 { path: 'users', element: <UsersList /> },
                 { path: 'brands', element: <BrandsList /> },
-                { path: 'category', element: <Categories /> }
+                { path: 'categories', element: <Categories /> },
+                { path: 'carts', element: <CartsList /> }
             ]
         },
         // Not-Found

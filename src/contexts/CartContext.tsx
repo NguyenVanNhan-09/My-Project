@@ -2,6 +2,8 @@ import React, { createContext, useEffect, useState } from 'react'
 import { TCart } from '../interfaces/Cart'
 import instance from '../API'
 import { toast } from 'react-toastify'
+import { Delete_Cart, GET_ALL_Carts } from '../services/Carts'
+import ConfirmModal from '../components/Admin/Confirm'
 
 type Props = {
     children: React.ReactNode
@@ -25,9 +27,21 @@ const CartContext = ({ children }: Props) => {
         const jsonCartData = localStorage.getItem('cart')
         return jsonCartData ? JSON.parse(jsonCartData) : []
     })
+    const [carts, setCarts] = useState<TCart[]>([])
+    const [deleteId, setDeleteId] = useState<string | number | null>(null)
+    const [showModal, setShowModal] = useState<boolean>(false)
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cartItems))
+        const fetchCarts = async () => {
+            try {
+                const { data } = await GET_ALL_Carts()
+                setCarts(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchCarts()
     }, [cartItems])
 
     // Số lượng item trong cart
@@ -130,6 +144,21 @@ const CartContext = ({ children }: Props) => {
             toast.error('Error !!!', { position: 'top-center' })
         }
     }
+
+    // Xóa cart
+    const HandleDelete = async (id: number | string) => {
+        setDeleteId(id)
+        setShowModal(true)
+    }
+    const confrimDelete = async () => {
+        const data = await Delete_Cart(deleteId as any)
+        if (data) {
+            setCarts(carts.filter((cart) => cart.id !== deleteId))
+        } else {
+            toast.error('Error deleting product.', { position: 'top-center' })
+        }
+    }
+
     return (
         <cartCT.Provider
             value={{
@@ -141,10 +170,13 @@ const CartContext = ({ children }: Props) => {
                 HandleAddCart,
                 HandleDeleteItem,
                 ClearCartItems,
-                HandleAdd
+                HandleAdd,
+                carts,
+                HandleDelete
             }}
         >
             {children}
+            <ConfirmModal show={showModal} onClose={() => setShowModal(false)} onConfirm={confrimDelete} />
         </cartCT.Provider>
     )
 }

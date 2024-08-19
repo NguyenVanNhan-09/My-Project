@@ -1,6 +1,12 @@
+import Nav from '../../components/Nav'
+
 const AboutUs = () => {
+    const keyMain = 'About-Us'
+
     return (
         <>
+            <Nav keyword={[]} keyMain={keyMain} />
+
             <div className=''>
                 <section className='py-14 lg:py-24 relative z-0 bg-gray-50'>
                     <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative text-center'>

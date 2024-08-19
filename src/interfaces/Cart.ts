@@ -4,7 +4,7 @@ export interface TCart {
     phone: string
     address: string
     method_pay: string
-    items: string[]
+    items: TCartItem
     total: number
     id: number
     voucher: string

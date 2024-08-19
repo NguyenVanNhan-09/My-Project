@@ -1,5 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 import HeaderAdmin from '../../components/Admin/HeaderAdmin'
+import { FaCartPlus } from 'react-icons/fa'
 
 const Dashboard = () => {
     return (
@@ -48,10 +49,10 @@ const Dashboard = () => {
                                 </li>
                                 <li className='mb-4'>
                                     <Link
-                                        to={`category`}
+                                        to={`categories`}
                                         className="text-gray-900 text-sm flex items-center hover:text-[#f84525] before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3"
                                     >
-                                        Category
+                                        Categories
                                     </Link>
                                 </li>
                                 <li className='mb-4'>
@@ -66,13 +67,13 @@ const Dashboard = () => {
                         </details>
                     </li>
                     <li className='mb-1 group'>
-                        <a
-                            href=''
+                        <Link
+                            to={`carts`}
                             className='flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-[#030712] hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100'
                         >
-                            <i className='bx bx-list-ul mr-3 text-lg'></i>
-                            <span className='text-sm'>Activities</span>
-                        </a>
+                            <FaCartPlus className='mr-3 text-lg' />
+                            <span className='text-sm'>Carts</span>
+                        </Link>
                     </li>
                     <span className='text-gray-400 font-bold'>BLOG</span>
                     <li className='mb-1 group'>

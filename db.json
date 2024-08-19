@@ -130,7 +130,7 @@
       "category": "1",
       "gender": "MAN-WOMEN",
       "description": "Say hello to the next generation of Air technology. The Air Max Dn features our Dynamic Air unit system of dual-pressure tubes, creating a reactive sensation with every step. This results in a futuristic design that's comfortable enough to wear from day to night. And this newest seasonal colour offers the first gradient-treatment upper in this model. Go ahead—Feel The Unreal.",
-      "is_in_inventory": false,
+      "is_in_inventory": true,
       "images": [
         "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723909859/ulfpnyuo6zvvelnotyla.webp",
         "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723909860/ktfo0yopjw5zdhhgi2fm.jpg"
@@ -145,7 +145,7 @@
       "category": "1",
       "gender": "MAN-WOMEN",
       "description": "Embrace the hilly terrain in the Juniper Trail 3. Our Trail ATC outsole helps keep you upright for your trails. And we made the midsole and upper softer and more flexible compared with the previous iteration.",
-      "is_in_inventory": true,
+      "is_in_inventory": false,
       "images": [
         "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723917157/gokkd7hofdwc79kzgu5y.webp",
         "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723917158/iedssbiekutgujieh1wl.webp"
@@ -214,22 +214,6 @@
       ],
       "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723918524/t7igqjbfpefpnwd6bfq7.avif",
       "id": 1253
-    },
-    {
-      "name": "guicci",
-      "brand": "79N_H40",
-      "price": 12,
-      "category": "vVeUd6h",
-      "gender": "MAN-WOMEN",
-      "description": "Made from smooth knit fabric and with a relaxed fit, this midweight crew-neck sweatshirt is designed to help keep you comfortable throughout your run.",
-      "is_in_inventory": true,
-      "images": [
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723931586/a49f0kcrbynfgpqi3zba.avif",
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723931586/ckdzguwhtsivuj5dfnwo.webp",
-        "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723931587/dy8bwcorzsompnshgjoh.webp"
-      ],
-      "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723931578/bi9wdnr3icfe14hiwxed.jpg",
-      "id": 1254
     }
   ],
   "categories": [
@@ -267,7 +251,7 @@
     },
     {
       "name": "Louis Vuitton",
-      "status": false,
+      "status": true,
       "thumbnail": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723912839/egwiwh9jokrotxlzrtfh.jpg",
       "id": "WRd6L0p"
     }
@@ -311,7 +295,7 @@
       "name": "admin",
       "phone": "0344639810",
       "address": "hà nội",
-      "role": 2,
+      "role": 3,
       "year": "15/08/2024",
       "image": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723926478/tsjclj0l6gkqd4ryftqe.avif",
       "id": "jF7wxW8"
@@ -337,17 +321,6 @@
       "year": "18/08/2024",
       "image": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723915994/yduexzecgpkslbkcsaf3.jpg",
       "id": "7Y5-e9P"
-    },
-    {
-      "email": "nhinh@gmail.com",
-      "password": "$2a$10$PRcxNWr7s0Y6tmvDnJ59SeXNp6K0JwWFxsCKT8vspPD8XWKR2RFl2",
-      "name": "coder",
-      "role": 1,
-      "phone": "0987654321",
-      "address": "hải dương",
-      "year": "18/08/2024",
-      "image": "http://res.cloudinary.com/dbaq8kdwn/image/upload/v1723930662/vf8wjtwmjewy8iqp43s3.jpg",
-      "id": "L_Rio7o"
     }
   ],
   "carts": [
